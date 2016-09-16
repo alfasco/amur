@@ -7,10 +7,12 @@ import { FullSliderComponent }   from './FullSliderComponent';
 import { MainGalleryComponent }   from './MainGalleryComponent';
 import { MainView2Component }   from './MainView2Component';
 import { MainView1Component }   from './MainView1Component';
+import { WidgetAdvertisementComponent }   from './WidgetAdvertisementComponent';
 import { WidgetViewComponent }   from './WidgetViewComponent';
 import { WidgetSubscribeComponent }   from './WidgetSubscribeComponent';
 import { WidgetSocialComponent }   from './WidgetSocialComponent';
 import { WidgetCommentsComponent }   from './WidgetCommentsComponent';
+import { WidgetVideoComponent }   from './WidgetVideoComponent';
 import { MainVideoComponent }   from './MainVideoComponent';
 
 // export const DYNAMIC_DIRECTIVES = [
@@ -27,9 +29,11 @@ export const DYNAMIC_DIRECTIVES = [
     MainGalleryComponent,
     MainView1Component,
     MainView2Component,
+    WidgetAdvertisementComponent,
     WidgetViewComponent,
     WidgetSubscribeComponent,
     WidgetCommentsComponent,
     WidgetSocialComponent,
+    WidgetVideoComponent,
     MainVideoComponent
 ];

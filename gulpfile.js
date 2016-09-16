@@ -103,14 +103,12 @@ gulp.task('lib:js', function() {
         .pipe(gulp.dest('public/scripts'));
 });
 
-
-
 //JS subscrip
 gulp.task('js:scripts', function() {
     return gulp
         .src(path.jsScripts)
         .pipe($.concat('scripts.js'))
-        .pipe($.jsmin())
+        .pipe($.uglify())
         .pipe($.rename({
             suffix: '.min'
         }))
@@ -137,7 +135,7 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch(path.tsScripts, gulp.series('compile'));
+    gulp.watch(path.tsScripts, gulp.series('compile', 'node_modules', 'bundle:js', 'lib:js', 'js:scripts'));
     gulp.watch(path.fonts, gulp.series('fonts'));
     gulp.watch(path.css, gulp.series('css'));
     gulp.watch(path.jsScripts, gulp.series('js:scripts'));
