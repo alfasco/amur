@@ -1,0 +1,34 @@
+import { Component, OnInit} from '@angular/core';
+import { COMPILER_PROVIDERS } from '@angular/compiler';
+
+import {MenuService} from '../services/menu';
+
+import {PagesService} from '../services/pages';
+
+@Component({
+    selector: 'my-app',
+    templateUrl: 'templates/main.html',
+    providers: [
+        MenuService,
+        COMPILER_PROVIDERS,
+        PagesService
+    ]
+})
+
+export class AppComponent implements OnInit {
+    mainMenu: any;
+
+    constructor(private menuService: MenuService, private pages: PagesService) {
+
+        this.menuService.getMenu().subscribe(
+            menu => {
+                this.mainMenu = menu;
+                this.menuService.Menu = menu;
+            },
+            error => console.log(<any>error));
+    }
+
+    ngOnInit() {
+        $('#container').addClass('active');
+    }
+}

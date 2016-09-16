@@ -1,0 +1,6 @@
+{
+    "server": {
+        "httpPort": 3200,
+        "socketPort": 810
+    }
+}

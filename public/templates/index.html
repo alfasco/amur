@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>Angular 2 QuickStart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/magnific-popup.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/owl.theme.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/ticker-style.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+
+    <!-- 1. Load libraries -->
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <!-- 2. Configure SystemJS -->
+    <script src="systemjs.config.js"></script>
+    <script>
+        System.import('app').catch(function(err) {
+            console.error(err);
+        });
+    </script>
+</head>
+<!-- 3. Display the application -->
+
+<body class="boxed">
+    <my-app>Loading...</my-app>
+    <script type="text/javascript" src="scripts/scripts.min.js"></script>
+</body>
+
+</html>
