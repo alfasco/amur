@@ -26,7 +26,6 @@ const path = {
 }
 
 gulp.task('del', function() {
-    del('public/node_modules');
     del('public/css');
     return del('public/scripts');
 })
@@ -123,8 +122,8 @@ gulp.task('watch', function() {
     gulp.watch(path.jsScripts, gulp.series('js:scripts'));
 })
 
-gulp.task('default', gulp.series('del', 'compile', 'node_modules', 'js:scripts', 'css', 'fonts', 'watch'));
-gulp.task('build', gulp.series('del', 'compile', 'node_modules', 'js:scripts', 'css', 'fonts'));
+gulp.task('default', gulp.series('del', 'compile', 'js:scripts', 'css', 'fonts', 'watch'));
+gulp.task('build', gulp.series('del', 'compile', 'js:scripts', 'css', 'fonts'));
 
 gulp.task("installTypings", function() {
     return gulp.src("./typings.json")

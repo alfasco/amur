@@ -1,6 +1,5 @@
 node_modules/*
 public/css/*
-public/node_modules/*
 public/scripts/*
 public/systemjs.config.js
 typings/*
