@@ -9,6 +9,8 @@ import { MainView2Component }   from './MainView2Component';
 import { MainView1Component }   from './MainView1Component';
 import { WidgetViewComponent }   from './WidgetViewComponent';
 import { WidgetSubscribeComponent }   from './WidgetSubscribeComponent';
+import { WidgetSocialComponent }   from './WidgetSocialComponent';
+import { WidgetCommentsComponent }   from './WidgetCommentsComponent';
 import { MainVideoComponent }   from './MainVideoComponent';
 
 // export const DYNAMIC_DIRECTIVES = [
@@ -27,5 +29,7 @@ export const DYNAMIC_DIRECTIVES = [
     MainView2Component,
     WidgetViewComponent,
     WidgetSubscribeComponent,
+    WidgetCommentsComponent,
+    WidgetSocialComponent,
     MainVideoComponent
 ];
