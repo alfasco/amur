@@ -43,36 +43,43 @@ gulp.task('compile', function() {
 gulp.task('angular2', function() {
     return gulp
         .src('node_modules/@angular/**/*')
+        .pipe($.jsmin())
         .pipe(gulp.dest('public/node_modules/@angular'));
 });
 gulp.task('rxjs', function() {
     return gulp
         .src('node_modules/rxjs/**/*')
+        .pipe($.jsmin())
         .pipe(gulp.dest('public/node_modules/rxjs'));
 });
 gulp.task('core-js', function() {
     return gulp
         .src('node_modules/core-js/**/*')
+        .pipe($.jsmin())
         .pipe(gulp.dest('public/node_modules/core-js'));
 });
 gulp.task('zone.js', function() {
     return gulp
         .src('node_modules/zone.js/**/*')
+        .pipe($.jsmin())
         .pipe(gulp.dest('public/node_modules/zone.js'));
 });
 gulp.task('reflect-metadata', function() {
     return gulp
         .src('node_modules/reflect-metadata/**/*')
+        .pipe($.jsmin())
         .pipe(gulp.dest('public/node_modules/reflect-metadata'));
 });
 gulp.task('systemjs', function() {
     return gulp
         .src('node_modules/systemjs/**/*')
+        .pipe($.jsmin())
         .pipe(gulp.dest('public/node_modules/systemjs'));
 });
 gulp.task('systemjs.config', function() {
     return gulp
         .src('dev/scripts/systemjs.config.js')
+        .pipe($.jsmin())
         .pipe(gulp.dest('public'));
 });
 gulp.task('node_modules', gulp.series('angular2', 'rxjs', 'core-js', 'zone.js', 'reflect-metadata', 'systemjs', 'systemjs.config'));
@@ -83,7 +90,7 @@ gulp.task('js:scripts', function() {
     return gulp
         .src(path.jsScripts)
         .pipe($.concat('scripts.js'))
-        // .pipe($.jsmin())
+        .pipe($.jsmin())
         .pipe($.rename({
             suffix: '.min'
         }))
