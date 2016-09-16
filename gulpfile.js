@@ -2,6 +2,7 @@
 
 const gulp = require('gulp');
 const $ = require('gulp-load-plugins')();
+const sysBuilder = require('systemjs-builder');
 let tscConfig = require('./tsconfig.json');
 
 const del = require('del');
@@ -35,53 +36,73 @@ gulp.task('compile', function() {
     return gulp
         .src(path.tsScripts)
         .pipe($.typescript(tscConfig.compilerOptions))
-        .pipe($.jsmin())
         .pipe(gulp.dest('public/scripts'));
 });
 //CopyNodeModules
 gulp.task('angular2', function() {
     return gulp
         .src('node_modules/@angular/**/*')
-        .pipe($.jsmin())
         .pipe(gulp.dest('public/node_modules/@angular'));
 });
 gulp.task('rxjs', function() {
     return gulp
         .src('node_modules/rxjs/**/*')
-        .pipe($.jsmin())
         .pipe(gulp.dest('public/node_modules/rxjs'));
 });
 gulp.task('core-js', function() {
     return gulp
         .src('node_modules/core-js/**/*')
-        .pipe($.jsmin())
         .pipe(gulp.dest('public/node_modules/core-js'));
 });
 gulp.task('zone.js', function() {
     return gulp
         .src('node_modules/zone.js/**/*')
-        .pipe($.jsmin())
         .pipe(gulp.dest('public/node_modules/zone.js'));
 });
 gulp.task('reflect-metadata', function() {
     return gulp
         .src('node_modules/reflect-metadata/**/*')
-        .pipe($.jsmin())
         .pipe(gulp.dest('public/node_modules/reflect-metadata'));
 });
 gulp.task('systemjs', function() {
     return gulp
         .src('node_modules/systemjs/**/*')
-        .pipe($.jsmin())
         .pipe(gulp.dest('public/node_modules/systemjs'));
 });
 gulp.task('systemjs.config', function() {
     return gulp
         .src('dev/scripts/systemjs.config.js')
-        .pipe($.jsmin())
         .pipe(gulp.dest('public'));
 });
 gulp.task('node_modules', gulp.series('angular2', 'rxjs', 'core-js', 'zone.js', 'reflect-metadata', 'systemjs', 'systemjs.config'));
+
+// Generate systemjs-based builds
+gulp.task('bundle:js', function() {
+    var builder = new sysBuilder('public', 'public/systemjs.config.js');
+    return builder.buildStatic('app', 'public/scripts/app.min.js')
+        .then(function() {
+            return del(['public/scripts/**/*', 'public/node_modules', '!public/scripts/app.min.js']);
+        })
+        .catch(function(err) {
+            console.error('>>> [systemjs-builder] Bundling failed'.bold.green, err);
+        });
+});
+
+// Minify JS bundle
+gulp.task('lib:js', function() {
+    return gulp
+        .src([
+            'node_modules/core-js/client/shim.min.js',
+            'node_modules/zone.js/dist/zone.js',
+            'node_modules/reflect-metadata/Reflect.js',
+            'node_modules/systemjs/dist/system.src.js',
+            'public/scripts/app.min.js'
+        ])
+        .pipe($.concat('app.min.js'))
+        .pipe($.uglify())
+        .pipe(gulp.dest('public/scripts'));
+});
+
 
 
 //JS subscrip
@@ -122,8 +143,8 @@ gulp.task('watch', function() {
     gulp.watch(path.jsScripts, gulp.series('js:scripts'));
 })
 
-gulp.task('default', gulp.series('del', 'compile', 'js:scripts', 'css', 'fonts', 'watch'));
-gulp.task('build', gulp.series('del', 'compile', 'js:scripts', 'css', 'fonts'));
+gulp.task('default', gulp.series('del', 'compile', 'node_modules', 'bundle:js', 'lib:js', 'js:scripts', 'css', 'fonts', 'watch'));
+gulp.task('build', gulp.series('del', 'compile', 'node_modules', 'bundle:js', 'lib:js', 'js:scripts', 'css', 'fonts'));
 
 gulp.task("installTypings", function() {
     return gulp.src("./typings.json")
