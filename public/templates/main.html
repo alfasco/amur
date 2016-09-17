@@ -70,7 +70,7 @@
                         <a class="navbar-brand" style="padding: 0" routerLink="/"><img style="max-width: 173px;" src="images/logo.png" alt=""></a>
                     </div>
 
-                    <HeaderAdvertisementComponent></HeaderAdvertisementComponent>
+                    <HeaderAdvertisementComponent idComponent="63f4c588c76340a5a4cbd5759abdcab2"></HeaderAdvertisementComponent>
                 </div>
             </div>
             <!-- End Logo & advertisement -->
@@ -82,8 +82,8 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">
                             <li class="drop" *ngFor="let menu of mainMenu">
-                                <a class="home" routerLink="{{menu.link}}">{{menu.value}}</a>
-                                <ul class="dropdown" *ngIf="menu.sub">
+                                <a [class]="menu.color" routerLink="{{menu.link}}">{{menu.value}}</a>
+                                <ul [class]="'dropdown ' + menu.color + '-dropdown'" *ngIf="menu.sub">
                                     <li *ngFor="let sub of menu.sub">
                                         <a routerLink="{{sub.link}}">{{sub.value}}</a>
                                     </li>

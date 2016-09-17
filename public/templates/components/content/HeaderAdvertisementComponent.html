@@ -1,10 +1,10 @@
-<div class="advertisement">
+<div class="advertisement" *ngIf="content">
     <div class="desktop-advert">
-        <span>Advertisement</span>
-        <img src="upload/addsense/728x90-white.jpg" alt="">
+        <span>Реклама</span>
+        <img src="http://portamur.alfasco.ru{{content.value.img[0].value}}" alt="">
     </div>
     <div class="tablet-advert">
-        <span>Advertisement</span>
-        <img src="upload/addsense/468x60-white.jpg" alt="">
+        <span>Реклама</span>
+        <img src="http://portamur.alfasco.ru{{content.value.imgs[0].value}}" alt="">
     </div>
 </div>

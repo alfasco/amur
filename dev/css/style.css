@@ -451,6 +451,21 @@ header.active .nav-list-container {
 .navbar-nav li.drop ul.dropdown.features-dropdown {
   border-top: 3px solid #ab632e;
 }
+.navbar-nav li.drop ul.dropdown.video-dropdown {
+  border-top: 3px solid #d6ac1b;
+}
+.navbar-nav li.drop ul.dropdown.travel-dropdown {
+  border-top: 3px solid #f58021;
+}
+.navbar-nav li.drop ul.dropdown.food-dropdown {
+  border-top: 3px solid #32b47b;
+}
+.navbar-nav li.drop ul.dropdown.tech-dropdown {
+  border-top: 3px solid #74b430;
+}
+.navbar-nav li.drop ul.dropdown.world-dropdown {
+  border-top: 3px solid #33a3f1;
+}
 .navbar-nav li.drop:hover > ul.dropdown {
   opacity: 1;
   visibility: visible;

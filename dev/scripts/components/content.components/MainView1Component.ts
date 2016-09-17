@@ -9,6 +9,7 @@ import {ComponentService} from '../../services/component';
 export class MainView1Component implements OnInit {
     @Input() public idComponent: string;
     public content = [];
+    public title = '';
 
     constructor(private component: ComponentService) { }
 
@@ -16,6 +17,7 @@ export class MainView1Component implements OnInit {
     ngOnInit() {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
+                this.title = 'Новости'
                 this.content = [[component[0], [component[1], component[2], component[3]]], [component[4], [component[5], component[6], component[7]]]];
             },
             error => console.log(<any>error));

@@ -15,7 +15,7 @@ export class FullSliderComponent implements OnInit {
     ngOnInit() {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
-                console.log('full', this.idComponent, component)
+
             },
             error => console.log(<any>error));
 
