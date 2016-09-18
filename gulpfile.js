@@ -96,6 +96,7 @@ gulp.task('lib:js', function() {
             'node_modules/zone.js/dist/zone.js',
             'node_modules/reflect-metadata/Reflect.js',
             'node_modules/systemjs/dist/system.src.js',
+            'node_modules/underscore/underscore.js',
             'public/scripts/app.min.js'
         ])
         .pipe($.concat('app.min.js'))

@@ -2,11 +2,21 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ComponentService} from '../../services/component';
 
 @Component({
-    selector: 'WidgetCommentsComponent',
+    selector: 'WidgetSubscribeComponent',
     providers: [ComponentService],
-    templateUrl: 'templates/components/content/WidgetCommentsComponent.html'
+    template: `
+    <div class="widget subscribe-widget">
+        <form class="subscribe-form">
+            <h1>Subscribe to RSS Feeds</h1>
+            <input type="text" name="sumbscribe" id="subscribe" placeholder="Email" />
+            <button id="submit-subscribe">
+    										<i class="fa fa-arrow-circle-right"></i>
+    									</button>
+            <p>Get all latest content delivered to your email a few times a month.</p>
+        </form>
+    </div>`
 })
-export class WidgetCommentsComponent implements OnInit {
+export class WidgetSubscribeComponent implements OnInit {
     @Input() public idComponent: string;
     public content = [];
 

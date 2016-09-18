@@ -6,7 +6,7 @@ import { Observable }     from 'rxjs/Observable';
 import 'rxjs/Rx'
 
 @Injectable()
-export class GridService {
+export class TemplateService {
     public grid: any;
 
     constructor(private http: Http) {

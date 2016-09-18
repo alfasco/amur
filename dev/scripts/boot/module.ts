@@ -4,28 +4,25 @@ import { HttpModule, JsonpModule }  from '@angular/http';
 
 import { AppComponent }   from '../components/app';
 
-import { Home } from '../components/home'
-import { ObrazGizni } from '../components/stucture/obraz_gizni';
+import { routing, appRoutingProviders } from './appRoutes';
 
-import { DYNAMIC_DIRECTIVES }   from '../components/content.components/all';
-
-import { routing, appRoutingDeclarations, appRoutingProviders } from './appRoutes';
+import { COMPILER_PROVIDERS } from '@angular/compiler';
+import { DynamicModule }    from '../components/dynamic/dynamic.module';
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
         JsonpModule,
-        routing
+        routing,
+        DynamicModule.forRoot()
     ],
     declarations: [
-        AppComponent,
-        Home,
-        DYNAMIC_DIRECTIVES,
-        appRoutingDeclarations
+        AppComponent
     ],
     providers: [
-        appRoutingProviders
+        appRoutingProviders,
+        COMPILER_PROVIDERS
     ],
     bootstrap: [AppComponent]
 })

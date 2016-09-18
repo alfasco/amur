@@ -1,24 +1,21 @@
 import { Component, OnInit} from '@angular/core';
 import { COMPILER_PROVIDERS } from '@angular/compiler';
 
-import {MenuService} from '../services/menu';
-
-import {PagesService} from '../services/pages';
+import {MenuService} from './services/menu';
 
 @Component({
     selector: 'my-app',
     templateUrl: 'templates/main.html',
     providers: [
         MenuService,
-        COMPILER_PROVIDERS,
-        PagesService
+        COMPILER_PROVIDERS
     ]
 })
 
 export class AppComponent implements OnInit {
     mainMenu: any;
 
-    constructor(private menuService: MenuService, private pages: PagesService) {
+    constructor(private menuService: MenuService) {
 
         this.menuService.getMenu().subscribe(
             menu => {

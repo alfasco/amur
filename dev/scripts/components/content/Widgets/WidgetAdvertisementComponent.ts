@@ -4,7 +4,21 @@ import {ComponentService} from '../../services/component';
 @Component({
     selector: 'WidgetAdvertisementComponent',
     providers: [ComponentService],
-    templateUrl: 'templates/components/content/WidgetAdvertisementComponent.html'
+    template: `
+    <div class="advertisement">
+        <div class="desktop-advert">
+            <span>Advertisement</span>
+            <img src="upload/addsense/300x250.jpg" alt="">
+        </div>
+        <div class="tablet-advert">
+            <span>Advertisement</span>
+            <img src="upload/addsense/200x200.jpg" alt="">
+        </div>
+        <div class="mobile-advert">
+            <span>Advertisement</span>
+            <img src="upload/addsense/300x250.jpg" alt="">
+        </div>
+    </div>`
 })
 export class WidgetAdvertisementComponent implements OnInit {
     @Input() public idComponent: string;
