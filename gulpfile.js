@@ -38,43 +38,26 @@ gulp.task('compile', function() {
         .pipe($.typescript(tscConfig.compilerOptions))
         .pipe(gulp.dest('public/scripts'));
 });
-//CopyNodeModules
-gulp.task('angular2', function() {
-    return gulp
-        .src('node_modules/@angular/**/*')
-        .pipe(gulp.dest('public/node_modules/@angular'));
-});
-gulp.task('rxjs', function() {
-    return gulp
-        .src('node_modules/rxjs/**/*')
-        .pipe(gulp.dest('public/node_modules/rxjs'));
-});
-gulp.task('core-js', function() {
-    return gulp
-        .src('node_modules/core-js/**/*')
-        .pipe(gulp.dest('public/node_modules/core-js'));
-});
-gulp.task('zone.js', function() {
-    return gulp
-        .src('node_modules/zone.js/**/*')
-        .pipe(gulp.dest('public/node_modules/zone.js'));
-});
-gulp.task('reflect-metadata', function() {
-    return gulp
-        .src('node_modules/reflect-metadata/**/*')
-        .pipe(gulp.dest('public/node_modules/reflect-metadata'));
-});
-gulp.task('systemjs', function() {
-    return gulp
-        .src('node_modules/systemjs/**/*')
-        .pipe(gulp.dest('public/node_modules/systemjs'));
-});
+//Config
 gulp.task('systemjs.config', function() {
     return gulp
         .src('dev/scripts/systemjs.config.js')
         .pipe(gulp.dest('public'));
 });
-gulp.task('node_modules', gulp.series('angular2', 'rxjs', 'core-js', 'zone.js', 'reflect-metadata', 'systemjs', 'systemjs.config'));
+//CopyNodeModules
+gulp.task('node_modules', function() {
+    return gulp
+        .src([
+            'node_modules/@angular/**/*',
+            'node_modules/rxjs/**/*',
+            'node_modules/core-js/**/*',
+            'node_modules/zone.js/**/*',
+            'node_modules/reflect-metadata/**/*',
+            'node_modules/systemjs/**/*'
+        ], {
+            base: "."
+        }).pipe(gulp.dest('public'));
+});
 
 // Generate systemjs-based builds
 gulp.task('bundle:js', function() {
@@ -103,6 +86,8 @@ gulp.task('lib:js', function() {
         .pipe($.uglify())
         .pipe(gulp.dest('public/scripts'));
 });
+//angular2
+gulp.task('angular2', gulp.series('compile', 'systemjs.config', 'node_modules', 'bundle:js', 'lib:js'));
 
 //JS subscrip
 gulp.task('js:scripts', function() {
@@ -136,14 +121,14 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch(path.tsScripts, gulp.series('compile', 'node_modules', 'bundle:js', 'lib:js', 'js:scripts'));
+    gulp.watch(path.tsScripts, gulp.series('angular2', 'js:scripts'));
     gulp.watch(path.fonts, gulp.series('fonts'));
     gulp.watch(path.css, gulp.series('css'));
     gulp.watch(path.jsScripts, gulp.series('js:scripts'));
 })
 
-gulp.task('default', gulp.series('del', 'compile', 'node_modules', 'bundle:js', 'lib:js', 'js:scripts', 'css', 'fonts', 'watch'));
-gulp.task('build', gulp.series('del', 'compile', 'node_modules', 'bundle:js', 'lib:js', 'js:scripts', 'css', 'fonts'));
+gulp.task('default', gulp.series('del', 'angular2', 'js:scripts', 'css', 'fonts', 'watch'));
+gulp.task('build', gulp.series('del', 'angular2', 'js:scripts', 'css', 'fonts'));
 
 gulp.task("installTypings", function() {
     return gulp.src("./typings.json")
