@@ -19,7 +19,7 @@ export class ComponentService {
 
     private extractData(res: Response) {
         let body = JSON.parse(res._body);
-        return body.content || {};
+        return body || {};
     }
 
     private handleError(error: any) {

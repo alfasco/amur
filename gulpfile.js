@@ -10,9 +10,9 @@ const isDev = process.env.NODE_ENV != 'production'
 
 const path = {
     tsScripts: 'dev/scripts/**/*.ts',
-    css: 'dev/css/**/*.css',
-    fonts: 'dev/css/fonts/**/*',
+    css: 'public/css/**/*.css',
     jsScripts: [
+        'dev/scripts/js/styles.js',
         'dev/scripts/js/jquery.min.js',
         'dev/scripts/js/jquery.migrate.js',
         'dev/scripts/js/jquery.bxslider.min.js',
@@ -27,7 +27,6 @@ const path = {
 }
 
 gulp.task('del', function() {
-    del('public/css');
     return del('public/scripts');
 })
 
@@ -38,6 +37,10 @@ gulp.task('compile', function() {
         .pipe($.typescript(tscConfig.compilerOptions))
         .pipe(gulp.dest('public/scripts'));
 });
+
+/*=============================================>>>>>
+= Копируем библиотеки Angular2 =
+===============================================>>>>>*/
 //Config
 gulp.task('systemjs.config', function() {
     return gulp
@@ -86,10 +89,45 @@ gulp.task('lib:js', function() {
         .pipe($.uglify())
         .pipe(gulp.dest('public/scripts'));
 });
-//angular2
-gulp.task('angular2', gulp.series('compile', 'systemjs.config', 'node_modules', 'bundle:js', 'lib:js'));
+gulp.task('lib:dev:js', function() {
+    return gulp
+        .src([
+            'node_modules/core-js/client/shim.min.js',
+            'node_modules/zone.js/dist/zone.js',
+            'node_modules/reflect-metadata/Reflect.js',
+            'node_modules/systemjs/dist/system.src.js',
+            'node_modules/underscore/underscore.js',
+            'dev/scripts/systemjs.config.js'
+        ])
+        .pipe($.concat('app.min.js'))
+        .pipe(gulp.dest('public/scripts'));
+});
 
-//JS subscrip
+//HTML index
+gulp.task('index:prod', function() {
+    return gulp
+        .src('dev/templates/prod.html')
+        .pipe($.rename('index.html'))
+        .pipe(gulp.dest('public/templates'))
+});
+gulp.task('index:dev', function() {
+    return gulp
+        .src('dev/templates/dev.html')
+        .pipe($.rename('index.html'))
+        .pipe(gulp.dest('public/templates'))
+});
+
+//angular2
+gulp.task('angular2:prod', gulp.series('compile', 'systemjs.config', 'node_modules', 'bundle:js', 'lib:js', 'index:prod'));
+gulp.task('angular2:dev', gulp.series('compile', 'node_modules', 'lib:dev:js', 'index:dev'));
+/*= End of Копируем библиотеки Angular2 =*/
+/*=============================================<<<<<*/
+
+/*=============================================>>>>>
+= Копируем остальные файлы =
+===============================================>>>>>*/
+
+/*----------- JS -----------*/
 gulp.task('js:scripts', function() {
     return gulp
         .src(path.jsScripts)
@@ -100,7 +138,7 @@ gulp.task('js:scripts', function() {
         }))
         .pipe(gulp.dest('public/scripts'));
 });
-//CSS
+/*----------- CSS -----------*/
 gulp.task('css', function() {
     return gulp.src(
             [
@@ -110,25 +148,31 @@ gulp.task('css', function() {
         .pipe($.cssmin())
         .pipe(gulp.dest('public/css'));
 });
-//Fonts
-gulp.task('fonts', function() {
-    return gulp.src(
-            [
-                path.fonts
-            ]
-        )
-        .pipe(gulp.dest('public/css/fonts'));
-});
+
+/*= End of Копируем остальные файлы =*/
+/*=============================================<<<<<*/
+
+/*=============================================>>>>>
+= Отслеживание изменения файлов =
+===============================================>>>>>*/
 
 gulp.task('watch', function() {
-    gulp.watch(path.tsScripts, gulp.series('angular2', 'js:scripts'));
-    gulp.watch(path.fonts, gulp.series('fonts'));
-    gulp.watch(path.css, gulp.series('css'));
+    gulp.watch(path.tsScripts, gulp.series('compile'));
     gulp.watch(path.jsScripts, gulp.series('js:scripts'));
 })
 
-gulp.task('default', gulp.series('del', 'angular2', 'js:scripts', 'css', 'fonts', 'watch'));
-gulp.task('build', gulp.series('del', 'angular2', 'js:scripts', 'css', 'fonts'));
+/*= End of Отслеживание изменения файлов =*/
+/*=============================================<<<<<*/
+
+/*=============================================>>>>>
+= Основные команды для запуска =
+===============================================>>>>>*/
+
+gulp.task('default', gulp.series('del', 'angular2:dev', 'js:scripts', 'watch'));
+gulp.task('build', gulp.series('del', 'angular2:prod', 'js:scripts'));
+
+/*= End of Основные команды для запуска =*/
+/*=============================================<<<<<*/
 
 gulp.task("installTypings", function() {
     return gulp.src("./typings.json")

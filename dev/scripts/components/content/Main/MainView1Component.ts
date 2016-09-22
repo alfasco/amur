@@ -62,8 +62,8 @@ export class MainView1Component implements OnInit {
     ngOnInit() {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
-                this.title = 'Новости'
-                this.content = [[component[0], [component[1], component[2], component[3]]], [component[4], [component[5], component[6], component[7]]]];
+                this.title = component.title;
+                this.content = [[component.content[0], [component.content[1], component.content[2], component.content[3]]], [component.content[4], [component.content[5], component.content[6], component.content[7]]]];
             },
             error => console.log(<any>error));
     }

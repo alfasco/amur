@@ -8,55 +8,15 @@ import {ComponentService} from '../../services/component';
     <div class="carousel-box owl-wrapper">
 
         <div class="title-section">
-            <h1><span>Галерея</span></h1>
+            <h1><span>{{title}}</span></h1>
         </div>
 
         <div class="owl-carousel maingallery" data-num="3">
 
-            <div class="item news-post image-post3">
-                <img src="upload/news-posts/gal1.jpg" alt="">
+            <div class="item news-post image-post3" *ngFor="let item of content">
+                <img src="http://portamur.alfasco.ru{{item.value.img[0].value}}" alt="">
                 <div class="hover-box">
-                    <h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros.</a></h2>
-                    <ul class="post-tags">
-                        <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="item news-post image-post3">
-                <img src="upload/news-posts/gal2.jpg" alt="">
-                <div class="hover-box">
-                    <h2><a href="single-post.html">Nullam malesuada erat ut turpis. </a></h2>
-                    <ul class="post-tags">
-                        <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="item news-post image-post3">
-                <img src="upload/news-posts/gal3.jpg" alt="">
-                <div class="hover-box">
-                    <h2><a href="single-post.html">Suspendisse urna nibh.</a></h2>
-                    <ul class="post-tags">
-                        <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="item news-post image-post3">
-                <img src="upload/news-posts/gal4.jpg" alt="">
-                <div class="hover-box">
-                    <h2><a href="single-post.html">Donec nec justo eget felis facilisis fermentum. Aliquam </a></h2>
-                    <ul class="post-tags">
-                        <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="item news-post image-post3">
-                <img src="upload/news-posts/gal1.jpg" alt="">
-                <div class="hover-box">
-                    <h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros.</a></h2>
+                    <h2><a href="single-post.html">{{item.value.tit}}</a></h2>
                     <ul class="post-tags">
                         <li><i class="fa fa-clock-o"></i>27 may 2013</li>
                     </ul>
@@ -69,6 +29,7 @@ import {ComponentService} from '../../services/component';
 export class MainGalleryComponent implements OnInit {
     @Input() public idComponent: string;
     content: any;
+    title: any;
 
     constructor(private component: ComponentService) {
         this.content = []
@@ -77,6 +38,8 @@ export class MainGalleryComponent implements OnInit {
     ngOnInit() {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
+                this.title = component.title;
+                this.content = component.content;
                 let interval = setInterval(() => {
                     if ($('.maingallery .news-post')) {
                         clearInterval(interval);

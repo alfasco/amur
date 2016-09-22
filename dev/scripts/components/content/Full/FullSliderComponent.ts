@@ -75,9 +75,8 @@ export class FullSliderComponent implements OnInit {
     ngOnInit() {
         this.component.getComponent('FullSliderComponent').subscribe(
             component => {
-                this.slider = component[0];
-                this.list = component.slice(1);
-                console.log(this.slider, this.list)
+                this.slider = component.content[0];
+                this.list = component.content.slice(1);
 
                 let interval = setInterval(() => {
                     if ($('.bxslider .fullslider')) {
@@ -182,7 +181,7 @@ export class FullSliderComponent implements OnInit {
                         /*= End of bxSlider =*/
                         /*=============================================<<<<<*/
                     }
-                }, 100)
+                }, 150)
             },
             error => console.log(<any>error));
     }

@@ -111,7 +111,7 @@ export class MainList1Component implements OnInit {
     ngOnInit() {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
-                this.content = [[component[0], [component[1], component[2], component[3]]], [component[4], [component[5], component[6], component[7]]]];
+                console.log(component)
             },
             error => console.log(<any>error));
     }

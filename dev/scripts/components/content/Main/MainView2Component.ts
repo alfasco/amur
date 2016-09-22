@@ -7,7 +7,7 @@ import {ComponentService} from '../../services/component';
     template: `
     <div class="carousel-box owl-wrapper">
         <div class="title-section">
-            <h1><span class="world">Образ жизни</span></h1>
+            <h1><span class="world">{{title}}</span></h1>
         </div>
 
         <div class="owl-carousel mainview2" data-num="2">
@@ -48,6 +48,7 @@ import {ComponentService} from '../../services/component';
 export class MainView2Component implements OnInit {
     @Input() public idComponent: string;
     content: any;
+    title: any;
 
     constructor(private component: ComponentService) {
         this.content = []
@@ -56,7 +57,8 @@ export class MainView2Component implements OnInit {
     ngOnInit() {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
-                this.content = [[component[0], [component[1], component[2], component[3]]], [component[4], [component[5], component[6], component[7]]], [component[8], [component[9], component[10], component[10]]]];
+                this.title = component.title;
+                this.content = [[component.content[0], [component.content[1], component.content[2], component.content[3]]], [component.content[4], [component.content[5], component.content[6], component.content[7]]], [component.content[8], [component.content[9], component.content[10], component.content[10]]]];
                 let interval = setInterval(() => {
                     if ($('.mainview2 .news-post')) {
                         clearInterval(interval);
