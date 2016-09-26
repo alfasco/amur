@@ -9,6 +9,8 @@ import { routing, appRoutingProviders } from './appRoutes';
 import { COMPILER_PROVIDERS } from '@angular/compiler';
 import { DynamicModule }    from '../components/dynamic/dynamic.module';
 
+import { DYNAMIC_DIRECTIVES } from '../components/content/all.static.components';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -18,7 +20,8 @@ import { DynamicModule }    from '../components/dynamic/dynamic.module';
         DynamicModule.forRoot()
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        DYNAMIC_DIRECTIVES
     ],
     providers: [
         appRoutingProviders,

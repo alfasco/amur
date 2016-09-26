@@ -1,6 +1,6 @@
 node_modules/*
 public/scripts/*
 public/node_modules/*
-public/templates/index.html*
+public/templates/index.html
 public/systemjs.config.js
 typings/*

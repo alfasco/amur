@@ -8,6 +8,7 @@ import { MainView2Component }   from './Main/MainView2Component';
 import { MainGalleryComponent }   from './Main/MainGalleryComponent';
 import { MainVideoComponent }   from './Main/MainVideoComponent';
 import { MainList1Component }   from './Main/MainList1Component';
+import { MainSinglePostComponent }   from './Main/MainSinglePostComponent';
 
 import { WidgetSocialComponent }   from './Widgets/WidgetSocialComponent';
 import { WidgetAdvertisementComponent }   from './Widgets/WidgetAdvertisementComponent';
@@ -15,6 +16,7 @@ import { WidgetCommentsComponent }   from './Widgets/WidgetCommentsComponent';
 import { WidgetSubscribeComponent }   from './Widgets/WidgetSubscribeComponent';
 import { WidgetVideoComponent }   from './Widgets/WidgetVideoComponent';
 import { WidgetViewComponent }   from './Widgets/WidgetViewComponent';
+import { WidgetTagsComponent }   from './Widgets/WidgetTagsComponent';
 
 export const DYNAMIC_DIRECTIVES = [
     forwardRef(() => FullSliderComponent),
@@ -24,6 +26,7 @@ export const DYNAMIC_DIRECTIVES = [
     forwardRef(() => MainGalleryComponent),
     forwardRef(() => MainVideoComponent),
     forwardRef(() => MainList1Component),
+    forwardRef(() => MainSinglePostComponent),
 
     forwardRef(() => WidgetSocialComponent),
     forwardRef(() => WidgetAdvertisementComponent),
@@ -31,6 +34,7 @@ export const DYNAMIC_DIRECTIVES = [
     forwardRef(() => WidgetSubscribeComponent),
     forwardRef(() => WidgetVideoComponent),
     forwardRef(() => WidgetViewComponent),
+    forwardRef(() => WidgetTagsComponent),
 ];
 
 // module itself
