@@ -22,7 +22,8 @@ const path = {
         'dev/scripts/js/jquery.imagesloaded.min.js',
         'dev/scripts/js/jquery.isotope.min.js',
         'dev/scripts/js/owl.carousel.min.js',
-        'dev/scripts/js/retina-1.1.0.min.js'
+        'dev/scripts/js/retina-1.1.0.min.js',
+        'dev/scripts/js/my.scripts.js'
     ]
 }
 

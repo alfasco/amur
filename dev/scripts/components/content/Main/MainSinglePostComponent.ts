@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ComponentService} from '../../services/component';
+import {Location} from '@angular/common';
 
 @Component({
     selector: 'MainSinglePostComponent',
@@ -16,30 +17,26 @@ import {ComponentService} from '../../services/component';
           <li><i class="fa fa-eye"></i>872</li>
         </ul>
       </div>
+      <div class="share-post-box">
+
+      </div>
+
+      <div class="post-gallery" *ngIf="gallery">
+        <ul class="bxslider">
+          <li *ngFor="let img of gallery">
+            <img src="{{img.value.file[0].value}}" alt="">
+          </li>
+        </ul>
+        <span class="image-caption">Cras eget sem nec dui volutpat ultrices.</span>
+      </div>
 
       <div class="post-content" [innerHTML]="content.value.content[0].value"></div>
 
-      <div class="post-tags-box">
-        <ul class="tags-box">
-          <li><i class="fa fa-tags"></i><span>Tags:</span></li>
-          <li><a href="#">News</a></li>
-          <li><a href="#">Fashion</a></li>
-          <li><a href="#">Politics</a></li>
-          <li><a href="#">Sport</a></li>
-        </ul>
-      </div>
-
       <div class="share-post-box">
-        <ul class="share-box">
-          <li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
-          <li><a class="facebook" href="#"><i class="fa fa-facebook"></i>Share on Facebook</a></li>
-          <li><a class="twitter" href="#"><i class="fa fa-twitter"></i>Share on Twitter</a></li>
-          <li><a class="google" href="#"><i class="fa fa-google-plus"></i><span></span></a></li>
-          <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i><span></span></a></li>
-        </ul>
+
       </div>
 
-      <div class="about-more-autor">
+      <div class="about-more-autor" *ngIf="autor">
         <ul class="nav nav-tabs" id="myTab2">
           <li class="active">
             <a href="#about-autor" data-toggle="tab">About The Autor</a>
@@ -123,160 +120,17 @@ import {ComponentService} from '../../services/component';
         </div>
       </div>
 
+
       <!-- carousel box -->
-      <div class="carousel-box owl-wrapper">
-        <div class="title-section">
-          <h1><span>You may also like</span></h1>
-        </div>
-        <div class="owl-carousel" data-num="3">
 
-          <div class="item news-post image-post3">
-            <img src="upload/news-posts/art1.jpg" alt="">
-            <div class="hover-box">
-              <h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros.</a></h2>
-              <ul class="post-tags">
-                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="item news-post image-post3">
-            <img src="upload/news-posts/art2.jpg" alt="">
-            <div class="hover-box">
-              <h2><a href="single-post.html">Nullam malesuada erat ut turpis. </a></h2>
-              <ul class="post-tags">
-                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="item news-post video-post">
-            <img src="upload/news-posts/art3.jpg" alt="">
-            <a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-            <div class="hover-box">
-              <h2><a href="single-post.html">Lorem ipsum dolor sit consectetuer adipiscing elit. Donec odio. </a></h2>
-              <ul class="post-tags">
-                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="item news-post image-post3">
-            <img src="upload/news-posts/art4.jpg" alt="">
-            <div class="hover-box">
-              <h2><a href="single-post.html">Donec nec justo eget felis facilisis fermentum. Aliquam </a></h2>
-              <ul class="post-tags">
-                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="item news-post image-post3">
-            <img src="upload/news-posts/art5.jpg" alt="">
-            <div class="hover-box">
-              <h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros.</a></h2>
-              <ul class="post-tags">
-                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-      </div>
       <!-- End carousel box -->
 
       <!-- comment area box -->
-      <div class="comment-area-box">
-        <div class="title-section">
-          <h1><span>5 Comments</span></h1>
-        </div>
-        <ul class="comment-tree">
-          <li>
-            <div class="comment-box">
-              <img alt="" src="upload/users/avatar6.jpg">
-              <div class="comment-content">
-                <h4>John Doe <a href="#"><i class="fa fa-comment-o"></i>Reply</a></h4>
-                <span><i class="fa fa-clock-o"></i>27 may 2013 at 8:57 pm</span>
-                <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam. </p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="comment-box">
-              <img alt="" src="upload/users/avatar1.jpg">
-              <div class="comment-content">
-                <h4>John Doe <a href="#"><i class="fa fa-comment-o"></i>Reply</a></h4>
-                <span><i class="fa fa-clock-o"></i>27 may 2013 at 8:57 pm</span>
-                <p>Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu. Ut scelerisque hendrerit tellus. Integer sagittis. </p>
-              </div>
-            </div>
-            <ul class="depth">
-              <li>
-                <div class="comment-box">
-                  <img alt="" src="upload/users/avatar2.jpg">
-                  <div class="comment-content">
-                    <h4>John Doe <a href="#"><i class="fa fa-comment-o"></i>Reply</a></h4>
-                    <span><i class="fa fa-clock-o"></i>27 may 2013 at 8:57 pm</span>
-                    <p>CNullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non. </p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
-
-          <li>
-            <div class="comment-box">
-              <img alt="" src="upload/users/avatar4.jpg">
-              <div class="comment-content">
-                <h4>John Doe <a href="#"><i class="fa fa-comment-o"></i>Reply</a></h4>
-                <span><i class="fa fa-clock-o"></i>27 may 2013 at 8:57 pm</span>
-                <p>Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu. Ut scelerisque hendrerit tellus. Integer sagittis. </p>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div class="comment-box">
-              <img alt="" src="upload/users/avatar5.jpg">
-              <div class="comment-content">
-                <h4>John Doe <a href="#"><i class="fa fa-comment-o"></i>Reply</a></h4>
-                <span><i class="fa fa-clock-o"></i>27 may 2013 at 8:57 pm</span>
-                <p>Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel. </p>
-              </div>
-            </div>
-          </li>
-
-        </ul>
-      </div>
+      <div id="hypercomments_widget"></div>
+        <a href="http://hypercomments.com" class="hc-link" title="comments widget">comments powered by HyperComments</a>
       <!-- End comment area box -->
 
       <!-- contact form box -->
-      <div class="contact-form-box">
-        <div class="title-section">
-          <h1><span>Leave a Comment</span> <span class="email-not-published">Your email address will not be published.</span></h1>
-        </div>
-        <form id="comment-form">
-          <div class="row">
-            <div class="col-md-4">
-              <label for="name">Name*</label>
-              <input id="name" name="name" type="text">
-            </div>
-            <div class="col-md-4">
-              <label for="mail">E-mail*</label>
-              <input id="mail" name="mail" type="text">
-            </div>
-            <div class="col-md-4">
-              <label for="website">Website</label>
-              <input id="website" name="website" type="text">
-            </div>
-          </div>
-          <label for="comment">Comment*</label>
-          <textarea id="comment" name="comment"></textarea>
-          <button type="submit" id="submit-contact">
-            <i class="fa fa-comment"></i> Post Comment
-          </button>
-        </form>
-      </div>
       <!-- End contact form box -->
 
     </div>`
@@ -284,15 +138,46 @@ import {ComponentService} from '../../services/component';
 export class MainSinglePostComponent implements OnInit {
     @Input() public idComponent: string;
     public content: any;
+    public path: any;
+    public gallery: any;
 
-    constructor(private component: ComponentService) { }
+
+    constructor(private component: ComponentService, private location: Location) {
+        this.path = 'http://amurlenta.ru' + location.path();
+        console.log(this.path)
+    }
 
 
     ngOnInit() {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
                 console.log(component)
-                this.content = component.content[0]
+                this.content = component.content[0];
+                this.gallery = component.gallery;
+                if (this.gallery) {
+                    for (let i in this.gallery) {
+                        this.gallery[i].value.file[0].value = 'http://portamur.alfasco.ru' + this.gallery[i].value.file[0].value.replace(/\/images\//i, '/images/770x380/')
+                    }
+                }
+
+
+
+                let interval = setInterval(() => {
+                    if ($('.bxslider') || !this.gallery) {
+                        clearInterval(interval);
+                        try {
+                            $('.bxslider').bxSlider({
+                                mode: 'fade',
+                                auto: true
+                            });
+
+
+                        } catch (err) {
+                        };
+                    }
+                }, 150)
+
+                startComment();
             },
             error => console.log(<any>error));
     }
