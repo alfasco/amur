@@ -159,22 +159,23 @@ export class MainSinglePostComponent implements OnInit {
                     }
                 }
 
+                if (this.gallery) {
+                    if (this.gallery.length > 1) {
+                        let interval = setInterval(() => {
+                            if ($('.bxslider') || !this.gallery) {
+                                clearInterval(interval);
+                                try {
+                                    $('.bxslider').bxSlider({
+                                        mode: 'fade',
+                                        auto: true
+                                    });
 
-                if (this.gallery.length > 1) {
-                    let interval = setInterval(() => {
-                        if ($('.bxslider') || !this.gallery) {
-                            clearInterval(interval);
-                            try {
-                                $('.bxslider').bxSlider({
-                                    mode: 'fade',
-                                    auto: true
-                                });
 
-
-                            } catch (err) {
-                            };
-                        }
-                    }, 150)
+                                } catch (err) {
+                                };
+                            }
+                        }, 150)
+                    }
                 }
 
                 startComment();

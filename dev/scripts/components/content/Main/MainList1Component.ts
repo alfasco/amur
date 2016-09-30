@@ -45,10 +45,9 @@ export class MainList1Component implements OnInit {
 
 
     ngOnInit() {
-        // setInterval(() => console.log(this.idComponent), 5000)
-        console.log(this.idComponent)
         this.component.getComponent(this.idComponent).subscribe(
             component => {
+                console.log(component)
                 this.title = component.title;
                 this.content = component.content;
                 if (this.content) {

@@ -1,48 +1,17 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ComponentService} from '../../services/component';
 
+import {Router} from '@angular/router';
+
 @Component({
     selector: 'FooterHotCategoriesComponent',
     providers: [ComponentService],
     template: `
     <div class="widget categories-widget">
-        <h1>Популярные разделы</h1>
+        <h1>{{title}}</h1>
         <ul class="category-list">
-            <li>
-                <a href="#">Business <span>12</span></a>
-            </li>
-            <li>
-                <a href="#">Sport <span>26</span></a>
-            </li>
-            <li>
-                <a href="#">LifeStyle <span>55</span></a>
-            </li>
-            <li>
-                <a href="#">Fashion <span>37</span></a>
-            </li>
-            <li>
-                <a href="#">Technology <span>62</span></a>
-            </li>
-            <li>
-                <a href="#">Music <span>10</span></a>
-            </li>
-            <li>
-                <a href="#">Culture <span>43</span></a>
-            </li>
-            <li>
-                <a href="#">Design <span>74</span></a>
-            </li>
-            <li>
-                <a href="#">Entertainment <span>11</span></a>
-            </li>
-            <li>
-                <a href="#">video <span>41</span></a>
-            </li>
-            <li>
-                <a href="#">Travel <span>11</span></a>
-            </li>
-            <li>
-                <a href="#">Food <span>29</span></a>
+            <li *ngFor="let cat of content">
+                <a (click)="routing('/' + cat.link)">{{cat.category}} <span>{{cat.postCount}}</span></a>
             </li>
         </ul>
     </div>`
@@ -50,15 +19,21 @@ import {ComponentService} from '../../services/component';
 export class FooterHotCategoriesComponent implements OnInit {
     @Input() public idComponent: string;
     public content: any;
+    public title: any;
 
-    constructor(private component: ComponentService) { }
+    constructor(private component: ComponentService, private router: Router) { }
 
 
     ngOnInit() {
-        this.component.getComponent(this.idComponent).subscribe(
+        this.component.getComponent('FooterHotCategoriesComponent').subscribe(
             component => {
-                this.content = component.content[0];
+                this.title = component.title[0];
+                this.content = component.content.slice(0, 12);
             },
             error => console.log(<any>error));
+    }
+
+    routing(url: any) {
+        this.router.navigate(['/' + url])
     }
 };

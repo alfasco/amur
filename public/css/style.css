@@ -1,9 +1,6 @@
 a {
   cursor: pointer;
 }
-.fa {
-  line-height: 40px;
-}
 .navbar-brand,
 .navbar-nav > li > a
 {
@@ -3249,7 +3246,7 @@ footer h1
 
     list-style: none;
 }footer .categories-widget ul.category-list li a
-{font-family: Lato,sans-serif;font-size: 13px;font-weight: 700;display: block;padding-bottom: 15px;-webkit-transition: all .2s ease-in-out;-moz-transition: all .2s ease-in-out;-o-transition: all .2s ease-in-out;transition: all .2s ease-in-out;
+{font-family: Lato,sans-serif;font-size: 12px;font-weight: 700;display: block;padding-bottom: 15px;-webkit-transition: all .2s ease-in-out;-moz-transition: all .2s ease-in-out;-o-transition: all .2s ease-in-out;transition: all .2s ease-in-out;
     text-decoration: none;color: #999;border-bottom: 1px solid #333;
 }footer .categories-widget ul.category-list li a span
 {line-height: 18px;

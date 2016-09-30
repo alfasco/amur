@@ -57,36 +57,42 @@ export class MainView2Component implements OnInit {
     ngOnInit() {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
+                console.log(component)
                 this.title = component.title;
-                this.content = [[component.content[0], [component.content[1], component.content[2], component.content[3]]], [component.content[4], [component.content[5], component.content[6], component.content[7]]], [component.content[8], [component.content[9], component.content[10], component.content[10]]]];
-                let interval = setInterval(() => {
-                    if ($('.mainview2 .news-post')) {
-                        clearInterval(interval);
+                if (component.content.length == 12) {
+                    this.content = [[component.content[0], [component.content[1], component.content[2], component.content[3]]], [component.content[4], [component.content[5], component.content[6], component.content[7]]], [component.content[8], [component.content[9], component.content[10], component.content[10]]]];
+                    let interval = setInterval(() => {
+                        if ($('.mainview2 .news-post')) {
+                            clearInterval(interval);
 
-                        var carousel = $('.mainview2'),
-                            dataNum = $('.mainview2').attr('data-num'),
-                            dataNum2,
-                            dataNum3;
+                            var carousel = $('.mainview2'),
+                                dataNum = $('.mainview2').attr('data-num'),
+                                dataNum2,
+                                dataNum3;
 
-                        if (dataNum == 1) {
-                            dataNum2 = 1;
-                            dataNum3 = 1;
-                        } else if (dataNum == 2) {
-                            dataNum2 = 2;
-                            dataNum3 = dataNum - 1;
-                        } else {
-                            dataNum2 = dataNum - 1;
-                            dataNum3 = dataNum - 2;
+                            if (dataNum == 1) {
+                                dataNum2 = 1;
+                                dataNum3 = 1;
+                            } else if (dataNum == 2) {
+                                dataNum2 = 2;
+                                dataNum3 = dataNum - 1;
+                            } else {
+                                dataNum2 = dataNum - 1;
+                                dataNum3 = dataNum - 2;
+                            }
+                            carousel.owlCarousel({
+                                autoPlay: 10000,
+                                navigation: true,
+                                items: dataNum,
+                                itemsDesktop: [1199, dataNum2],
+                                itemsDesktopSmall: [979, dataNum3]
+                            });
                         }
-                        carousel.owlCarousel({
-                            autoPlay: 10000,
-                            navigation: true,
-                            items: dataNum,
-                            itemsDesktop: [1199, dataNum2],
-                            itemsDesktopSmall: [979, dataNum3]
-                        });
-                    }
-                }, 100)
+                    }, 100)
+                }
+                else {
+                    console.error("Недостаточно данных", component)
+                }
             },
             error => console.log(<any>error));
     }

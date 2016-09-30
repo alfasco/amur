@@ -6,22 +6,23 @@ import {ComponentService} from '../../services/component';
     providers: [ComponentService],
     template: `
     <div class="widget text-widget">
-        <h1>О нас</h1>
-        <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. </p>
-        <p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. </p>
+        <h1>{{title}}</h1>
+        <div [innerHTML]="content"></div>
     </div>`
 })
 export class FooterAboutComponent implements OnInit {
     @Input() public idComponent: string;
     public content: any;
+    public title: any;
 
     constructor(private component: ComponentService) { }
 
 
     ngOnInit() {
-        this.component.getComponent(this.idComponent).subscribe(
+        this.component.getComponent('FooterAboutComponent').subscribe(
             component => {
-                this.content = component.content[0];
+                this.title = component.title[0];
+                this.content = component.content[0].value.content[0].value;
             },
             error => console.log(<any>error));
     }
