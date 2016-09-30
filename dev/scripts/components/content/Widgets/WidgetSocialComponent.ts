@@ -9,7 +9,26 @@ import {ComponentService} from '../../services/component';
         <div class="title-section">
             <h1><span>{{title}}</span></h1>
         </div>
-        <div id="vk_groups" style="margin: auto"></div>
+        <ul class="social-share">
+          <li>
+            <a href="#" class="vk"><i class="fa fa-vk"></i></a>
+          </li>
+          <li>
+            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+          </li>
+          <li>
+            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+          </li>
+          <li>
+            <a href="#" class="google"><i class="fa fa-youtube"></i></a>
+          </li>
+          <li>
+            <a href="#" class="rss"><i class="fa fa-odnoklassniki"></i></a>
+          </li>
+          <li>
+            <a href="#" class="vk"><i class="fa fa-instagram"></i></a>
+          </li>
+        </ul>
     </div>`
 })
 export class WidgetSocialComponent implements OnInit {
@@ -24,7 +43,6 @@ export class WidgetSocialComponent implements OnInit {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
                 this.title = component.title;
-                if (typeof VK != 'undefined') VK.Widgets.Group("vk_groups", { mode: 3, width: "300", height: "400", color1: 'FFFFFF', color2: '000000', color3: '5E81A8' }, 20003922);
             },
             error => console.log(<any>error));
     }

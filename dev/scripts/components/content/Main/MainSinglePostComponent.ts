@@ -23,7 +23,7 @@ import {Location} from '@angular/common';
 
       <div class="post-gallery" *ngIf="gallery">
         <ul class="bxslider">
-          <li *ngFor="let img of gallery">
+          <li *ngFor="let img of gallery" style="list-style: none;">
             <img src="{{img.value.file[0].value}}" alt="">
           </li>
         </ul>
@@ -160,21 +160,22 @@ export class MainSinglePostComponent implements OnInit {
                 }
 
 
+                if (this.gallery.length > 1) {
+                    let interval = setInterval(() => {
+                        if ($('.bxslider') || !this.gallery) {
+                            clearInterval(interval);
+                            try {
+                                $('.bxslider').bxSlider({
+                                    mode: 'fade',
+                                    auto: true
+                                });
 
-                let interval = setInterval(() => {
-                    if ($('.bxslider') || !this.gallery) {
-                        clearInterval(interval);
-                        try {
-                            $('.bxslider').bxSlider({
-                                mode: 'fade',
-                                auto: true
-                            });
 
-
-                        } catch (err) {
-                        };
-                    }
-                }, 150)
+                            } catch (err) {
+                            };
+                        }
+                    }, 150)
+                }
 
                 startComment();
             },

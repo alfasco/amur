@@ -26,7 +26,7 @@ var link = document.createElement('link');
 document.getElementsByTagName('head')[0].appendChild(link);
 link.setAttribute('type', 'text/css');
 link.setAttribute('rel', 'stylesheet');
-link.setAttribute('href', 'css/font-awesome.css');
+link.setAttribute('href', 'css/font-awesome.min.css');
 
 var link = document.createElement('link');
 document.getElementsByTagName('head')[0].appendChild(link);
