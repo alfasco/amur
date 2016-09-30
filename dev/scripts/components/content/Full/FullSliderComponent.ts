@@ -85,7 +85,6 @@ export class FullSliderComponent implements OnInit {
                 }
 
                 this.list = component.content.slice(1);
-                console.log(this.slider)
                 if (this.list) {
                     for (let i in this.list) {
                         this.list[i][0].value.img[0].value = 'http://portamur.alfasco.ru' + this.list[i][0].value.img[0].value.replace(/\/images\//i, '/images/293x245/')
