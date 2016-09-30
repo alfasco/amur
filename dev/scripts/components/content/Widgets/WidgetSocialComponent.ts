@@ -9,7 +9,7 @@ import {ComponentService} from '../../services/component';
         <div class="title-section">
             <h1><span>{{title}}</span></h1>
         </div>
-        <div id="vk_groups"></div>
+        <div id="vk_groups" style="margin: auto"></div>
     </div>`
 })
 export class WidgetSocialComponent implements OnInit {
@@ -24,7 +24,7 @@ export class WidgetSocialComponent implements OnInit {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
                 this.title = component.title;
-                if (typeof VK != 'undefined') VK.Widgets.Group("vk_groups", { mode: 3, width: "100%", height: "400", color1: 'FFFFFF', color2: '000000', color3: '5E81A8' }, 20003922);
+                if (typeof VK != 'undefined') VK.Widgets.Group("vk_groups", { mode: 3, width: "300", height: "400", color1: 'FFFFFF', color2: '000000', color3: '5E81A8' }, 20003922);
             },
             error => console.log(<any>error));
     }
