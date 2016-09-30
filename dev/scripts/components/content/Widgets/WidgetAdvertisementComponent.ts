@@ -5,24 +5,21 @@ import {ComponentService} from '../../services/component';
     selector: 'WidgetAdvertisementComponent',
     providers: [ComponentService],
     template: `
-    <div class="advertisement">
+    <div class="advertisement" *ngIf="content">
         <div class="desktop-advert">
-            <span>Advertisement</span>
-            <img src="upload/addsense/300x250.jpg" alt="">
+            <img src="http://portamur.alfasco.ru{{content.value.img_300x250[0].value}}" alt="">
         </div>
         <div class="tablet-advert">
-            <span>Advertisement</span>
-            <img src="upload/addsense/200x200.jpg" alt="">
+            <img src="http://portamur.alfasco.ru{{content.value.img_200x200[0].value}}" alt="">
         </div>
         <div class="mobile-advert">
-            <span>Advertisement</span>
-            <img src="upload/addsense/300x250.jpg" alt="">
+            <img src="http://portamur.alfasco.ru{{content.value.img_300x250[0].value}}" alt="">
         </div>
     </div>`
 })
 export class WidgetAdvertisementComponent implements OnInit {
     @Input() public idComponent: string;
-    public content = [];
+    public content: any;
 
     constructor(private component: ComponentService) { }
 
@@ -30,7 +27,7 @@ export class WidgetAdvertisementComponent implements OnInit {
     ngOnInit() {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
-                this.content = [[component[0], [component[1], component[2], component[3]]], [component[4], [component[5], component[6], component[7]]]];
+                this.content = component.content[0];
             },
             error => console.log(<any>error));
     }

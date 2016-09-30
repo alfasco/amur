@@ -2,19 +2,16 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ComponentService} from '../../services/component';
 
 @Component({
-    selector: 'HeaderAdvertisementComponent',
+    selector: 'FooterAboutComponent',
     providers: [ComponentService],
     template: `
-    <div class="advertisement" *ngIf="content">
-        <div class="desktop-advert">
-            <img src="http://portamur.alfasco.ru{{content.value.img_728x90[0].value}}" alt="">
-        </div>
-        <div class="tablet-advert">
-            <img src="http://portamur.alfasco.ru{{content.value.img_468x60[0].value}}" alt="">
-        </div>
+    <div class="widget text-widget">
+        <h1>О нас</h1>
+        <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. </p>
+        <p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. </p>
     </div>`
 })
-export class HeaderAdvertisementComponent implements OnInit {
+export class FooterAboutComponent implements OnInit {
     @Input() public idComponent: string;
     public content: any;
 

@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ComponentService} from '../../services/component';
 
+import {Router} from '@angular/router';
+
 @Component({
     selector: 'FullSliderComponent',
     template: `
@@ -24,15 +26,15 @@ import {ComponentService} from '../../services/component';
                     <ul class="bxslider">
                         <li *ngFor="let cont of slider">
                             <div class="news-post image-post fullslider">
-                                <img src="http://portamur.alfasco.ru{{cont.value.img[0].value}}" alt="">
+                                <img src="{{cont.value.img[0].value}}" alt="">
                                 <div class="hover-box">
                                     <div class="inner-hover">
-                                        <a class="category-post sport" href="sport.html">{{cont.value.subsection[0].value}}</a>
-                                        <h2><a href="single-post.html">{{cont.value.tit}}</a></h2>
+                                        <!-- <a class="category-post sport" href="sport.html">{{cont.value.subsection[0].value}}</a>-->
+                                        <h2><a (click)="routing(cont.id)">{{cont.value.tit}}</a></h2>
                                         <ul class="post-tags">
                                             <li><i class="fa fa-clock-o"></i>27 may 2013</li>
                                             <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                            <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+                                            <li><i class="fa fa-comments-o"></i><span>23</span></li>
                                             <li><i class="fa fa-eye"></i>872</li>
                                         </ul>
                                     </div>
@@ -43,14 +45,14 @@ import {ComponentService} from '../../services/component';
                 </div>
 
                 <div class="news-post image-post default-size" *ngFor="let cont of list">
-                    <img src="http://portamur.alfasco.ru{{cont[0].value.img[0].value}}" alt="">
+                    <img src="{{cont[0].value.img[0].value}}" alt="">
                     <div class="hover-box">
                         <div class="inner-hover">
-                            <a class="category-post travel" href="travel.html">{{cont[0].value.subsection[0].value}}</a>
-                            <h2><a href="single-post.html">{{cont[0].value.tit}}</a></h2>
+                          <!--   <a class="category-post travel" href="travel.html">{{cont[0].value.subsection[0].value}}</a>-->
+                            <h2><a (click)="routing(cont[0].id)">{{cont[0].value.tit}}</a></h2>
                             <ul class="post-tags">
                                 <li><i class="fa fa-clock-o"></i><span>27 may 2013</span></li>
-                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+                                <li><i class="fa fa-comments-o"></i><span>23</span></li>
                             </ul>
                             <p>{{cont[0].value.description[0].value}}</p>
                         </div>
@@ -69,14 +71,26 @@ export class FullSliderComponent implements OnInit {
     slider: any;
     list: any;
 
-    constructor(private component: ComponentService) { }
+    constructor(private component: ComponentService, private router: Router) { }
 
 
     ngOnInit() {
         this.component.getComponent('FullSliderComponent').subscribe(
             component => {
                 this.slider = component.content[0];
+                if (this.slider) {
+                    for (let i in this.slider) {
+                        this.slider[i].value.img[0].value = 'http://portamur.alfasco.ru' + this.slider[i].value.img[0].value.replace(/\/images\//i, '/images/586x490/')
+                    }
+                }
+
                 this.list = component.content.slice(1);
+                console.log(this.slider)
+                if (this.list) {
+                    for (let i in this.list) {
+                        this.list[i][0].value.img[0].value = 'http://portamur.alfasco.ru' + this.list[i][0].value.img[0].value.replace(/\/images\//i, '/images/293x245/')
+                    }
+                }
 
                 let interval = setInterval(() => {
                     if ($('.bxslider .fullslider')) {
@@ -184,5 +198,9 @@ export class FullSliderComponent implements OnInit {
                 }, 150)
             },
             error => console.log(<any>error));
+    }
+
+    routing(url: any) {
+        this.router.navigate(['/' + url])
     }
 };

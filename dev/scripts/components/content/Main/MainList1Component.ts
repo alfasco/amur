@@ -1,24 +1,26 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ComponentService} from '../../services/component';
 
+import {Router, ActivatedRoute} from '@angular/router';
+
 @Component({
     selector: 'MainList1Component',
     providers: [ComponentService],
     template: `
     <div class="grid-box">
   		<div class="title-section">
-  			<h1><span class="world">World</span></h1>
+  			<h1 *ngIf="content[0]"><span class="world">{{content[0].value.subsection[0].value}}</span></h1>
   		</div>
 
   		<div class="row">
-  			<div class="col-md-6">
+  			<div class="col-md-6" *ngFor="let post of content">
   				<div class="news-post standard-post2">
   					<div class="post-gallery">
-  						<img src="upload/news-posts/im7.jpg" alt="">
-  						<a class="category-post world" href="world.html">Business</a>
+  						<img src="{{post.value.img[0].value}}" alt="">
+  						<a class="category-post world" href="world.html">{{post.value.subsection[0].value}}</a>
   					</div>
   					<div class="post-title">
-  						<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
+  						<h2><a (click)="routing(post.id)">{{post.value.tit}}</a></h2>
   						<ul class="post-tags">
   							<li><i class="fa fa-clock-o"></i>27 may 2013</li>
   							<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
@@ -27,74 +29,8 @@ import {ComponentService} from '../../services/component';
   						</ul>
   					</div>
   					<div class="post-content">
-  						<p>Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
-  						<a href="single-post.html" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
-  					</div>
-  				</div>
-  			</div>
-  			<div class="col-md-6">
-  				<div class="news-post standard-post2">
-  					<div class="post-gallery">
-  						<img src="upload/news-posts/im8.jpg" alt="">
-  						<a class="category-post world" href="world.html">Lifestyle</a>
-  					</div>
-  					<div class="post-title">
-  						<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-  						<ul class="post-tags">
-  							<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-  							<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-  							<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-  							<li><i class="fa fa-eye"></i>872</li>
-  						</ul>
-  					</div>
-  					<div class="post-content">
-  						<p>Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
-  						<a href="single-post.html" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
-  					</div>
-  				</div>
-  			</div>
-  		</div>
-
-  		<div class="row">
-  			<div class="col-md-6">
-  				<div class="news-post standard-post2">
-  					<div class="post-gallery">
-  						<img src="upload/news-posts/im9.jpg" alt="">
-  						<a class="category-post world" href="world.html">Trends</a>
-  					</div>
-  					<div class="post-title">
-  						<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-  						<ul class="post-tags">
-  							<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-  							<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-  							<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-  							<li><i class="fa fa-eye"></i>872</li>
-  						</ul>
-  					</div>
-  					<div class="post-content">
-  						<p>Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
-  						<a href="single-post.html" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
-  					</div>
-  				</div>
-  			</div>
-  			<div class="col-md-6">
-  				<div class="news-post standard-post2">
-  					<div class="post-gallery">
-  						<img src="upload/news-posts/im10.jpg" alt="">
-  						<a class="category-post world" href="world.html">Business</a>
-  					</div>
-  					<div class="post-title">
-  						<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-  						<ul class="post-tags">
-  							<li><i class="fa fa-clock-o"></i>27 may 2013</li>
-  							<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-  							<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-  							<li><i class="fa fa-eye"></i>872</li>
-  						</ul>
-  					</div>
-  					<div class="post-content">
-  						<p>Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
-  						<a href="single-post.html" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
+  						<p>{{post.value.description[0].value}}</p>
+  						<a (click)="routing(post.id)" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Подробнее</a>
   					</div>
   				</div>
   			</div>
@@ -104,15 +40,27 @@ import {ComponentService} from '../../services/component';
 export class MainList1Component implements OnInit {
     @Input() public idComponent: string;
     public content = [];
-
-    constructor(private component: ComponentService) { }
+    public title: any;
+    constructor(private component: ComponentService, private router: Router) { }
 
 
     ngOnInit() {
+        // setInterval(() => console.log(this.idComponent), 5000)
+        console.log(this.idComponent)
         this.component.getComponent(this.idComponent).subscribe(
             component => {
-                console.log(component)
+                this.title = component.title;
+                this.content = component.content;
+                if (this.content) {
+                    for (let i in this.content) {
+                        this.content[i].value.img[0].value = 'http://portamur.alfasco.ru' + this.content[i].value.img[0].value.replace(/\/images\//i, '/images/330x260/')
+                    }
+                }
             },
             error => console.log(<any>error));
+    }
+
+    routing(url: any) {
+        this.router.navigate(['/' + url])
     }
 };

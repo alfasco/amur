@@ -7,7 +7,7 @@ import {ComponentService} from '../../services/component';
     template: `
     <div class="widget social-widget">
         <div class="title-section">
-            <h1><span>Stay Connected</span></h1>
+            <h1><span>{{title}}</span></h1>
         </div>
         <ul class="social-share">
             <li>
@@ -36,10 +36,16 @@ import {ComponentService} from '../../services/component';
 export class WidgetSocialComponent implements OnInit {
     @Input() public idComponent: string;
     public content = [];
+    public title: any;
 
     constructor(private component: ComponentService) { }
 
 
     ngOnInit() {
+        this.component.getComponent(this.idComponent).subscribe(
+            component => {
+                this.title = component.title;
+            },
+            error => console.log(<any>error));
     }
 };

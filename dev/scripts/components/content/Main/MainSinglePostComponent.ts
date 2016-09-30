@@ -27,7 +27,6 @@ import {Location} from '@angular/common';
             <img src="{{img.value.file[0].value}}" alt="">
           </li>
         </ul>
-        <span class="image-caption">Cras eget sem nec dui volutpat ultrices.</span>
       </div>
 
       <div class="post-content" [innerHTML]="content.value.content[0].value"></div>

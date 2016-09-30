@@ -8,15 +8,18 @@ import { MainView2Component }   from './Main/MainView2Component';
 import { MainGalleryComponent }   from './Main/MainGalleryComponent';
 import { MainVideoComponent }   from './Main/MainVideoComponent';
 import { MainList1Component }   from './Main/MainList1Component';
+import { MainBlogsComponent }   from './Main/MainBlogsComponent';
 import { MainSinglePostComponent }   from './Main/MainSinglePostComponent';
+import { MainAdvertisementComponent }   from './Main/MainAdvertisementComponent';
 
 import { WidgetSocialComponent }   from './Widgets/WidgetSocialComponent';
 import { WidgetAdvertisementComponent }   from './Widgets/WidgetAdvertisementComponent';
 import { WidgetCommentsComponent }   from './Widgets/WidgetCommentsComponent';
 import { WidgetSubscribeComponent }   from './Widgets/WidgetSubscribeComponent';
 import { WidgetVideoComponent }   from './Widgets/WidgetVideoComponent';
-import { WidgetViewComponent }   from './Widgets/WidgetViewComponent';
+import { WidgetAfishaComponent }   from './Widgets/WidgetAfishaComponent';
 import { WidgetTagsComponent }   from './Widgets/WidgetTagsComponent';
+import { WidgetBlogsComponent }   from './Widgets/WidgetBlogsComponent';
 
 export const DYNAMIC_DIRECTIVES = [
     forwardRef(() => FullSliderComponent),
@@ -26,15 +29,18 @@ export const DYNAMIC_DIRECTIVES = [
     forwardRef(() => MainGalleryComponent),
     forwardRef(() => MainVideoComponent),
     forwardRef(() => MainList1Component),
+    forwardRef(() => MainBlogsComponent),
     forwardRef(() => MainSinglePostComponent),
+    forwardRef(() => MainAdvertisementComponent),
 
     forwardRef(() => WidgetSocialComponent),
     forwardRef(() => WidgetAdvertisementComponent),
     forwardRef(() => WidgetCommentsComponent),
     forwardRef(() => WidgetSubscribeComponent),
     forwardRef(() => WidgetVideoComponent),
-    forwardRef(() => WidgetViewComponent),
+    forwardRef(() => WidgetAfishaComponent),
     forwardRef(() => WidgetTagsComponent),
+    forwardRef(() => WidgetBlogsComponent),
 ];
 
 // module itself
