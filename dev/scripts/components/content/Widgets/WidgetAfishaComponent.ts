@@ -20,10 +20,28 @@ import {ComponentService} from '../../services/component';
                       <div *ngIf="tab.value.avatar">
                         <img src="http://portamur.alfasco.ru{{tab.value.avatar[0].value}}" alt="">
                       </div>
-                      <div class="post-content">
-                          <h2><a href="single-post.html">{{tab.id}}</a></h2>
-                          <ul class="post-tags">
-                              <li><i class="fa fa-clock-o"></i>27 may 2013</li>
+                      <div class="post-content" >
+                          <h2>{{tab.value.tit}}</h2>
+                          <ul class="post-tags" *ngIf="i==0">
+                              <li>{{tab.value.address[0].value}}</li>
+                              <li>{{tab.value.phone[0].value}}</li>
+                          </ul>
+                          <ul class="post-tags" *ngIf="i==1">
+                              <li>{{tab.value.datestart[0].title}}:</li>
+                              <li>{{tab.value.datestart[0].value}}</li>
+                          </ul>
+                          <ul class="post-tags" *ngIf="i==2">
+                              <li>{{tab.value.theater[0].title}}:</li>
+                              <li>{{tab.value.theater[1].value}}</li>
+                              <br>
+                              <li>{{tab.value.datestart[0].title}}:</li>
+                              <li>{{tab.value.datestart[0].value}}</li>
+                              <br>
+                              <li>{{tab.value.timestart[0].title}}:</li>
+                              <li>{{tab.value.timestart[0].value}}</li>
+                              <br>
+                              <li>{{tab.value.price[0].title}}:</li>
+                              <li>{{tab.value.price[0].value}}</li>
                           </ul>
                       </div>
                     </li>
