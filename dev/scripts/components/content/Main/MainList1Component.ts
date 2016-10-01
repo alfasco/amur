@@ -10,7 +10,7 @@ import {Router, ActivatedRoute} from '@angular/router';
     <div class="grid-box" *ngIf="content">
   		<div class="title-section">
   			<h1 *ngIf="title"><span class="world">{{title}}</span></h1>
-  			<h1 *ngIf="content[0]"><span *ngIf="content[0].value.subsection" class="world">{{content[0].value.subsection[0].value}}</span></h1>
+  			<h1 *ngIf="content[0] && !title"><span *ngIf="content[0].value.subsection" class="world">{{content[0].value.subsection[0].value}}</span></h1>
   		</div>
 
   		<div class="row">
