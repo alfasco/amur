@@ -7,9 +7,10 @@ import {Router, ActivatedRoute} from '@angular/router';
     selector: 'MainList1Component',
     providers: [ComponentService],
     template: `
-    <div class="grid-box">
+    <div class="grid-box" *ngIf="content">
   		<div class="title-section">
-  			<h1 *ngIf="content[0]"><span class="world">{{content[0].value.subsection[0].value}}</span></h1>
+  			<h1 *ngIf="title"><span class="world">{{title}}</span></h1>
+  			<h1 *ngIf="content[0]"><span *ngIf="content[0].value.subsection" class="world">{{content[0].value.subsection[0].value}}</span></h1>
   		</div>
 
   		<div class="row">
@@ -17,12 +18,12 @@ import {Router, ActivatedRoute} from '@angular/router';
   				<div class="news-post standard-post2">
   					<div class="post-gallery">
   						<img src="{{post.value.img[0].value}}" alt="">
-  						<a class="category-post world" href="world.html">{{post.value.subsection[0].value}}</a>
+  						<a *ngIf="post.value.subsection" class="category-post world" href="world.html">{{post.value.subsection[0].value}}</a>
   					</div>
   					<div class="post-title">
   						<h2><a (click)="routing(post.id)">{{post.value.tit}}</a></h2>
   						<ul class="post-tags">
-  							<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+  							<li><i class="fa fa-clock-o"></i>{{post.value.created}}</li>
   							<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
   							<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
   							<li><i class="fa fa-eye"></i>872</li>

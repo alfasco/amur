@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ComponentService} from '../../services/component';
 
+import {Router} from '@angular/router';
+
 @Component({
     selector: 'MainBlogsComponent',
     providers: [ComponentService],
@@ -10,31 +12,29 @@ import {ComponentService} from '../../services/component';
         <h1><span>{{title}}</span></h1>
       </div>
 
-      <ul class="autor-list">
+      <ul class="autor-list" *ngIf="content">
 
-        <li>
+        <li *ngFor="let author of content">
 
           <div class="autor-box">
 
-            <img src="upload/users/avatar1.jpg" alt="">
+            <img src="{{author.value.img[0].value}}" alt="">
 
             <div class="autor-content">
 
               <div class="autor-title">
-                <h1><span>Jane Smith</span><a href="autor-details.html">18 Posts</a></h1>
+                <h1><span>{{author.value.name[0].value}}</span><a (click)="routing('blog/' + author.id)">Постов {{author.value.posts}}</a></h1>
                 <ul class="autor-social">
-                  <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                  <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
-                  <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                  <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                  <li><a href="#" class="dribble"><i class="fa fa-dribbble"></i></a></li>
+                  <li *ngIf="author.value.Vkontakte[0].value"><a href="{{author.value.Vkontakte[0].value}}" target="_blank" class="linkedin"><i class="fa fa-vk"></i></a></li>
+                  <li *ngIf="author.value.Facebook[0].value"><a href="{{author.value.Facebook[0].value}}" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                  <li *ngIf="author.value.twitter[0].value"><a href="{{author.value.twitter[0].value}}" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                  <li *ngIf="author.value.youtube[0].value"><a href="{{author.value.youtube[0].value}}" target="_blank" class="youtube"><i class="fa fa-youtube"></i></a></li>
+                  <li *ngIf="author.value.instagram[0].value"><a href="{{author.value.instagram[0].value}}" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a></li>
                 </ul>
               </div>
 
-              <p>
-                Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada.
+              <p style="min-height:40px">
+                {{author.value.about[0].value}}
               </p>
 
             </div>
@@ -43,269 +43,13 @@ import {ComponentService} from '../../services/component';
 
           <div class="autor-last-line">
             <ul class="autor-tags">
-              <li><span><i class="fa fa-bars"></i>Category</span></li>
-              <li><a href="#">News</a></li>
-              <li><a href="#">Fashion</a></li>
-              <li><a href="#">Politics</a></li>
-              <li><a href="#">Sport</a></li>
+              <li><span><i class="fa fa-bars"></i>Категории</span></li>
+
+              <li *ngFor="let sub of author.value.subsection"><a>{{sub.value}}</a></li>
             </ul>
-            <a href="#" class="autor-site">http://www.janesmith.com</a>
+            <a *ngIf="author.value.site[0].value" href="{{author.value.site[0].value}}" class="autor-site">{{author.value.site[0].value}}</a>
           </div>
-
         </li>
-
-        <li>
-
-          <div class="autor-box">
-
-            <img src="upload/users/avatar2.jpg" alt="">
-
-            <div class="autor-content">
-
-              <div class="autor-title">
-                <h1><span>Jane Smith</span><a href="autor-details.html">6 Posts</a></h1>
-                <ul class="autor-social">
-                  <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                  <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
-                  <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                  <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                  <li><a href="#" class="dribble"><i class="fa fa-dribbble"></i></a></li>
-                </ul>
-              </div>
-
-              <p>
-                Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada.
-              </p>
-
-            </div>
-
-          </div>
-
-          <div class="autor-last-line">
-            <ul class="autor-tags">
-              <li><span><i class="fa fa-bars"></i>Category</span></li>
-              <li><a href="#">News</a></li>
-              <li><a href="#">Fashion</a></li>
-              <li><a href="#">Politics</a></li>
-              <li><a href="#">Sport</a></li>
-            </ul>
-            <a href="#" class="autor-site">http://www.janesmith.com</a>
-          </div>
-
-        </li>
-
-        <li>
-
-          <div class="autor-box">
-
-            <img src="upload/users/avatar3.jpg" alt="">
-
-            <div class="autor-content">
-
-              <div class="autor-title">
-                <h1><span>Jane Smith</span><a href="autor-details.html">9 Posts</a></h1>
-                <ul class="autor-social">
-                  <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                  <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
-                  <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                  <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                  <li><a href="#" class="dribble"><i class="fa fa-dribbble"></i></a></li>
-                </ul>
-              </div>
-
-              <p>
-                Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada.
-              </p>
-
-            </div>
-
-          </div>
-
-          <div class="autor-last-line">
-            <ul class="autor-tags">
-              <li><span><i class="fa fa-bars"></i>Category</span></li>
-              <li><a href="#">News</a></li>
-              <li><a href="#">Fashion</a></li>
-              <li><a href="#">Politics</a></li>
-              <li><a href="#">Sport</a></li>
-            </ul>
-            <a href="#" class="autor-site">http://www.janesmith.com</a>
-          </div>
-
-        </li>
-
-        <li>
-
-          <div class="autor-box">
-
-            <img src="upload/users/avatar4.jpg" alt="">
-
-            <div class="autor-content">
-
-              <div class="autor-title">
-                <h1><span>Jane Smith</span><a href="autor-details.html">2 Posts</a></h1>
-                <ul class="autor-social">
-                  <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                  <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
-                  <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                  <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                  <li><a href="#" class="dribble"><i class="fa fa-dribbble"></i></a></li>
-                </ul>
-              </div>
-
-              <p>
-                Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada.
-              </p>
-
-            </div>
-
-          </div>
-
-          <div class="autor-last-line">
-            <ul class="autor-tags">
-              <li><span><i class="fa fa-bars"></i>Category</span></li>
-              <li><a href="#">News</a></li>
-              <li><a href="#">Fashion</a></li>
-              <li><a href="#">Politics</a></li>
-              <li><a href="#">Sport</a></li>
-            </ul>
-            <a href="#" class="autor-site">http://www.janesmith.com</a>
-          </div>
-
-        </li>
-
-        <li>
-
-          <div class="autor-box">
-
-            <img src="upload/users/avatar5.jpg" alt="">
-
-            <div class="autor-content">
-
-              <div class="autor-title">
-                <h1><span>Jane Smith</span><a href="autor-details.html">18 Posts</a></h1>
-                <ul class="autor-social">
-                  <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                  <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
-                  <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                  <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                  <li><a href="#" class="dribble"><i class="fa fa-dribbble"></i></a></li>
-                </ul>
-              </div>
-
-              <p>
-                Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada.
-              </p>
-
-            </div>
-
-          </div>
-
-          <div class="autor-last-line">
-            <ul class="autor-tags">
-              <li><span><i class="fa fa-bars"></i>Category</span></li>
-              <li><a href="#">News</a></li>
-              <li><a href="#">Fashion</a></li>
-              <li><a href="#">Politics</a></li>
-              <li><a href="#">Sport</a></li>
-            </ul>
-            <a href="#" class="autor-site">http://www.janesmith.com</a>
-          </div>
-
-        </li>
-
-        <li>
-
-          <div class="autor-box">
-
-            <img src="upload/users/avatar6.jpg" alt="">
-
-            <div class="autor-content">
-
-              <div class="autor-title">
-                <h1><span>Jane Smith</span><a href="autor-details.html">10 Posts</a></h1>
-                <ul class="autor-social">
-                  <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                  <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
-                  <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                  <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                  <li><a href="#" class="dribble"><i class="fa fa-dribbble"></i></a></li>
-                </ul>
-              </div>
-
-              <p>
-                Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada.
-              </p>
-
-            </div>
-
-          </div>
-
-          <div class="autor-last-line">
-            <ul class="autor-tags">
-              <li><span><i class="fa fa-bars"></i>Category</span></li>
-              <li><a href="#">News</a></li>
-              <li><a href="#">Fashion</a></li>
-              <li><a href="#">Politics</a></li>
-              <li><a href="#">Sport</a></li>
-            </ul>
-            <a href="#" class="autor-site">http://www.janesmith.com</a>
-          </div>
-
-        </li>
-
-        <li>
-
-          <div class="autor-box">
-
-            <img src="upload/users/avatar7.jpg" alt="">
-
-            <div class="autor-content">
-
-              <div class="autor-title">
-                <h1><span>Jane Smith</span><a href="autor-details.html">22 Posts</a></h1>
-                <ul class="autor-social">
-                  <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                  <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
-                  <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                  <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                  <li><a href="#" class="dribble"><i class="fa fa-dribbble"></i></a></li>
-                </ul>
-              </div>
-
-              <p>
-                Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada.
-              </p>
-
-            </div>
-
-          </div>
-
-          <div class="autor-last-line">
-            <ul class="autor-tags">
-              <li><span><i class="fa fa-bars"></i>Category</span></li>
-              <li><a href="#">News</a></li>
-              <li><a href="#">Fashion</a></li>
-              <li><a href="#">Politics</a></li>
-              <li><a href="#">Sport</a></li>
-            </ul>
-            <a href="#" class="autor-site">http://www.janesmith.com</a>
-          </div>
-
-        </li>
-
       </ul>
     </div>`
 })
@@ -314,16 +58,31 @@ export class MainBlogsComponent implements OnInit {
     content: any;
     title: any;
 
-    constructor(private component: ComponentService) {
+    constructor(private component: ComponentService, private router: Router) {
     }
 
     ngOnInit() {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
-                console.log(component)
-                this.content = component.content[0];
+                this.content = component.content;
+                if (this.content) {
+                    for (let i in this.content) {
+                        this.content[i].value.img[0].value = 'http://portamur.alfasco.ru' + this.content[i].value.img[0].value.replace(/\/images\//i, '/images/100x100/')
+
+                        this.content[i].value.posts = 0;
+                        if (this.content[i].value.link_select) {
+                            for (let k in this.content[i].value.link_select) {
+                                if (this.content[i].value.link_select[k].tpl == '1a6a676fc06fba64fc7f72cee4fbb6ba') this.content[i].value.posts++;
+                            }
+                        }
+                    }
+                }
                 this.title = component.title;
             },
             error => console.log(<any>error));
+    }
+
+    routing(url: any) {
+        this.router.navigate(['/' + url])
     }
 };
