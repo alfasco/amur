@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ComponentService} from '../../services/component';
 
+import {Router} from '@angular/router';
+
 @Component({
     selector: 'WidgetBlogsComponent',
     providers: [ComponentService],
@@ -20,7 +22,7 @@ import {ComponentService} from '../../services/component';
                     <p class="main-message">
                       {{author.value.description[0].value}}
                     </p>
-                    <p>{{author.value.title[0].value}}</p>
+                    <p><a (click)="routing(author.id)">{{author.value.title[0].value}}</a></p>
                     <span><i class="fa fa-user"></i>{{author.value.owner[0].value}}</span>
                   </div>
                 </div>
@@ -36,7 +38,7 @@ import {ComponentService} from '../../services/component';
                     <p class="main-message">
                       {{author.value.description[0].value}}
                     </p>
-                    <p>{{author.value.title[0].value}}</p>
+                    <p><a (click)="routing(author.id)">{{author.value.title[0].value}}</a></p>
                     <span><i class="fa fa-user"></i>{{author.value.owner[0].value}}</span>
                   </div>
                 </div>
@@ -52,7 +54,7 @@ export class WidgetBlogsComponent implements OnInit {
     public content = [];
     public title: any;
 
-    constructor(private component: ComponentService) { }
+    constructor(private component: ComponentService, private router: Router) { }
 
 
     ngOnInit() {
@@ -97,5 +99,9 @@ export class WidgetBlogsComponent implements OnInit {
                 }, 100)
             },
             error => console.log(<any>error));
+    }
+
+    routing(url: any) {
+        this.router.navigate(['/' + url])
     }
 };

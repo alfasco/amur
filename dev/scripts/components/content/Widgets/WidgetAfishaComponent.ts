@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ComponentService} from '../../services/component';
 
+import {Router} from '@angular/router';
+
 @Component({
     selector: 'WidgetAfishaComponent',
     providers: [ComponentService],
@@ -20,28 +22,19 @@ import {ComponentService} from '../../services/component';
                       <div *ngIf="tab.value.avatar">
                         <img src="http://portamur.alfasco.ru{{tab.value.avatar[0].value}}" alt="">
                       </div>
+                      <div *ngIf="!tab.value.avatar">
+                        <img src="http://portamur.alfasco.ru{{tab.value.img[0].value}}" alt="">
+                      </div>
                       <div class="post-content" >
-                          <h2>{{tab.value.tit}}</h2>
+                          <h2><a (click)="routing(tab.id)">{{tab.value.tit}}</a></h2>
                           <ul class="post-tags" *ngIf="i==0">
-                              <li>{{tab.value.address[0].value}}</li>
-                              <li>{{tab.value.phone[0].value}}</li>
+                              <li>{{tab.value.datestart[0].title}}: {{tab.value.datestart[0].value}}</li>
+                              <li>{{tab.value.genre[0].title}}: {{tab.value.genre[0].value}}</li>
                           </ul>
                           <ul class="post-tags" *ngIf="i==1">
-                              <li>{{tab.value.datestart[0].title}}:</li>
-                              <li>{{tab.value.datestart[0].value}}</li>
-                          </ul>
-                          <ul class="post-tags" *ngIf="i==2">
-                              <li>{{tab.value.theater[0].title}}:</li>
-                              <li>{{tab.value.theater[1].value}}</li>
-                              <br>
-                              <li>{{tab.value.datestart[0].title}}:</li>
-                              <li>{{tab.value.datestart[0].value}}</li>
-                              <br>
-                              <li>{{tab.value.timestart[0].title}}:</li>
-                              <li>{{tab.value.timestart[0].value}}</li>
-                              <br>
-                              <li>{{tab.value.price[0].title}}:</li>
-                              <li>{{tab.value.price[0].value}}</li>
+                          <li>На сцене с: {{tab.value.datestart[0].value}}</li>
+                          <li>{{tab.value.genre[0].title}}: {{tab.value.genre[0].value}}</li>
+                          <li>Театр: {{tab.value.theater[0].value}}</li>
                           </ul>
                       </div>
                     </li>
@@ -56,7 +49,7 @@ export class WidgetAfishaComponent implements OnInit {
     public content = [];
     public title = [];
 
-    constructor(private component: ComponentService) { }
+    constructor(private component: ComponentService, private router: Router) { }
 
 
     ngOnInit() {
@@ -64,8 +57,11 @@ export class WidgetAfishaComponent implements OnInit {
             component => {
                 this.title = component.title;
                 this.content = component.content;
-                console.log(this.content)
             },
             error => console.log(<any>error));
+    }
+
+    routing(url: any) {
+        this.router.navigate(['/' + url])
     }
 };
