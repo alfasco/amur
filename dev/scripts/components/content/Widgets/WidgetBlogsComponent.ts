@@ -10,71 +10,35 @@ import {ComponentService} from '../../services/component';
         <h1><span>{{title}}</span></h1>
       </div>
       <div class="owl-wrapper">
-        <div class="owl-carousel" data-num="1">
+        <div class="owl-carousel widgetblogs" data-num="1">
           <div class="item">
             <ul class="comment-list">
-              <li>
-                <img src="upload/news-posts/avatar1.jpg" alt="">
-                <div class="comment-content">
-                  <p class="main-message">
-                    Donec nec justo eget felis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.
-                  </p>
-                  <p>Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
-                  <span><i class="fa fa-user"></i>by John Doe</span>
-                </div>
-              </li>
-              <li>
-                <img src="upload/news-posts/avatar2.jpg" alt="">
-                <div class="comment-content">
-                  <p class="main-message">
-                    Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.
-                  </p>
-                  <p>Donec nec justo eget felis facilisis fermentum. </p>
-                  <span><i class="fa fa-user"></i>by John Doe</span>
-                </div>
-              </li>
-              <li>
-                <img src="upload/news-posts/avatar3.jpg" alt="">
-                <div class="comment-content">
-                  <p class="main-message">
-                    Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.
-                  </p>
-                  <p>Aliquam porttitor mauris sit amet orci. </p>
-                  <span><i class="fa fa-user"></i>by John Doe</span>
+              <li *ngFor="let author of content; let i = index" [class.hide]="i >= 3">
+                <div *ngIf="i < 3">
+                  <img src="{{author.value.avatar}}" alt="">
+                  <div class="comment-content">
+                    <p class="main-message">
+                      {{author.value.description[0].value}}
+                    </p>
+                    <p>{{author.value.title[0].value}}</p>
+                    <span><i class="fa fa-user"></i>{{author.value.owner[0].value}}</span>
+                  </div>
                 </div>
               </li>
             </ul>
           </div>
           <div class="item">
             <ul class="comment-list">
-              <li>
-                <img src="upload/news-posts/avatar3.jpg" alt="">
-                <div class="comment-content">
-                  <p class="main-message">
-                    Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.
-                  </p>
-                  <p>Aliquam porttitor mauris sit amet orci. </p>
-                  <span><i class="fa fa-user"></i>by John Doe</span>
-                </div>
-              </li>
-              <li>
-                <img src="upload/news-posts/avatar1.jpg" alt="">
-                <div class="comment-content">
-                  <p class="main-message">
-                    Donec nec justo eget felis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.
-                  </p>
-                  <p>Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
-                  <span><i class="fa fa-user"></i>by John Doe</span>
-                </div>
-              </li>
-              <li>
-                <img src="upload/news-posts/avatar2.jpg" alt="">
-                <div class="comment-content">
-                  <p class="main-message">
-                    Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.
-                  </p>
-                  <p>Donec nec justo eget felis facilisis fermentum. </p>
-                  <span><i class="fa fa-user"></i>by John Doe</span>
+              <li *ngFor="let author of content; let i = index" [class.hide]="i < 3 || i > 5">
+                <div *ngIf="i >= 3 && i < 6">
+                  <img src="{{author.value.avatar}}" alt="">
+                  <div class="comment-content">
+                    <p class="main-message">
+                      {{author.value.description[0].value}}
+                    </p>
+                    <p>{{author.value.title[0].value}}</p>
+                    <span><i class="fa fa-user"></i>{{author.value.owner[0].value}}</span>
+                  </div>
                 </div>
               </li>
             </ul>
@@ -92,10 +56,45 @@ export class WidgetBlogsComponent implements OnInit {
 
 
     ngOnInit() {
-        this.component.getComponent(this.idComponent).subscribe(
+        this.component.getComponent("WidgetBlogsComponent").subscribe(
             component => {
-                console.log(component)
                 this.title = component.title;
+                this.content = component.content;
+
+                if (this.content) {
+                    for (let i in this.content) {
+                        this.content[i].value.avatar = 'http://portamur.alfasco.ru' + this.content[i].value.avatar.replace(/\/images\//i, '/images/70x70/')
+                    }
+                }
+
+                let interval = setInterval(() => {
+                    if ($('.widgetblogs')) {
+                        clearInterval(interval);
+
+                        var carousel = $('.widgetblogs'),
+                            dataNum = $('.widgetblogs').attr('data-num'),
+                            dataNum2,
+                            dataNum3;
+
+                        if (dataNum == 1) {
+                            dataNum2 = 1;
+                            dataNum3 = 1;
+                        } else if (dataNum == 2) {
+                            dataNum2 = 2;
+                            dataNum3 = dataNum - 1;
+                        } else {
+                            dataNum2 = dataNum - 1;
+                            dataNum3 = dataNum - 2;
+                        }
+                        carousel.owlCarousel({
+                            autoPlay: 10000,
+                            navigation: true,
+                            items: dataNum,
+                            itemsDesktop: [1199, dataNum2],
+                            itemsDesktopSmall: [979, dataNum3]
+                        });
+                    }
+                }, 100)
             },
             error => console.log(<any>error));
     }

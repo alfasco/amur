@@ -18,12 +18,12 @@ import {Router} from '@angular/router';
 
           <div class="autor-box">
 
-            <img src="{{author.value.img[0].value}}" alt="">
+            <img src="{{author.value.avatar[0].value}}" alt="">
 
             <div class="autor-content">
 
               <div class="autor-title">
-                <h1><span>{{author.value.name[0].value}}</span><a (click)="routing('blog/' + author.id)">Постов {{author.value.posts}}</a></h1>
+                <h1><span>{{author.value.iname[0].value}}</span><a (click)="routing('blog/' + author.id)">Постов {{author.value.posts}}</a></h1>
                 <ul class="autor-social">
                   <li *ngIf="author.value.Vkontakte[0].value"><a href="{{author.value.Vkontakte[0].value}}" target="_blank" class="linkedin"><i class="fa fa-vk"></i></a></li>
                   <li *ngIf="author.value.Facebook[0].value"><a href="{{author.value.Facebook[0].value}}" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
@@ -67,7 +67,7 @@ export class MainBlogsComponent implements OnInit {
                 this.content = component.content;
                 if (this.content) {
                     for (let i in this.content) {
-                        this.content[i].value.img[0].value = 'http://portamur.alfasco.ru' + this.content[i].value.img[0].value.replace(/\/images\//i, '/images/100x100/')
+                        this.content[i].value.avatar[0].value = 'http://portamur.alfasco.ru' + this.content[i].value.avatar[0].value.replace(/\/images\//i, '/images/100x100/')
 
                         this.content[i].value.posts = 0;
                         if (this.content[i].value.link_select) {
