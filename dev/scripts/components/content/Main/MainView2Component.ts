@@ -60,7 +60,7 @@ export class MainView2Component implements OnInit {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
                 this.title = component.title;
-                if (component.content.length == 12) {
+                if (component.content.length >= 12) {
                     if (component.content) {
                         for (let i in component.content) {
                             component.content[i].value.img[0].value = 'http://portamur.alfasco.ru' + component.content[i].value.img[0].value.replace(/\/images\//i, '/images/368x300/')
