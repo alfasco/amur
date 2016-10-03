@@ -23,6 +23,8 @@ import { WidgetVideoComponent }   from './Widgets/WidgetVideoComponent';
 import { WidgetAfishaComponent }   from './Widgets/WidgetAfishaComponent';
 import { WidgetTagsComponent }   from './Widgets/WidgetTagsComponent';
 import { WidgetBlogsComponent }   from './Widgets/WidgetBlogsComponent';
+import { WidgetInterviewComponent }   from './Widgets/WidgetInterviewComponent';
+import { WidgetViewComponent }   from './Widgets/WidgetViewComponent';
 
 export const DYNAMIC_DIRECTIVES = [
     forwardRef(() => FullSliderComponent),
@@ -47,6 +49,8 @@ export const DYNAMIC_DIRECTIVES = [
     forwardRef(() => WidgetAfishaComponent),
     forwardRef(() => WidgetTagsComponent),
     forwardRef(() => WidgetBlogsComponent),
+    forwardRef(() => WidgetInterviewComponent),
+    forwardRef(() => WidgetViewComponent),
 ];
 
 // module itself

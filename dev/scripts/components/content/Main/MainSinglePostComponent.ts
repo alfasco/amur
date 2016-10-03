@@ -159,15 +159,19 @@ export class MainSinglePostComponent implements OnInit {
                 console.log(component)
                 this.content = component.content[0];
                 this.gallery = component.gallery;
+                console.log(this.content.value.content[0])
+                if (this.content.value.content[0].value) {
+                    this.content.value.content[0].value = this.content.value.content[0].value.replace(/\/upload\//g, 'http://portamur.alfasco.ru/upload/')
+                }
+                console.log(this.content.value.content[0])
                 if (this.gallery) {
                     for (let i in this.gallery) {
                         this.gallery[i].value.file[0].value = 'http://portamur.alfasco.ru' + this.gallery[i].value.file[0].value.replace(/\/images\//i, '/images/770x380/')
                     }
                 }
-                if (this.content.value.video) {
+                if (this.content.value.video[0].value) {
                     this.video = true;
                 }
-                console.log(this.content.value.video)
                 if (this.gallery) {
                     if (this.gallery.length > 1) {
                         let interval = setInterval(() => {

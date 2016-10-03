@@ -62,6 +62,7 @@ export class WidgetBlogsComponent implements OnInit {
             component => {
                 this.title = component.title;
                 this.content = component.content;
+                console.log(component)
 
                 if (this.content) {
                     for (let i in this.content) {
