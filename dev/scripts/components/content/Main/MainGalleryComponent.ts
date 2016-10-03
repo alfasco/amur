@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ComponentService} from '../../services/component';
 
+import {Router} from '@angular/router';
+
 @Component({
     selector: 'MainGalleryComponent',
     providers: [ComponentService],
@@ -14,9 +16,9 @@ import {ComponentService} from '../../services/component';
         <div class="owl-carousel maingallery" data-num="3">
 
             <div class="item news-post image-post3" *ngFor="let item of content">
-                <img src="http://portamur.alfasco.ru{{item.value.img[0].value}}" alt="">
+                <img src="{{item.value.img[0].value}}" alt="" width="185px" height="180px">
                 <div class="hover-box">
-                    <h2><a href="single-post.html">{{item.value.tit}}</a></h2>
+                    <h2><a (click)="routing(item.id)">{{item.value.tit}}</a></h2>
                     <ul class="post-tags">
                         <li><i class="fa fa-clock-o"></i>27 may 2013</li>
                     </ul>
@@ -31,7 +33,7 @@ export class MainGalleryComponent implements OnInit {
     content: any;
     title: any;
 
-    constructor(private component: ComponentService) {
+    constructor(private component: ComponentService, private router: Router) {
         this.content = []
     }
 
@@ -39,6 +41,11 @@ export class MainGalleryComponent implements OnInit {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
                 this.title = component.title;
+                if (component.content) {
+                    for (let i in component.content) {
+                        component.content[i].value.img[0].value = 'http://portamur.alfasco.ru' + component.content[i].value.img[0].value.replace(/\/images\//i, '/images/185x180/')
+                    }
+                }
                 this.content = component.content;
                 let interval = setInterval(() => {
                     if ($('.maingallery .news-post')) {
@@ -67,8 +74,12 @@ export class MainGalleryComponent implements OnInit {
                             itemsDesktopSmall: [979, dataNum3]
                         });
                     }
-                }, 100)
+                }, 200)
             },
             error => console.log(<any>error));
+    }
+
+    routing(url: any) {
+        this.router.navigate(['/' + url])
     }
 };

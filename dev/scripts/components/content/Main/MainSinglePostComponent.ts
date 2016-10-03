@@ -7,13 +7,18 @@ import {Location} from '@angular/common';
     providers: [ComponentService],
     template: `
     <div class="single-post-box" *ngIf="content">
-
+      <div *ngIf="video">
+        <div class="news-post video-post">
+            <img alt="" src="http://portamur.alfasco.ru{{content.value.img[0].value}}">
+            <a href="{{content.value.video[0].value}}" class="video-link"><i class="fa fa-play-circle-o"></i></a>
+        </div>
+      </div>
       <div class="title-post">
         <h1>{{content.value.tit}}</h1>
         <ul class="post-tags">
           <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-          <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-          <li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li>
+          <li><i class="fa fa-user"></i>by <a>John Doe</a></li>
+          <li><a><i class="fa fa-comments-o"></i><span>0</span></a></li>
           <li><i class="fa fa-eye"></i>872</li>
         </ul>
       </div>
@@ -139,6 +144,7 @@ export class MainSinglePostComponent implements OnInit {
     public content: any;
     public path: any;
     public gallery: any;
+    public video: any;
 
 
     constructor(private component: ComponentService, private location: Location) {
@@ -158,7 +164,10 @@ export class MainSinglePostComponent implements OnInit {
                         this.gallery[i].value.file[0].value = 'http://portamur.alfasco.ru' + this.gallery[i].value.file[0].value.replace(/\/images\//i, '/images/770x380/')
                     }
                 }
-
+                if (this.content.value.video) {
+                    this.video = true;
+                }
+                console.log(this.content.value.video)
                 if (this.gallery) {
                     if (this.gallery.length > 1) {
                         let interval = setInterval(() => {

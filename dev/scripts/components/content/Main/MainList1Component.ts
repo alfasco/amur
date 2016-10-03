@@ -18,14 +18,14 @@ import {Router, ActivatedRoute} from '@angular/router';
   				<div class="news-post standard-post2">
   					<div class="post-gallery">
   						<img src="{{post.value.img[0].value}}" alt="" width="330" height="260">
-  						<a *ngIf="post.value.subsection" class="category-post world" href="world.html">{{post.value.subsection[0].value}}</a>
+  						<a *ngIf="post.value.subsection" class="category-post world">{{post.value.subsection[0].value}}</a>
   					</div>
   					<div class="post-title">
   						<h2><a (click)="routing(post.id)">{{post.value.tit}}</a></h2>
   						<ul class="post-tags">
   							<li><i class="fa fa-clock-o"></i>{{post.value.created.substr(0,10)}}</li>
-  							<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-  							<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+  							<li><i class="fa fa-user"></i>by <a>John Doe</a></li>
+  							<li><a><i class="fa fa-comments-o"></i><span>23</span></a></li>
   							<li><i class="fa fa-eye"></i>872</li>
   						</ul>
   					</div>
@@ -48,7 +48,6 @@ export class MainList1Component implements OnInit {
     ngOnInit() {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
-                console.log(component)
                 this.title = component.title;
                 this.content = component.content;
                 if (this.content) {

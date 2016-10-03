@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ComponentService} from '../../services/component';
 
+import {Router} from '@angular/router';
+
 @Component({
     selector: 'MainView1Component',
     providers: [ComponentService],
@@ -13,15 +15,15 @@ import {ComponentService} from '../../services/component';
             <div class="col-md-6">
                 <div class="news-post image-post2">
                     <div class="post-gallery">
-                        <img src="http://portamur.alfasco.ru{{cont[0].value.img[0].value}}" alt="" style="max-width:368px; max-height: 300px">
+                        <img src="{{cont[0].value.img[0].value}}" alt="" style="max-width:368px; max-height: 300px">
                         <div class="hover-box">
                             <div class="inner-hover">
-                                <a class="category-post tech" href="tech.html">{{cont[0].value.subsection[0].value}}</a>
-                                <h2><a href="single-post.html">{{cont[0].value.tit}}</a></h2>
+                                <a class="category-post tech">{{cont[0].value.subsection[0].value}}</a>
+                                <h2><a (click)="routing(cont[0].id)">{{cont[0].value.tit}}</a></h2>
                                 <ul class="post-tags">
                                     <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                    <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                    <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+                                    <li><i class="fa fa-user"></i>by <a>John Doe</a></li>
+                                    <li><a><i class="fa fa-comments-o"></i><span>23</span></a></li>
                                     <li><i class="fa fa-eye"></i>872</li>
                                 </ul>
                             </div>
@@ -33,10 +35,10 @@ import {ComponentService} from '../../services/component';
             <div class="col-md-6">
                 <ul class="list-posts">
                     <li *ngFor="let cont1 of cont[1]">
-                        <img src="http://portamur.alfasco.ru{{cont1.value.img[0].value}}" alt="" style="max-width:100px; max-height: 80px">
+                        <img src="{{cont1.value.img[0].value}}" alt="" style="max-width:100px; max-height: 80px">
                         <div class="post-content">
-                            <a href="travel.html">{{cont1.value.subsection[0].value}}</a>
-                            <h2><a href="single-post.html">{{cont1.value.tit}}</a></h2>
+                            <a>{{cont1.value.subsection[0].value}}</a>
+                            <h2><a (click)="routing(cont1.id)">{{cont1.value.tit}}</a></h2>
                             <ul class="post-tags">
                                 <li><i class="fa fa-clock-o"></i>27 may 2013</li>
                             </ul>
@@ -56,16 +58,24 @@ export class MainView1Component implements OnInit {
     public content = [];
     public title = '';
 
-    constructor(private component: ComponentService) { }
+    constructor(private component: ComponentService, private router: Router) { }
 
 
     ngOnInit() {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
-                console.log(component)
                 this.title = component.title;
+                if (component.content) {
+                    for (let i in component.content) {
+                        component.content[i].value.img[0].value = 'http://portamur.alfasco.ru' + component.content[i].value.img[0].value.replace(/\/images\//i, '/images/368x300/')
+                    }
+                }
                 this.content = [[component.content[0], [component.content[1], component.content[2], component.content[3]]], [component.content[4], [component.content[5], component.content[6], component.content[7]]]];
             },
             error => console.log(<any>error));
+    }
+
+    routing(url: any) {
+        this.router.navigate(['/' + url])
     }
 };
