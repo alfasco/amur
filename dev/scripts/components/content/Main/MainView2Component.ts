@@ -22,10 +22,7 @@ import {Router} from '@angular/router';
                             <div class="inner-hover">
                                 <h2><a (click)="routing(cont[0].id)">{{cont[0].value.tit}}</a></h2>
                                 <ul class="post-tags">
-                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                    <li><i class="fa fa-user"></i>by <a>John Doe</a></li>
-                                    <li><a><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                    <li><i class="fa fa-eye"></i>872</li>
+                                    <li><i class="fa fa-clock-o"></i>{{cont[0].value.created.substr(0,10)}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -38,7 +35,7 @@ import {Router} from '@angular/router';
                         <div class="post-content">
                             <h2><a (click)="routing(cont1.id)">{{cont1.value.tit}}</a></h2>
                             <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
+                                <li><i class="fa fa-clock-o"></i>{{cont1.value.created.substr(0,10)}}</li>
                             </ul>
                         </div>
                     </li>

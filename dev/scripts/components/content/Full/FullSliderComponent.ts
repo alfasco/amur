@@ -32,10 +32,7 @@ import {Router} from '@angular/router';
                                         <!-- <a class="category-post sport" href="sport.html">{{cont.value.subsection[0].value}}</a>-->
                                         <h2><a (click)="routing(cont.id)">{{cont.value.tit}}</a></h2>
                                         <ul class="post-tags">
-                                            <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                            <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                            <li><i class="fa fa-comments-o"></i><span>23</span></li>
-                                            <li><i class="fa fa-eye"></i>872</li>
+                                            <li><i class="fa fa-clock-o"></i>{{cont.value.created.substr(0,10)}}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -51,8 +48,7 @@ import {Router} from '@angular/router';
                           <!--   <a class="category-post travel" href="travel.html">{{cont[0].value.subsection[0].value}}</a>-->
                             <h2><a (click)="routing(cont[0].id)">{{cont[0].value.tit}}</a></h2>
                             <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i><span>27 may 2013</span></li>
-                                <li><i class="fa fa-comments-o"></i><span>23</span></li>
+                                <li><i class="fa fa-clock-o"></i><span>{{cont[0].value.created.substr(0,10)}}</span></li>
                             </ul>
                             <p>{{cont[0].value.description[0].value}}</p>
                         </div>

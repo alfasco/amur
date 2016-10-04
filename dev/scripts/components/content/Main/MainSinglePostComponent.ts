@@ -16,10 +16,7 @@ import {Location} from '@angular/common';
       <div class="title-post">
         <h1>{{content.value.tit}}</h1>
         <ul class="post-tags">
-          <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-          <li><i class="fa fa-user"></i>by <a>John Doe</a></li>
-          <li><a><i class="fa fa-comments-o"></i><span>0</span></a></li>
-          <li><i class="fa fa-eye"></i>872</li>
+          <li><i class="fa fa-clock-o"></i>{{content.value.created.substr(0,10)}}</li>
         </ul>
       </div>
       <div class="share-post-box">
@@ -125,13 +122,14 @@ import {Location} from '@angular/common';
       </div>
 
 
-      <!-- carousel box -->
+      <!-- interview box -->
+      <div *ngIf="interview">
 
-      <!-- End carousel box -->
+      </div>
+      <!-- End interview box -->
 
       <!-- comment area box -->
-      <div id="hypercomments_widget"></div>
-        <a href="http://hypercomments.com" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+
       <!-- End comment area box -->
 
       <!-- contact form box -->
@@ -145,6 +143,7 @@ export class MainSinglePostComponent implements OnInit {
     public path: any;
     public gallery: any;
     public video: any;
+    public interview: any;
 
 
     constructor(private component: ComponentService, private location: Location) {
@@ -156,14 +155,14 @@ export class MainSinglePostComponent implements OnInit {
     ngOnInit() {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
-                console.log(component)
                 this.content = component.content[0];
                 this.gallery = component.gallery;
-                console.log(this.content.value.content[0])
+                this.interview = component.interview;
+                console.log(component)
                 if (this.content.value.content[0].value) {
                     this.content.value.content[0].value = this.content.value.content[0].value.replace(/\/upload\//g, 'http://portamur.alfasco.ru/upload/')
                 }
-                console.log(this.content.value.content[0])
+
                 if (this.gallery) {
                     for (let i in this.gallery) {
                         this.gallery[i].value.file[0].value = 'http://portamur.alfasco.ru' + this.gallery[i].value.file[0].value.replace(/\/images\//i, '/images/770x380/')
@@ -190,8 +189,6 @@ export class MainSinglePostComponent implements OnInit {
                         }, 150)
                     }
                 }
-
-                startComment();
             },
             error => console.log(<any>error));
     }

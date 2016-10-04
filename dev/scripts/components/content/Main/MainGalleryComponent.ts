@@ -20,7 +20,7 @@ import {Router} from '@angular/router';
                 <div class="hover-box">
                     <h2><a (click)="routing(item.id)">{{item.value.tit}}</a></h2>
                     <ul class="post-tags">
-                        <li><i class="fa fa-clock-o"></i>27 may 2013</li>
+                        <li><i class="fa fa-clock-o"></i>{{item.value.created.substr(0,10)}}</li>
                     </ul>
                 </div>
             </div>

@@ -21,10 +21,9 @@ import {Router} from '@angular/router';
               <img src="{{cont1.value.img[0].value}}" alt="">
               <div class="hover-box">
                 <div class="inner-hover">
-                  <h2><a href="single-post.html">{{cont1.value.tit}}</a></h2>
+                  <h2><a (click)="routing(cont1.id)">{{cont1.value.tit}}</a></h2>
                   <ul class="post-tags">
                     <li><i class="fa fa-clock-o"></i>{{cont1.value.created.substr(0,10)}}</li>
-                    <li><a><i class="fa fa-comments-o"></i><span>23</span></a></li>
                   </ul>
                 </div>
               </div>

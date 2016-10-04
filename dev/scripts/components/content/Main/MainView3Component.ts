@@ -25,9 +25,6 @@ import {Router} from '@angular/router';
               <h2><a (click)="routing(cont.id)">{{cont.value.tit}}</a></h2>
               <ul class="post-tags">
                 <li><i class="fa fa-clock-o"></i>{{cont.value.created.substr(0,10)}}</li>
-                <li><i class="fa fa-user"></i>by <a>John Doe</a></li>
-                <li><a><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                <li><i class="fa fa-eye"></i>872</li>
               </ul>
               <p>{{cont.value.description[0].value}}</p>
               <a (click)="routing(cont.id)" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Читать далее</a>

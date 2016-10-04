@@ -14,6 +14,8 @@ import { MainBlogsComponent }   from './Main/MainBlogsComponent';
 import { MainAuthorBlogComponent }   from './Main/MainAuthorBlogComponent';
 import { MainSinglePostComponent }   from './Main/MainSinglePostComponent';
 import { MainAdvertisementComponent }   from './Main/MainAdvertisementComponent';
+import { MainInterviewComponent }   from './Main/MainInterviewComponent';
+import { MainCommentsComponent }   from './Main/MainCommentsComponent';
 
 import { WidgetSocialComponent }   from './Widgets/WidgetSocialComponent';
 import { WidgetAdvertisementComponent }   from './Widgets/WidgetAdvertisementComponent';
@@ -40,6 +42,8 @@ export const DYNAMIC_DIRECTIVES = [
     forwardRef(() => MainAuthorBlogComponent),
     forwardRef(() => MainSinglePostComponent),
     forwardRef(() => MainAdvertisementComponent),
+    forwardRef(() => MainInterviewComponent),
+    forwardRef(() => MainCommentsComponent),
 
     forwardRef(() => WidgetSocialComponent),
     forwardRef(() => WidgetAdvertisementComponent),

@@ -18,13 +18,9 @@ import {Router} from '@angular/router';
                         <img src="{{cont[0].value.img[0].value}}" alt="" style="max-width:368px; max-height: 300px">
                         <div class="hover-box">
                             <div class="inner-hover">
-                                <a class="category-post tech">{{cont[0].value.subsection[0].value}}</a>
                                 <h2><a (click)="routing(cont[0].id)">{{cont[0].value.tit}}</a></h2>
                                 <ul class="post-tags">
-                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                    <li><i class="fa fa-user"></i>by <a>John Doe</a></li>
-                                    <li><a><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                    <li><i class="fa fa-eye"></i>872</li>
+                                    <li><i class="fa fa-clock-o"></i>{{cont[0].value.created.substr(0,10)}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -37,18 +33,14 @@ import {Router} from '@angular/router';
                     <li *ngFor="let cont1 of cont[1]">
                         <img src="{{cont1.value.img[0].value}}" alt="" style="max-width:100px; max-height: 80px">
                         <div class="post-content">
-                            <a>{{cont1.value.subsection[0].value}}</a>
                             <h2><a (click)="routing(cont1.id)">{{cont1.value.tit}}</a></h2>
                             <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
+                                <li><i class="fa fa-clock-o"></i>{{cont1.value.created.substr(0,10)}}</li>
                             </ul>
                         </div>
                     </li>
                 </ul>
             </div>
-        </div>
-        <div class="center-button">
-            <a href="#"><i class="fa fa-refresh"></i> Еще</a>
         </div>
     </div>
     `
