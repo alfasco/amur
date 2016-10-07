@@ -1,6 +1,9 @@
 a {
   cursor: pointer;
 }
+img {
+  width: 100%;
+}
 .navbar-brand,
 .navbar-nav > li > a
 {
@@ -1760,6 +1763,7 @@ ul.post-tags li a
     color: #f44336;
 }ul.post-tags
 {
+  height: 20px;
     margin: 0;padding: 0;
 }ul.post-tags li
 {font-family: Lato,sans-serif;font-size: 12px;font-style: italic;

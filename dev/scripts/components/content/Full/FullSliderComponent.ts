@@ -73,6 +73,7 @@ export class FullSliderComponent implements OnInit {
     ngOnInit() {
         this.component.getComponent('FullSliderComponent').subscribe(
             component => {
+                console.log(component)
                 this.slider = component.content[0];
                 if (this.slider) {
                     for (let i in this.slider) {

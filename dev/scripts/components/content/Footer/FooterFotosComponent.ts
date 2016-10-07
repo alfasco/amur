@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
         <h1>Лучшие фото</h1>
         <ul class="flickr-list" *ngIf="content">
             <li *ngFor="let cont of content">
-                <a (click)="routing(cont.id)"><img src="{{cont.value.img[0].value}}" alt=""></a>
+                <a (click)="routing(cont.id)"><img src="{{cont.value.img[0].value}}" alt="" width="85" height="70"></a>
             </li>
         </ul>
         <a (click)="routing('/foto')">Больше фотографий</a>

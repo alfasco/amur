@@ -19,24 +19,21 @@ import {Router} from '@angular/router';
             <div class="tab-pane" id="option{{i}}" *ngFor="let cont of content; let i = index" [class.active]="i==0">
                 <ul class="list-posts">
                     <li *ngFor="let tab of cont">
-                      <div *ngIf="tab.value.avatar">
-                        <img src="http://portamur.alfasco.ru{{tab.value.avatar[0].value}}" alt="">
-                      </div>
-                      <div *ngIf="!tab.value.avatar">
-                        <img src="http://portamur.alfasco.ru{{tab.value.img[0].value}}" alt="">
-                      </div>
-                      <div class="post-content" >
-                          <h2><a (click)="routing(tab.id)">{{tab.value.tit}}</a></h2>
-                          <ul class="post-tags" *ngIf="i==0">
-                              <li>{{tab.value.datestart[0].title}}: {{tab.value.datestart[0].value}}</li>
-                              <li>{{tab.value.genre[0].title}}: {{tab.value.genre[0].value}}</li>
-                          </ul>
-                          <ul class="post-tags" *ngIf="i==1">
-                          <li>На сцене с: {{tab.value.datestart[0].value}}</li>
-                          <li>{{tab.value.genre[0].title}}: {{tab.value.genre[0].value}}</li>
-                          <li>Театр: {{tab.value.theater[0].value}}</li>
-                          </ul>
-                      </div>
+                        <div>
+                          <img src="http://portamur.alfasco.ru{{out(tab, 'img', 'value')}}" alt="">
+                        </div>
+                        <div class="post-content" >
+                            <h2><a (click)="routing(tab.id)">{{out(tab, 'title', 'value')}}</a></h2>
+                            <ul class="post-tags" *ngIf="i==0">
+                                <li>{{out(tab, 'datestart', 'title')}}: {{out(tab, 'datestart', 'value')}}</li>
+                                <li>{{out(tab, 'genre', 'title')}}: {{out(tab, 'genre', 'value')}}</li>
+                            </ul>
+                            <ul class="post-tags" *ngIf="i==1">
+                              <li>На сцене с: {{out(tab, 'datestart', 'value')}}</li>
+                              <li>{{out(tab, 'genre', 'title')}}: {{out(tab, 'genre', 'value')}}</li>
+                              <li>Театр: {{out(tab, 'theater', 'value')}}</li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -57,11 +54,26 @@ export class WidgetAfishaComponent implements OnInit {
             component => {
                 this.title = component.title;
                 this.content = component.content;
+
             },
             error => console.log(<any>error));
     }
 
     routing(url: any) {
         this.router.navigate(['/' + url])
+    }
+
+    out(object, field, value) {
+        if (object) {
+            if (object.value) {
+                if (object.value[field]) {
+                    if (object.value[field][0]) {
+                        if (object.value[field][0][value]) {
+                            return object.value[field][0][value]
+                        }
+                    }
+                }
+            }
+        }
     }
 };

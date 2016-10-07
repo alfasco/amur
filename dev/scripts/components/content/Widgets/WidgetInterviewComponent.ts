@@ -16,12 +16,14 @@ import {Router} from '@angular/router';
           <li *ngFor="let cont of content">
             <div class="news-post image-post2">
               <div class="post-gallery">
-                <img src="{{cont.value.img[0].value}}" width="368px" height="300px">
+                <img src="{{out(cont,'img','value')}}" width="368px" height="300px">
                 <div class="hover-box">
                   <div class="inner-hover">
-                    <h2><a (click)="routing(cont.value.sourse[0].id)">{{cont.value.tit}}</a></h2>
+                    <h2><a (click)="routing(out(cont,'article','id'))">{{cont.value.tit}}</a></h2>
                     <ul class="post-tags">
                       <li><i class="fa fa-clock-o"></i>{{cont.value.created.substr(0,10)}}</li>
+                      <li *ngIf="cont.value.autor"><i class="fa fa-user"></i>{{out(cont,'autor','value')}}</li>
+                      <li *ngIf="cont.value.counter"><i class="fa fa-eye"></i>{{out(cont,'counter','value')}}</li>
                     </ul>
                   </div>
                 </div>
@@ -73,5 +75,20 @@ export class WidgetInterviewComponent implements OnInit {
 
     routing(url: any) {
         this.router.navigate(['/' + url])
+    }
+
+    out(object, field, value) {
+        if (object) {
+            if (object.value) {
+                if (object.value[field]) {
+                    if (object.value[field][0]) {
+                        if (object.value[field][0][value]) {
+                            return object.value[field][0][value]
+                        }
+                    }
+                }
+            }
+        }
+        return ''
     }
 };
