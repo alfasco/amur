@@ -10,7 +10,7 @@ import 'rxjs/Rx'
 import {Router} from '@angular/router';
 
 @Component({
-    selector: 'MainInterviewComponent',
+    selector: 'MainArchiveInterviewComponent',
     providers: [ComponentService],
     template: `
     <div class="review-box" *ngIf="content.length">
@@ -67,7 +67,7 @@ import {Router} from '@angular/router';
         '.member-skills .meter p {height: 100%;background: #f44336;text-align: right;margin: 0;-webkit-border-radius: 5px;-moz-border-radius: 5px;-o-border-radius: 5px;border-radius: 5px;}'
     ]
 })
-export class MainInterviewComponent implements OnInit {
+export class MainArchiveInterviewComponent implements OnInit {
     @Input() public idComponent: string;
     content = [];
     title: any;

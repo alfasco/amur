@@ -11,9 +11,9 @@ import {Router} from '@angular/router';
         <h1>Интересные новости</h1>
         <ul class="list-posts">
             <li *ngFor="let cont of content">
-                <img src="{{cont.value.img[0].value}}" alt="">
+                <img src="{{out(cont, 'img', 'value')}}" alt="">
                 <div class="post-content">
-                    <a (click)="routing('/')">{{cont.value.subsection[0].value}}</a>
+                    <a (click)="routing('/')">{{out(cont, 'subsection', 'value')}}</a>
                     <h2><a (click)="routing(cont.id)">{{cont.value.tit}}</a></h2>
                     <ul class="post-tags">
                         <li><i class="fa fa-clock-o"></i>{{cont.value.created.substr(0,10)}}</li>
@@ -41,6 +41,20 @@ export class FooterRandomPostComponent implements OnInit {
                 }
             },
             error => console.log(<any>error));
+    }
+
+    out(object, field, value) {
+        if (object) {
+            if (object.value) {
+                if (object.value[field]) {
+                    if (object.value[field][0]) {
+                        if (object.value[field][0][value]) {
+                            return object.value[field][0][value]
+                        }
+                    }
+                }
+            }
+        }
     }
 
     routing(url: any) {
