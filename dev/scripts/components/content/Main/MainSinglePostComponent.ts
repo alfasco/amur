@@ -9,16 +9,16 @@ import {Location} from '@angular/common';
     <div class="single-post-box" *ngIf="content">
       <div *ngIf="video">
         <div class="news-post video-post">
-            <img alt="" src="http://portamur.alfasco.ru{{content.value.img[0].value}}">
-            <a href="{{content.value.video[0].value}}" class="video-link"><i class="fa fa-play-circle-o"></i></a>
+            <img alt="" src="http://portamur.alfasco.ru{{out(content,'img','value')}}">
+            <a href="{{out(content,'video','value')}}" class="video-link"><i class="fa fa-play-circle-o"></i></a>
         </div>
       </div>
       <div class="title-post">
-        <h1>{{content.value.tit}}</h1>
+        <h1>{{out(content,'title','value')}}</h1>
         <ul class="post-tags">
-          <li><i class="fa fa-clock-o"></i>{{content.value.created.substr(0,10)}}</li>
-          <li *ngIf="content.value.autor"><i class="fa fa-user"></i>{{content.value.autor[0].value}}</li>
-          <li *ngIf="content.value.counter"><i class="fa fa-eye"></i>{{content.value.counter[0].value}}</li>
+          <li><i class="fa fa-clock-o"></i>{{out(content,'time','value')}}&nbsp;&nbsp;&nbsp;{{out(content,'date','value')}}</li>
+          <li><i class="fa fa-user"></i>{{out(content,'owner','value')}}</li>
+          <li><i class="fa fa-eye"></i>{{out(content,'counter','value')}}</li>
         </ul>
       </div>
       <div class="share-post-box">
@@ -28,12 +28,12 @@ import {Location} from '@angular/common';
       <div class="post-gallery" *ngIf="gallery">
         <ul class="bxslider">
           <li *ngFor="let img of gallery" style="list-style: none;">
-            <img src="{{img.value.file[0].value}}" alt="">
+            <img src="{{out(img,'file','value')}}" alt="">
           </li>
         </ul>
       </div>
 
-      <div class="post-content" [innerHTML]="content.value.content[0].value"></div>
+      <div class="post-content" [innerHTML]="out(content,'content','value')"></div>
 
       <div class="share-post-box">
 
@@ -71,7 +71,6 @@ export class MainSinglePostComponent implements OnInit {
             component => {
                 this.content = component.content[0];
                 this.gallery = component.gallery;
-                console.log(component)
                 if (this.content.value.content[0].value) {
                     this.content.value.content[0].value = this.content.value.content[0].value.replace(/\/upload\//g, 'http://portamur.alfasco.ru/upload/')
                 }
@@ -118,5 +117,19 @@ export class MainSinglePostComponent implements OnInit {
                 }, 500)
             },
             error => console.log(<any>error));
+    }
+
+    out(object, field, value) {
+        if (object) {
+            if (object.value) {
+                if (object.value[field]) {
+                    if (object.value[field][0]) {
+                        if (object.value[field][0][value]) {
+                            return object.value[field][0][value]
+                        }
+                    }
+                }
+            }
+        }
     }
 };

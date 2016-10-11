@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
     template: `
     <div class="widget features-slide-widget">
       <div class="title-section">
-        <h1><span>{{title}}</span></h1>
+      <a (click)="routing('/arhiveInterview')"><h1><span>{{title}}</span></h1></a>
       </div>
       <div class="image-post-slider">
         <ul class="bxsliderInterview">
@@ -21,9 +21,9 @@ import {Router} from '@angular/router';
                   <div class="inner-hover">
                     <h2><a (click)="routing(out(cont,'article','id'))">{{cont.value.tit}}</a></h2>
                     <ul class="post-tags">
-                      <li><i class="fa fa-clock-o"></i>{{cont.value.created.substr(0,10)}}</li>
-                      <li *ngIf="cont.value.autor"><i class="fa fa-user"></i>{{out(cont,'autor','value')}}</li>
-                      <li *ngIf="cont.value.counter"><i class="fa fa-eye"></i>{{out(cont,'counter','value')}}</li>
+                      <li><i class="fa fa-clock-o"></i>{{out(cont,'date','value')}}</li>
+                      <li><i class="fa fa-user"></i>{{out(cont,'owner','value')}}</li>
+                      <li><i class="fa fa-eye"></i>{{out(cont,'counter','value')}}</li>
                     </ul>
                   </div>
                 </div>
@@ -89,6 +89,5 @@ export class WidgetInterviewComponent implements OnInit {
                 }
             }
         }
-        return ''
     }
 };

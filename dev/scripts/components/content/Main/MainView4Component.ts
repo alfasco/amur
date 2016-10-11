@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
     <div class="carousel-box owl-wrapper">
 
       <div class="title-section">
-        <h1><span>{{title}}</span></h1>
+        <a (click)="routing(link)"><h1><span>{{title}}</span></h1></a>
       </div>
 
       <div class="owl-carousel mainview4" data-num="2">
@@ -18,18 +18,23 @@ import {Router} from '@angular/router';
         <div class="item" *ngFor="let cont of content">
           <div class="news-post image-post2" *ngFor="let cont1 of cont">
             <div class="post-gallery">
-              <img src="{{cont1.value.img[0].value}}" alt="">
+              <img src="{{out(cont1,'img','value')}}" alt="">
               <div class="hover-box">
                 <div class="inner-hover">
-                  <h2><a (click)="routing(cont1.id)">{{cont1.value.tit}}</a></h2>
+                  <h2><a (click)="routing(cont1.id)">{{out(cont1,'title','value')}}</a></h2>
                   <ul class="post-tags">
-                    <li><i class="fa fa-clock-o"></i>{{cont1.value.created.substr(0,10)}}</li>
+                    <li><i class="fa fa-clock-o"></i>{{out(cont1,'date','value')}}</li>
+                    <li><i class="fa fa-user"></i>{{out(cont1,'owner','value')}}</li>
+                    <li><i class="fa fa-eye"></i>{{out(cont1,'counter','value')}}</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div class="center-button">
+        <a (click)="routing(link)"><i class="fa fa-refresh"></i> Больше</a>
       </div>
 
     </div>`
@@ -38,6 +43,7 @@ export class MainView4Component implements OnInit {
     @Input() public idComponent: string;
     content: any;
     title: any;
+    public link = "";
 
     constructor(private component: ComponentService, private router: Router) {
         this.content = []
@@ -86,6 +92,20 @@ export class MainView4Component implements OnInit {
                 }
             },
             error => console.log(<any>error));
+    }
+
+    out(object, field, value) {
+        if (object) {
+            if (object.value) {
+                if (object.value[field]) {
+                    if (object.value[field][0]) {
+                        if (object.value[field][0][value]) {
+                            return object.value[field][0][value]
+                        }
+                    }
+                }
+            }
+        }
     }
 
     routing(url: any) {

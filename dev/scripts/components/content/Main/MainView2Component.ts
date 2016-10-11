@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
     template: `
     <div class="carousel-box owl-wrapper">
         <div class="title-section">
-            <h1><span class="world">{{title}}</span></h1>
+            <a (click)="routing(link)"><h1><span class="world">{{title}}</span></h1></a>
         </div>
 
         <div class="owl-carousel mainview2" data-num="2">
@@ -17,12 +17,14 @@ import {Router} from '@angular/router';
             <div class="item" *ngFor="let cont of content">
                 <div class="news-post image-post2">
                     <div class="post-gallery">
-                        <img src="{{cont[0].value.img[0].value}}" alt="" style="max-width:368px; max-height: 300px">
+                        <img src="{{out(cont[0],'img','value')}}" alt="" style="max-width:368px; max-height: 300px">
                         <div class="hover-box">
                             <div class="inner-hover">
-                                <h2><a (click)="routing(cont[0].id)">{{cont[0].value.tit}}</a></h2>
+                                <h2><a (click)="routing(cont[0].id)">{{out(cont[0],'title','value')}}</a></h2>
                                 <ul class="post-tags">
-                                    <li><i class="fa fa-clock-o"></i>{{cont[0].value.created.substr(0,10)}}</li>
+                                    <li><i class="fa fa-clock-o"></i>{{out(cont[0],'date','value')}}</li>
+                                    <li><i class="fa fa-user"></i>{{out(cont[0],'owner','value')}}</li>
+                                    <li><i class="fa fa-eye"></i>{{out(cont[0],'counter','value')}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -31,16 +33,20 @@ import {Router} from '@angular/router';
 
                 <ul class="list-posts">
                     <li *ngFor="let cont1 of cont[1]">
-                        <img src="{{cont1.value.img[0].value}}" alt="" style="max-width:100px; max-height: 80px">
+                        <img src="{{out(cont1,'img','value')}}" alt="" style="max-width:100px; max-height: 80px">
                         <div class="post-content">
-                            <h2><a (click)="routing(cont1.id)">{{cont1.value.tit}}</a></h2>
-                            <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i>{{cont1.value.created.substr(0,10)}}</li>
-                            </ul>
+                          <a (click)="routing('/' + out(cont1,'subsection','id'))">{{out(cont1,'subsection','value')}}</a>
+                          <h2><a (click)="routing(cont1.id)">{{out(cont1,'title','value')}}</a></h2>
+                          <ul class="post-tags">
+                              <li><i class="fa fa-clock-o"></i>{{out(cont1,'date','value')}}</li>
+                          </ul>
                         </div>
                     </li>
                 </ul>
             </div>
+        </div>
+        <div class="center-button">
+          <a (click)="routing(link)"><i class="fa fa-refresh"></i> Больше</a>
         </div>
     </div>`
 })
@@ -48,6 +54,7 @@ export class MainView2Component implements OnInit {
     @Input() public idComponent: string;
     content: any;
     title: any;
+    public link = "";
 
     constructor(private component: ComponentService, private router: Router) {
         this.content = []
@@ -57,6 +64,8 @@ export class MainView2Component implements OnInit {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
                 this.title = component.title;
+                this.link = component.link;
+                console.log(component.content.length)
                 if (component.content.length >= 12) {
                     if (component.content) {
                         for (let i in component.content) {
@@ -98,6 +107,20 @@ export class MainView2Component implements OnInit {
                 }
             },
             error => console.log(<any>error));
+    }
+
+    out(object, field, value) {
+        if (object) {
+            if (object.value) {
+                if (object.value[field]) {
+                    if (object.value[field][0]) {
+                        if (object.value[field][0][value]) {
+                            return object.value[field][0][value]
+                        }
+                    }
+                }
+            }
+        }
     }
 
     routing(url: any) {

@@ -10,17 +10,17 @@ import {Router} from '@angular/router';
     <div class="carousel-box owl-wrapper">
 
         <div class="title-section">
-            <h1><span>{{title}}</span></h1>
+            <a (click)="routing(link)"><h1><span>{{title}}</span></h1></a>
         </div>
 
         <div class="owl-carousel maingallery" data-num="3">
 
             <div class="item news-post image-post3" *ngFor="let item of content">
-                <img src="{{item.value.img[0].value}}" alt="" width="185px" height="180px">
+                <img src="{{out(item,'img','value')}}" alt="" width="185px" height="180px">
                 <div class="hover-box">
-                    <h2><a (click)="routing(item.id)">{{item.value.tit}}</a></h2>
+                    <h2><a (click)="routing(item.id)">{{out(item,'title','value')}}</a></h2>
                     <ul class="post-tags">
-                        <li><i class="fa fa-clock-o"></i>{{item.value.created.substr(0,10)}}</li>
+                        <li><i class="fa fa-clock-o"></i>{{out(item,'date','value')}}</li>
                     </ul>
                 </div>
             </div>
@@ -32,6 +32,7 @@ export class MainGalleryComponent implements OnInit {
     @Input() public idComponent: string;
     content: any;
     title: any;
+    public link = "";
 
     constructor(private component: ComponentService, private router: Router) {
         this.content = []
@@ -41,6 +42,7 @@ export class MainGalleryComponent implements OnInit {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
                 this.title = component.title;
+                this.link = component.link;
                 if (component.content) {
                     for (let i in component.content) {
                         component.content[i].value.img[0].value = 'http://portamur.alfasco.ru' + component.content[i].value.img[0].value.replace(/\/images\//i, '/images/185x180/')
@@ -77,6 +79,20 @@ export class MainGalleryComponent implements OnInit {
                 }, 200)
             },
             error => console.log(<any>error));
+    }
+
+    out(object, field, value) {
+        if (object) {
+            if (object.value) {
+                if (object.value[field]) {
+                    if (object.value[field][0]) {
+                        if (object.value[field][0][value]) {
+                            return object.value[field][0][value]
+                        }
+                    }
+                }
+            }
+        }
     }
 
     routing(url: any) {

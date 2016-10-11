@@ -9,15 +9,17 @@ import {Router} from '@angular/router';
     template: `
     <div class="widget post-widget" *ngIf="content">
         <div class="title-section">
-            <h1><span>{{title}}</span></h1>
+            <a (click)="routing(content.id)"><h1><span>{{title}}</span></h1></a>
         </div>
         <div class="news-post video-post">
-            <img alt="" src="{{content.value.img[0].value}}" width="370px" height="230px">
-            <a href="{{content.value.video[0].value}}" class="video-link"><i class="fa fa-play-circle-o"></i></a>
+            <img alt="" src="{{out(content,'img','value')}}" width="370px" height="230px">
+            <a href="{{out(content,'video','value')}}" class="video-link"><i class="fa fa-play-circle-o"></i></a>
             <div class="hover-box">
-                <h2><a (click)="routing(content.id)">{{content.value.tit}}</a></h2>
+                <h2><a (click)="routing(content.id)">{{out(content,'title','value')}}</a></h2>
                 <ul class="post-tags">
-                    <li><i class="fa fa-clock-o"></i>{{content.value.created.substr(0,10)}}</li>
+                    <li><i class="fa fa-clock-o"></i>{{out(content,'date','value')}}</li>
+                    <li><i class="fa fa-user"></i>{{out(content,'owner','value')}}</li>
+                    <li><i class="fa fa-eye"></i>{{out(content,'counter','value')}}</li>
                 </ul>
             </div>
         </div>
@@ -56,6 +58,20 @@ export class WidgetVideoComponent implements OnInit {
 
             },
             error => console.log(<any>error));
+    }
+
+    out(object, field, value) {
+        if (object) {
+            if (object.value) {
+                if (object.value[field]) {
+                    if (object.value[field][0]) {
+                        if (object.value[field][0][value]) {
+                            return object.value[field][0][value]
+                        }
+                    }
+                }
+            }
+        }
     }
 
     routing(url: any) {

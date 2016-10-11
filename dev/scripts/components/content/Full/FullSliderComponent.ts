@@ -9,30 +9,21 @@ import {Router} from '@angular/router';
     <section class="heading-news2">
 
         <div class="container">
-
-            <!-- <div class="ticker-news-box">
-                <span class="breaking-news">breaking news</span>
-                <ul id="js-news">
-                    <li class="news-item"><span class="time-news">11:36 pm</span> <a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</a> Donec odio. Quisque volutpat mattis eros... </li>
-                    <li class="news-item"><span class="time-news">12:40 pm</span> <a href="#">Dëshmitarja Abrashi: E kam parë Oliverin në turmë,</a> ndërsa neve na shpëtoi “çika Mille” </li>
-                    <li class="news-item"><span class="time-news">11:36 pm</span> <a href="#">Franca do të bashkëpunojë me Kosovën në fushën e shëndetësisë. </a></li>
-                    <li class="news-item"><span class="time-news">01:00 am</span> <a href="#">DioGuardi, kështu e mbrojti Kosovën në Washington, </a> para serbit Vejvoda </li>
-                </ul>
-            </div> -->
-
             <div class="iso-call heading-news-box">
                 <div class="image-slider snd-size">
                     <span class="top-stories">Популярное</span>
                     <ul class="bxslider">
                         <li *ngFor="let cont of slider">
                             <div class="news-post image-post fullslider">
-                                <img src="{{cont.value.img[0].value}}" alt="">
+                                <img src="{{out(cont, 'img', 'value')}}" alt="">
                                 <div class="hover-box">
                                     <div class="inner-hover">
                                         <!-- <a class="category-post sport" href="sport.html">{{cont.value.subsection[0].value}}</a>-->
-                                        <h2><a (click)="routing(cont.id)">{{cont.value.tit}}</a></h2>
+                                        <h2><a (click)="routing(cont.id)">{{out(cont, 'title', 'value')}}</a></h2>
                                         <ul class="post-tags">
-                                            <li><i class="fa fa-clock-o"></i>{{cont.value.created.substr(0,10)}}</li>
+                                        <li><i class="fa fa-clock-o"></i>{{out(cont,'date','value')}}</li>
+                                        <li><i class="fa fa-user"></i>{{out(cont,'owner','value')}}</li>
+                                        <li><i class="fa fa-eye"></i>{{out(cont,'counter','value')}}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -42,15 +33,16 @@ import {Router} from '@angular/router';
                 </div>
 
                 <div class="news-post image-post default-size" *ngFor="let cont of list">
-                    <img src="{{cont[0].value.img[0].value}}" alt="">
+                    <img src="{{out(cont[0], 'img', 'value')}}" alt="">
                     <div class="hover-box">
                         <div class="inner-hover">
                           <!--   <a class="category-post travel" href="travel.html">{{cont[0].value.subsection[0].value}}</a>-->
-                            <h2><a (click)="routing(cont[0].id)">{{cont[0].value.tit}}</a></h2>
+                            <h2><a (click)="routing(cont[0].id)">{{out(cont[0], 'title', 'value')}}</a></h2>
                             <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i><span>{{cont[0].value.created.substr(0,10)}}</span></li>
+                                <li><i class="fa fa-clock-o"></i><span>{{out(cont[0], 'date', 'value')}}</span></li>
+                                <li><i class="fa fa-eye"></i><span>{{out(cont[0], 'counter', 'value')}}</span></li>
                             </ul>
-                            <p>{{cont[0].value.description[0].value}}</p>
+                            <p>{{out(cont[0], 'description', 'value')}}</p>
                         </div>
                     </div>
                 </div>
@@ -194,6 +186,20 @@ export class FullSliderComponent implements OnInit {
                 }, 150)
             },
             error => console.log(<any>error));
+    }
+
+    out(object, field, value) {
+        if (object) {
+            if (object.value) {
+                if (object.value[field]) {
+                    if (object.value[field][0]) {
+                        if (object.value[field][0][value]) {
+                            return object.value[field][0][value]
+                        }
+                    }
+                }
+            }
+        }
     }
 
     routing(url: any) {
