@@ -23,8 +23,8 @@ import {Router} from '@angular/router';
                           <img src="http://portamur.alfasco.ru{{out(tab, 'img', 'value')}}" alt="">
                         </div>
                         <div class="post-content" >
-                            <h2><a (click)="routing(tab.id)">{{out(tab, 'title', 'value')}}</a></h2>
                             <ul class="post-tags" *ngIf="i==0">
+                                <h2><a (click)="routing('viewFilm/' + tab.id)">{{out(tab, 'title', 'value')}}</a></h2>
                                 <li>{{out(tab, 'datestart', 'title')}}: {{out(tab, 'datestart', 'value')}}</li>
                                 <li>{{out(tab, 'genre', 'title')}}: {{out(tab, 'genre', 'value')}}</li>
                             </ul>

@@ -10,9 +10,11 @@ import { MainView4Component }   from './Main/MainView4Component';
 import { MainGalleryComponent }   from './Main/MainGalleryComponent';
 import { MainVideoComponent }   from './Main/MainVideoComponent';
 import { MainList1Component }   from './Main/MainList1Component';
+import { MainListAfishaComponent }   from './Main/MainListAfishaComponent';
 import { MainBlogsComponent }   from './Main/MainBlogsComponent';
 import { MainAuthorBlogComponent }   from './Main/MainAuthorBlogComponent';
 import { MainSinglePostComponent }   from './Main/MainSinglePostComponent';
+import { MainAfishaComponent }   from './Main/MainAfishaComponent';
 import { MainAdvertisementComponent }   from './Main/MainAdvertisementComponent';
 import { MainInterviewComponent }   from './Main/MainInterviewComponent';
 import { MainArchiveInterviewComponent }   from './Main/MainArchiveInterviewComponent';
@@ -39,9 +41,11 @@ export const DYNAMIC_DIRECTIVES = [
     forwardRef(() => MainGalleryComponent),
     forwardRef(() => MainVideoComponent),
     forwardRef(() => MainList1Component),
+    forwardRef(() => MainListAfishaComponent),
     forwardRef(() => MainBlogsComponent),
     forwardRef(() => MainAuthorBlogComponent),
     forwardRef(() => MainSinglePostComponent),
+    forwardRef(() => MainAfishaComponent),
     forwardRef(() => MainAdvertisementComponent),
     forwardRef(() => MainInterviewComponent),
     forwardRef(() => MainArchiveInterviewComponent),

@@ -59,6 +59,7 @@ export class MainView4Component implements OnInit {
                     }
                 }
                 this.content = component.content;
+                this.link = component.link;
                 if (component.content.length >= 6) {
                     this.content = [[component.content[0], component.content[1]], [component.content[2], component.content[3]], [component.content[4], component.content[5]]];
                     let interval = setInterval(() => {

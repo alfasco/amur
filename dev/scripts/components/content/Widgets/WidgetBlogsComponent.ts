@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
     template: `
     <div class="widget recent-comments-widget">
       <div class="title-section">
-        <h1><span>{{title}}</span></h1>
+        <a (click)="routing('/blogers')"><h1><span>{{title}}</span></h1></a>
       </div>
       <div class="owl-wrapper">
         <div class="owl-carousel widgetblogs" data-num="1">
@@ -23,7 +23,7 @@ import {Router} from '@angular/router';
                       {{author.value.description[0].value}}
                     </p>
                     <p><a (click)="routing(author.id)">{{author.value.title[0].value}}</a></p>
-                    <span><i class="fa fa-user"></i>{{author.value.owner[0].value}}</span>
+                    <span><i class="fa fa-user"></i>{{out(author,'owner','value')}}</span>
                   </div>
                 </div>
               </li>
@@ -53,6 +53,7 @@ export class WidgetBlogsComponent implements OnInit {
     @Input() public idComponent: string;
     public content = [];
     public title: any;
+    public link = "";
 
     constructor(private component: ComponentService, private router: Router) { }
 
@@ -62,7 +63,8 @@ export class WidgetBlogsComponent implements OnInit {
             component => {
                 this.title = component.title;
                 this.content = component.content;
-
+                this.link = component.link;
+                console.log(component)
                 if (this.content) {
                     for (let i in this.content) {
                         this.content[i].value.avatar = 'http://portamur.alfasco.ru' + this.content[i].value.avatar.replace(/\/images\//i, '/images/70x70/')
@@ -99,6 +101,20 @@ export class WidgetBlogsComponent implements OnInit {
                 }, 100)
             },
             error => console.log(<any>error));
+    }
+
+    out(object, field, value) {
+        if (object) {
+            if (object.value) {
+                if (object.value[field]) {
+                    if (object.value[field][0]) {
+                        if (object.value[field][0][value]) {
+                            return object.value[field][0][value]
+                        }
+                    }
+                }
+            }
+        }
     }
 
     routing(url: any) {

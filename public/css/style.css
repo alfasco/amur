@@ -1979,7 +1979,7 @@ ul.list-posts > li .post-content h2
 {
     margin-bottom: 20px;
 }.video-post a.video-link
-{font-size: 30px;position: absolute;top: 20px;left: 20px;padding: 1px;-webkit-transition: all .2s ease-in-out;
+{font-size: 30px;position: absolute;top: 0;left: 0; right: 0; bottom: 0;padding: 1px;-webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;-o-transition: all .2s ease-in-out;color: #fff;outline: 0;
 }.video-post a:hover
 {
