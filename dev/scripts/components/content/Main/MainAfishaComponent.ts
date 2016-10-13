@@ -37,7 +37,7 @@ import {Location} from '@angular/common';
             <p>{{out(content,'description','value')}}</p>
           </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-bottom: 20px;">
           <div class="col-md-12">
             <div class="title-section">
               <h1><span>Трейлер</span></h1>
@@ -74,7 +74,6 @@ import {Location} from '@angular/common';
                           <div class="row" *ngFor="let hall of cinema.hall">
                             <div class="col-md-12" style="padding-bottom: 15px;">
                               <p style="padding:0px; margin:0px;">Зал: {{hall.title}}</p>
-                              <p style="padding:0px; margin:0px;">Цена: {{hall.price}}</p>
                               <p style="padding:0px; margin:0px;">Сеансы: {{hall.time}} </p>
                             </div>
           								</div>
