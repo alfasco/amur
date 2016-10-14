@@ -6,7 +6,7 @@ import {ComponentService} from '../../services/component';
     providers: [ComponentService],
     template: `
     <div class="widget social-widget">
-        <h1>Присоеденяйтесь</h1>
+        <h1>Присоединяйтесь</h1>
         <ul class="social-icons">
             <li><a href="#" class="facebook"><i class="fa fa-facebook" style="line-height: 40px;"></i></a></li>
             <li><a href="#" class="google"><i class="fa fa-google-plus" style="line-height: 40px;"></i></a></li>

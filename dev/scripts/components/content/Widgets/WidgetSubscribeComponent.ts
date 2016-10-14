@@ -12,7 +12,7 @@ import {ComponentService} from '../../services/component';
             <button id="submit-subscribe" (click)="send()">
     										<i class="fa fa-arrow-circle-right"></i>
     									</button>
-            <p>Получайте все актуальные новости и статитьи на свою почту несколько раз в месяц.</p>
+            <p>Получайте самые интересные новости и статьи на свою почту каждый день</p>
         </form>
         <h1 *ngIf="ready">Подписка оформлена!</h1>
     </div>`
