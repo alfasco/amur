@@ -17,7 +17,7 @@ import {Router, ActivatedRoute} from '@angular/router';
   			<div class="col-md-6" *ngFor="let post of content">
   				<div class="news-post standard-post2">
   					<div class="post-gallery">
-  						<img src="{{post.value.img[0].value}}" alt="" width="330" height="260">
+  						<a (click)="routing(post.id)"><img src="{{post.value.img[0].value}}" alt="" width="330" height="260"></a>
   						<a *ngIf="post.value.subsection" [class]="'category-post ' + post.color" (click)="routing(post.value.subsection[0].id)">{{post.value.subsection[0].value}}</a>
   					</div>
   					<div class="post-title">
