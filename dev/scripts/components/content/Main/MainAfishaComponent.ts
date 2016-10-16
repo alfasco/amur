@@ -51,25 +51,35 @@ import {Location} from '@angular/common';
             </div>
             <div class="about-more-autor">
 									<ul class="nav nav-tabs">
-										<li *ngFor="let day of session; let i = index;">
+										<li *ngFor="let day of session; let i = index;" [class.active]="i==0">
 											<a href="#{{i}}" data-toggle="tab" aria-expanded="true">{{day.title}}</a>
 										</li>
 									</ul>
 
 									<div class="tab-content">
 
-										<div class="tab-pane" id="{{i}}" style="padding-top:10px;" *ngFor="let day of session; let i = index;">
-                      <div *ngFor="let cinema of day.content" class="row">
-                        <div class="col-md-3">
-                          <p><b>{{cinema.title}}</b></p>
-                        </div>
-                        <div class="col-md-5">
-                          <div class="row" *ngFor="let hall of cinema.hall">
-                            <div class="col-md-12" style="padding-bottom: 15px;">
-                              <p style="padding:0px; margin:0px;">Зал: {{hall.title}}</p>
-                              <p style="padding:0px; margin:0px;">Сеансы: {{hall.time}} </p>
+										<div class="tab-pane" id="{{i}}" style="padding-top:10px;" *ngFor="let day of session; let i = index;" [class.active]="i==0">
+                      <div *ngIf="day.title=='Ещё'">
+                        <div *ngFor="let cinema of day.content" class="row">
+                          <div class="row">
+                            <div class="col-md-3">
+                              <p><b>{{cinema.date}}</b></p>
                             </div>
-          								</div>
+                            <div class="col-md-5" *ngFor="let cin of cinema.sessions">
+                              <p style="padding:0px; margin:0px;"><b>{{cin.theater}}</b></p>
+                              <p style="padding:0px; margin:0px;">Сеансы: {{cin.time}} </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div *ngIf="day.title!='Ещё'">
+                        <div *ngFor="let cinema of day.content.sessions" class="row">
+                          <div class="col-md-3">
+                            <p><b>{{cinema.theater}}</b></p>
+                          </div>
+                          <div class="col-md-5">
+                            <p style="padding:0px; margin:0px;">Сеансы: {{cinema.time}} </p>
+                          </div>
                         </div>
                       </div>
 										</div>
