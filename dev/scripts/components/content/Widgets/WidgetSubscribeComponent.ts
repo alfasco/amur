@@ -7,7 +7,7 @@ import {ComponentService} from '../../services/component';
     template: `
     <div class="widget subscribe-widget">
         <form class="subscribe-form" *ngIf="!ready">
-            <h1>Подписшитесь на новости</h1>
+            <h1>Подпишитесь на новости</h1>
             <input type="text" name="sumbscribe" id="subscribe" placeholder="Email" [(ngModel)]="email.value"/>
             <button id="submit-subscribe" (click)="send()">
     										<i class="fa fa-arrow-circle-right"></i>

@@ -3,7 +3,7 @@ import {ComponentService} from '../../services/component';
 import {Location} from '@angular/common';
 
 @Component({
-    selector: 'MainAfishaComponent',
+    selector: 'MainSceneComponent',
     providers: [ComponentService],
     template: `
     <div class="single-post-box" *ngIf="content">
@@ -23,9 +23,9 @@ import {Location} from '@angular/common';
             <h4 style="padding:0 20px;">
               {{out(content,'genre','value')}}, {{out(content,'old','value')}}
             </h4>
+            <p><b>{{out(content,'operator','title')}}:</b> {{out(content,'operator','value')}}</p>
             <p><b>{{out(content,'director','title')}}:</b> {{out(content,'director','value')}}</p>
             <p><b>{{out(content,'actors','title')}}:</b> {{out(content,'actors','value')}}</p>
-            <p><b>{{out(content,'datestart','title')}}:</b> {{out(content,'datestart','value')}}</p>
           </div>
         </div>
         <div class="row">
@@ -33,59 +33,13 @@ import {Location} from '@angular/common';
             <p>{{out(content,'description','value')}}</p>
           </div>
         </div>
-        <div class="row" style="margin-bottom: 20px;">
-          <div class="col-md-12">
-            <div class="title-section">
-              <h1><span>Трейлер</span></h1>
-            </div>
-            <div class="news-post video-post">
-                <img alt="" src="http://portamur.alfasco.ru{{out(content,'trailer_img','value')}}">
-                <a href="{{out(content,'trailer','value')}}" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-            </div>
-          </div>
-        </div>
+
         <div class="row">
           <div class="col-md-12">
             <div class="title-section">
-              <h1><span>Расписание сеансов</span></h1>
+              <h1><span>Место и время проведения</span></h1>
             </div>
-            <div class="about-more-autor">
-									<ul class="nav nav-tabs">
-										<li *ngFor="let day of session; let i = index;" [class.active]="i==0">
-											<a href="#{{i}}" data-toggle="tab" aria-expanded="true">{{day.title}}</a>
-										</li>
-									</ul>
-
-									<div class="tab-content">
-
-										<div class="tab-pane" id="{{i}}" style="padding-top:10px;" *ngFor="let day of session; let i = index;" [class.active]="i==0">
-                      <div *ngIf="day.title=='Ещё'" style="padding-top:10px;">
-                        <div *ngFor="let cinema of day.content" class="row" style="padding-top:10px;">
-                          <div class="row">
-                            <div class="col-md-3">
-                              <p><b>{{cinema.date}}</b></p>
-                            </div>
-                            <div class="col-md-5" *ngFor="let cin of cinema.sessions">
-                              <p style="padding:0px; margin:0px;"><b>{{cin.theater}}</b></p>
-                              <p style="padding:0px; margin:0px;">Сеансы: {{cin.time}} </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div *ngIf="day.title!='Ещё'" style="padding-top:10px;">
-                        <div *ngFor="let cinema of day.content.sessions" class="row" style="padding-top:10px;">
-                          <div class="col-md-3">
-                            <p><b>{{cinema.theater}}</b></p>
-                          </div>
-                          <div class="col-md-5">
-                            <p style="padding:0px; margin:0px;">Сеансы: {{cinema.time}} </p>
-                          </div>
-                        </div>
-                      </div>
-										</div>
-
-									</div>
-								</div>
+            <h4>{{out(session,'theater','value')}} <small>- {{out(session,'datestart','value')}} {{out(session,'timestart','value')}}</small></h4>
           </div>
         </div>
       </div>
@@ -95,7 +49,7 @@ import {Location} from '@angular/common';
         '.single-post-box .about-more-autor ul.nav-tabs li {width: 33.33333333%;}'
     ]
 })
-export class MainAfishaComponent implements OnInit {
+export class MainSceneComponent implements OnInit {
     @Input() public idComponent: string;
     public content: any;
     public session: any;
@@ -110,7 +64,7 @@ export class MainAfishaComponent implements OnInit {
             component => {
                 console.log(component)
                 this.content = component.content[0];
-                this.session = component.session;
+                this.session = component.session[0];
 
 
                 setTimeout(() => {

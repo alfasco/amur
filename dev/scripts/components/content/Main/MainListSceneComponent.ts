@@ -4,7 +4,7 @@ import {ComponentService} from '../../services/component';
 import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
-    selector: 'MainListAfishaComponent',
+    selector: 'MainListSceneComponent',
     providers: [ComponentService],
     template: `
     <div class="grid-box" *ngIf="content">
@@ -21,23 +21,18 @@ import {Router, ActivatedRoute} from '@angular/router';
   						<a *ngIf="post.value.subsection" [class]="'category-post ' + post.color" (click)="routing(post.value.subsection[0].id)">{{post.value.subsection[0].value}}</a>
   					</div>
   					<div class="post-title">
-  						<h2><a (click)="routing('viewFilm/' + post.id)">{{post.value.tit}}</a></h2>
-  						<ul class="post-tags">
-  							<li><i class="fa fa-clock-o"></i>{{post.value.created.substr(0,10)}}</li>
-                <li *ngIf="post.value.autor"><i class="fa fa-user"></i>{{post.value.autor[0].value}}</li>
-                <li *ngIf="post.value.counter"><i class="fa fa-eye"></i>{{post.value.counter[0].value}}</li>
-  						</ul>
+  						<h2><a (click)="routing('viewScene/' + post.id)">{{post.value.tit}}</a></h2>
   					</div>
   					<div class="post-content">
   						<p>{{post.value.description[0].value}}</p>
-  						<a (click)="routing('viewFilm/' + post.id)" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Подробнее</a>
+  						<a (click)="routing('viewScene/' + post.id)" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Подробнее</a>
   					</div>
   				</div>
   			</div>
   		</div>
   	</div>`
 })
-export class MainListAfishaComponent implements OnInit {
+export class MainListSceneComponent implements OnInit {
     @Input() public idComponent: string;
     public content = [];
     public title: any;

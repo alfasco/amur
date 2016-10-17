@@ -19,21 +19,25 @@ import {Router} from '@angular/router';
             <div class="tab-pane" id="option{{i}}" *ngFor="let cont of content; let i = index" [class.active]="i==0">
                 <ul class="list-posts">
                     <li *ngFor="let tab of cont">
-                        <div>
+                      <div class="row">
+                        <div class="col-sm-3">
                           <img src="http://portamur.alfasco.ru{{out(tab, 'img', 'value')}}" alt="">
                         </div>
-                        <div class="post-content" >
-                            <ul class="post-tags" *ngIf="i==0">
-                                <h2><a (click)="routing('viewFilm/' + tab.id)">{{out(tab, 'title', 'value')}}</a></h2>
-                                <li>{{out(tab, 'datestart', 'title')}}: {{out(tab, 'datestart', 'value')}}</li>
-                                <li>{{out(tab, 'genre', 'title')}}: {{out(tab, 'genre', 'value')}}</li>
-                            </ul>
-                            <ul class="post-tags" *ngIf="i==1">
-                              <li>На сцене с: {{out(tab, 'datestart', 'value')}}</li>
-                              <li>{{out(tab, 'genre', 'title')}}: {{out(tab, 'genre', 'value')}}</li>
-                              <li>Театр: {{out(tab, 'theater', 'value')}}</li>
-                            </ul>
+                        <div class="post-content" class="col-sm-9">
+                            <div class="post-tags" *ngIf="i==0">
+                                <a (click)="routing('viewFilm/' + tab.id)"><h2 style="display: inline-block;text-decoration: none;color: #333;font-size:14px;margin:0 0 10px">{{out(tab, 'title', 'value')}}</h2></a>
+                                <p>{{out(tab, 'datestart', 'title')}}: {{out(tab, 'datestart', 'value')}}<br>{{out(tab, 'genre', 'title')}}: {{out(tab, 'genre', 'value')}}</p>
+                            </div>
+                            <div class="post-tags" *ngIf="i==1">
+                              <a (click)="routing('viewScene/' + tab.id)"><h2 style="display: inline-block;text-decoration: none;color: #333;font-size:14px;margin:0 0 10px">{{out(tab, 'title', 'value')}}</h2></a>
+                              <p>Театр: {{out(tab, 'theater', 'value')}}</p>
+                            </div>
+                            <div class="post-tags" *ngIf="i==2">
+                              <a (click)="routing(tab.id)"><h2 style="display: inline-block;text-decoration: none;color: #333;font-size:14px;margin:0 0 10px">{{out(tab, 'title', 'value')}}</h2></a>
+
+                            </div>
                         </div>
+                      </div>
                     </li>
                 </ul>
             </div>
@@ -52,6 +56,7 @@ export class WidgetAfishaComponent implements OnInit {
     ngOnInit() {
         this.component.getComponent('WidgetAfishaComponent').subscribe(
             component => {
+                console.log(component)
                 this.title = component.title;
                 this.content = component.content;
 

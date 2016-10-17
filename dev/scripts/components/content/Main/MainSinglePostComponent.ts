@@ -26,11 +26,16 @@ import {Location} from '@angular/common';
       </div>
 
       <div class="post-gallery" *ngIf="gallery">
-        <ul class="bxslider">
-          <li *ngFor="let img of gallery" style="list-style: none;">
-            <img src="{{out(img,'file','value')}}" alt="">
-          </li>
-        </ul>
+        <div class="very-large-post">
+          <div class="post-gallery">
+            <ul class="slider-call">
+              <li *ngFor="let img of gallery"><img src="{{img.bigImg}}" alt=""/></li>
+            </ul>
+            <div id="bx-pager">
+              <a attr.data-slide-index="{{i}}" href="" *ngFor="let img of gallery; let i = index"><img src="{{img.smallImg}}" alt=""/></a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="post-content" [innerHTML]="out(content,'content','value')"></div>
@@ -77,7 +82,8 @@ export class MainSinglePostComponent implements OnInit {
 
                 if (this.gallery) {
                     for (let i in this.gallery) {
-                        this.gallery[i].value.file[0].value = 'http://portamur.alfasco.ru' + this.gallery[i].value.file[0].value.replace(/\/images\//i, '/images/770x380/')
+                        this.gallery[i].bigImg = 'http://portamur.alfasco.ru' + this.gallery[i].value.file[0].value.replace(/\/images\//i, '/images/770x380/');
+                        this.gallery[i].smallImg = 'http://portamur.alfasco.ru' + this.gallery[i].value.file[0].value.replace(/\/images\//i, '/images/100x80/');
                     }
                 }
                 if (this.content.value.video) {
@@ -100,6 +106,10 @@ export class MainSinglePostComponent implements OnInit {
                                 } catch (err) {
                                 };
                             }
+
+                            $('.slider-call').bxSlider({
+                                pagerCustom: '#bx-pager'
+                            });
                         }, 150)
                     }
                 }
