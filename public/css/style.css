@@ -141,6 +141,10 @@ img {
 	}
 }
 
+#contentPreloader {
+  height: calc(100% - 210px)
+}
+
 .navbar-brand,
 .navbar-nav > li > a
 {

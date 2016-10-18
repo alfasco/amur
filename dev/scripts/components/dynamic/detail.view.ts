@@ -12,12 +12,20 @@ import {TemplateService} from './template.service';
 
 @Component({
     selector: 'dynamic-detail',
-    template: `<div #dynamicContentPlaceHolder></div>`,
+    template: `<div #dynamicContentPlaceHolder></div>
+      <div id="contentPreloader" [class.hide]="content">
+        <div class="bubblingG" style="position: absolute;top: 0;right: 0;left: 0;bottom: 0;">
+            <span id="bubblingG_1"> </span>
+            <span id="bubblingG_2"> </span>
+            <span id="bubblingG_3"> </span>
+        </div>
+      </div>`,
     providers: [
         TemplateService
     ]
 })
 export class DynamicDetail implements AfterViewInit, OnChanges, OnDestroy, OnInit {
+    private content: any;
     // reference for a <div> with #dynamicContentPlaceHolder
     @ViewChild('dynamicContentPlaceHolder', { read: ViewContainerRef })
     protected dynamicComponentTarget: ViewContainerRef;
@@ -41,6 +49,7 @@ export class DynamicDetail implements AfterViewInit, OnChanges, OnDestroy, OnIni
         this.router.events.subscribe((event) => {
             if (event instanceof NavigationStart)
                 this.refreshContent(event.url);
+            this.content = false;
         })
     }
 
@@ -72,6 +81,7 @@ export class DynamicDetail implements AfterViewInit, OnChanges, OnDestroy, OnIni
                                 .dynamicComponentTarget
                                 .createComponent(factory);
                         });
+                    this.content = true;
                 }
             },
             error => console.log(<any>error));
