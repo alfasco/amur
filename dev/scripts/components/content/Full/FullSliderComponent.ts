@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
     template: `
     <section class="heading-news2">
 
-        <div class="container">
+        <div class="container" *ngIf="slider">
             <div class="iso-call heading-news-box">
                 <div class="image-slider snd-size">
                     <span class="top-stories">Популярное</span>
@@ -47,6 +47,13 @@ import {Router} from '@angular/router';
                     </div>
                 </div>
             </div>
+        </div>
+        <div *ngIf="!slider">
+          <div class="bubblingG">
+              <span id="bubblingG_1"> </span>
+              <span id="bubblingG_2"> </span>
+              <span id="bubblingG_3"> </span>
+          </div>
         </div>
 
     </section>
