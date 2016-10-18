@@ -27,6 +27,10 @@ export class HeaderMenuComponent implements OnInit {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
                 this.content = component.content;
+                setTimeout(() => {
+                    $('#mainPreloader').remove();
+                    $('my-app').removeClass('hide');
+                }, 500)
             },
             error => console.log(<any>error));
     }
