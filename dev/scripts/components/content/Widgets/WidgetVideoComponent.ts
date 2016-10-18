@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
     template: `
     <div class="widget post-widget" *ngIf="content">
         <div class="title-section">
-            <a (click)="routing(content.id)"><h1><span>{{title}}</span></h1></a>
+            <a (click)="routing('/road')"><h1><span>{{title}}</span></h1></a>
         </div>
         <div class="news-post video-post">
             <img alt="" src="{{out(content,'img','value')}}" width="370px" height="230px">
@@ -18,7 +18,7 @@ import {Router} from '@angular/router';
                 <h2><a (click)="routing(content.id)">{{out(content,'title','value')}}</a></h2>
                 <ul class="post-tags">
                     <li><i class="fa fa-clock-o"></i>{{out(content,'date','value')}}</li>
-                    <li><i class="fa fa-user"></i>{{out(content,'owner','value')}}</li>
+                    <li><i class="fa fa-user"></i>{{out(content,'writer','value')}}</li>
                     <li><i class="fa fa-eye"></i>{{out(content,'counter','value')}}</li>
                 </ul>
             </div>

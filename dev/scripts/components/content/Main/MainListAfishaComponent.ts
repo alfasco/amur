@@ -24,7 +24,7 @@ import {Router, ActivatedRoute} from '@angular/router';
   						<h2><a (click)="routing('viewFilm/' + post.id)">{{post.value.tit}}</a></h2>
   						<ul class="post-tags">
   							<li><i class="fa fa-clock-o"></i>{{post.value.created.substr(0,10)}}</li>
-                <li *ngIf="post.value.autor"><i class="fa fa-user"></i>{{post.value.autor[0].value}}</li>
+                <li *ngIf="post.value.autor"><i class="fa fa-user"></i>{{post.value.writer[0].value}}</li>
                 <li *ngIf="post.value.counter"><i class="fa fa-eye"></i>{{post.value.counter[0].value}}</li>
   						</ul>
   					</div>

@@ -23,7 +23,7 @@ import {Router} from '@angular/router';
                                 <h2><a (click)="routing(cont[0].id)">{{out(cont[0],'title','value')}}</a></h2>
                                 <ul class="post-tags">
                                     <li><i class="fa fa-clock-o"></i>{{out(cont[0],'date','value')}}</li>
-                                    <li><i class="fa fa-user"></i>{{out(cont[0],'owner','value')}}</li>
+                                    <li><i class="fa fa-user"></i>{{out(cont[0],'writer','value')}}</li>
                                     <li><i class="fa fa-eye"></i>{{out(cont[0],'counter','value')}}</li>
                                 </ul>
                             </div>

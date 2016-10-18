@@ -17,7 +17,7 @@ import {Location} from '@angular/common';
         <h1>{{out(content,'title','value')}}</h1>
         <ul class="post-tags">
           <li><i class="fa fa-clock-o"></i>{{out(content,'time','value')}}&nbsp;&nbsp;&nbsp;{{out(content,'date','value')}}</li>
-          <li><i class="fa fa-user"></i>{{out(content,'owner','value')}}</li>
+          <li><i class="fa fa-user"></i>{{out(content,'writer','value')}}</li>
           <li><i class="fa fa-eye"></i>{{out(content,'counter','value')}}</li>
         </ul>
       </div>
@@ -44,31 +44,16 @@ import {Location} from '@angular/common';
 
       </div>
 
-
-      <!-- interview box -->
-      <!-- End interview box -->
-
-      <!-- comment area box -->
-
-      <!-- End comment area box -->
-
-      <!-- contact form box -->
-      <!-- End contact form box -->
-
     </div>`
 })
 export class MainSinglePostComponent implements OnInit {
     @Input() public idComponent: string;
     public content: any;
-    public path: any;
     public gallery: any;
     public video: any;
 
 
-    constructor(private component: ComponentService, private location: Location) {
-        this.path = 'http://amurlenta.ru' + location.path();
-        console.log(this.path)
-    }
+    constructor(private component: ComponentService, private location: Location) { }
 
 
     ngOnInit() {
@@ -94,22 +79,15 @@ export class MainSinglePostComponent implements OnInit {
                 if (this.gallery) {
                     if (this.gallery.length > 1) {
                         let interval = setInterval(() => {
-                            if ($('.bxslider') || !this.gallery) {
+                            if ($('.slider-call') || !this.gallery) {
                                 clearInterval(interval);
                                 try {
-                                    $('.bxslider').bxSlider({
-                                        mode: 'fade',
-                                        auto: true
+                                    $('.slider-call').bxSlider({
+                                        pagerCustom: '#bx-pager'
                                     });
-
-
                                 } catch (err) {
                                 };
                             }
-
-                            $('.slider-call').bxSlider({
-                                pagerCustom: '#bx-pager'
-                            });
                         }, 150)
                     }
                 }
