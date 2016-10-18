@@ -58,7 +58,7 @@ import {Router} from '@angular/router';
     </div>`,
     styles: [
         'ul {padding: 10px ;}' +
-        'ul.interview li {display: inline-block;color: #666666;font-size: 13px;font-family: "Lato", sans-serif;margin-right: 3px;margin-bottom: 2px;}' +
+        'ul.interview li {list-style: none;color: #666666;font-size: 13px;font-family: "Lato", sans-serif;margin-right: 3px;margin-bottom: 2px;}' +
         'ul.interview li a {display: inline-block; text-decoration: none;transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;-webkit-transition: all 0.2s ease-in-out;-o-transition: all 0.2s ease-in-out; padding: 6px 10px; border: 1px solid #efefef; -webkit-border-radius: 2px;-moz-border-radius: 2px;-o-border-radius: 2px;border-radius: 2px;color: #999999;font-size: 12px;font-family: "Lato", sans-serif;}' +
         'ul.interview li a:hover {background: #f44336;border: 1px solid #f44336;color: #ffffff;}' +
         '.member-skills {padding: 20px 20px;margin-bottom: 15px;overflow: hidden;}' +

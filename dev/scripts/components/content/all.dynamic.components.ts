@@ -12,6 +12,7 @@ import { MainVideoComponent }   from './Main/MainVideoComponent';
 import { MainList1Component }   from './Main/MainList1Component';
 import { MainListAfishaComponent }   from './Main/MainListAfishaComponent';
 import { MainListSceneComponent }   from './Main/MainListSceneComponent';
+import { MainListTVComponent }   from './Main/MainListTVComponent';
 import { MainBlogsComponent }   from './Main/MainBlogsComponent';
 import { MainAuthorBlogComponent }   from './Main/MainAuthorBlogComponent';
 import { MainSinglePostComponent }   from './Main/MainSinglePostComponent';
@@ -45,6 +46,7 @@ export const DYNAMIC_DIRECTIVES = [
     forwardRef(() => MainList1Component),
     forwardRef(() => MainListAfishaComponent),
     forwardRef(() => MainListSceneComponent),
+    forwardRef(() => MainListTVComponent),
     forwardRef(() => MainBlogsComponent),
     forwardRef(() => MainAuthorBlogComponent),
     forwardRef(() => MainSinglePostComponent),

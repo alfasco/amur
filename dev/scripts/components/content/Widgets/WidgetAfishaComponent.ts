@@ -20,7 +20,7 @@ import {Router} from '@angular/router';
                 <ul class="list-posts">
                     <li *ngFor="let tab of cont">
                       <div class="row">
-                        <div class="col-sm-3">
+                        <div class="col-sm-3" *ngIf="i!=2">
                           <img src="http://portamur.alfasco.ru{{out(tab, 'img', 'value')}}" alt="">
                         </div>
                         <div class="post-content" class="col-sm-9">
@@ -32,10 +32,10 @@ import {Router} from '@angular/router';
                               <a (click)="routing('viewScene/' + tab.id)"><h2 style="display: inline-block;text-decoration: none;color: #333;font-size:14px;margin:0 0 10px">{{out(tab, 'title', 'value')}}</h2></a>
                               <p>Театр: {{out(tab, 'theater', 'value')}}</p>
                             </div>
-                            <div class="post-tags" *ngIf="i==2">
-                              <a (click)="routing(tab.id)"><h2 style="display: inline-block;text-decoration: none;color: #333;font-size:14px;margin:0 0 10px">{{out(tab, 'title', 'value')}}</h2></a>
-
-                            </div>
+                        </div>
+                        <div class="col-sm-12" *ngIf="i==2">
+                          <p><b>{{tab.channel}}</b></p>
+                          <p style="padding:0px; margin:0px;" *ngFor="let session of tab.session">{{session}}</p>
                         </div>
                       </div>
                     </li>
