@@ -15,7 +15,7 @@ import {Router} from '@angular/router';
     template: `
     <div class="review-box" *ngIf="content.length">
       <div class="title-section">
-        <h1><span>{{title}}</span></h1>
+        <h1 *ngIf="title!='Опросы'"><span>{{title}}</span></h1>
       </div>
       <div *ngFor="let cont of content" style="margin-bottom: 30px">
         <h4>{{cont.value.tit}}</h4>
