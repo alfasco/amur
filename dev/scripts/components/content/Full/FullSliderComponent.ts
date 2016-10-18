@@ -48,7 +48,7 @@ import {Router} from '@angular/router';
                 </div>
             </div>
         </div>
-        <div *ngIf="!slider">
+        <div *ngIf="!slider" style="padding-top: 20px">
           <div class="bubblingG">
               <span id="bubblingG_1"> </span>
               <span id="bubblingG_2"> </span>
