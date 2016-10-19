@@ -9,6 +9,14 @@ import {Router} from '@angular/router';
     <section class="heading-news2">
 
         <div class="container" *ngIf="slider">
+
+          <div class="ticker-news-box">
+            <span class="breaking-news">Срочные новости</span>
+            <ul id="js-news">
+              <li class="news-item" *ngFor="let news of breaking"><span class="time-news">{{out(news, 'time', 'value')}}</span>  <a href="{{news.id}}">{{out(news, 'title', 'value')}}</a></li>
+            </ul>
+          </div>
+
             <div class="iso-call heading-news-box">
                 <div class="image-slider snd-size">
                     <span class="top-stories">Популярное</span>
@@ -65,6 +73,7 @@ export class FullSliderComponent implements OnInit {
 
     slider: any;
     list: any;
+    breaking: any;
 
     constructor(private component: ComponentService, private router: Router) { }
 
@@ -81,6 +90,9 @@ export class FullSliderComponent implements OnInit {
                 }
 
                 this.list = component.content.slice(1);
+                this.breaking = this.list[4];
+                this.list = this.list.splice(0, 4);
+
                 if (this.list) {
                     for (let i in this.list) {
                         this.list[i][0].value.img[0].value = 'http://portamur.alfasco.ru' + this.list[i][0].value.img[0].value.replace(/\/images\//i, '/images/293x245/')
@@ -189,6 +201,19 @@ export class FullSliderComponent implements OnInit {
 
                         /*= End of bxSlider =*/
                         /*=============================================<<<<<*/
+
+                        try {
+                            $('#js-news').ticker({
+                                speed: 0.20, // The speed of the reveal
+                                controls: true, // Whether or not to show the jQuery News Ticker controls
+                                titleText: '', // To remove the title set this to an empty String
+                                displayType: 'reveal', // Animation type - current options are 'reveal' or 'fade'
+                                direction: 'ltr', // Ticker direction - current options are 'ltr' or 'rtl'
+                                pauseOnItems: 2000, // The pause on a news item before being replaced
+                                fadeInSpeed: 600, // Speed of fade in animation
+                                fadeOutSpeed: 300 // Speed of fade out animation
+                            });
+                        } catch (err) { }
                     }
                 }, 150)
             },
