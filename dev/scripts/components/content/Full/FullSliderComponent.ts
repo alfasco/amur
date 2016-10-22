@@ -19,7 +19,6 @@ import {Router} from '@angular/router';
 
             <div class="iso-call heading-news-box">
                 <div class="image-slider snd-size">
-                    <span class="top-stories">Популярное</span>
                     <ul class="bxslider">
                         <li *ngFor="let cont of slider">
                             <div class="news-post image-post fullslider">
