@@ -30,7 +30,7 @@ export class HeaderMenuComponent implements OnInit {
                 setTimeout(() => {
                     $('#mainPreloader').remove();
                     $('my-app').removeClass('hide');
-                }, 500)
+                }, 100)
             },
             error => console.log(<any>error));
     }
