@@ -4,3 +4,4 @@ public/node_modules/*
 public/templates/index.html
 public/systemjs.config.js
 typings/*
+server/config.json
