@@ -10,11 +10,11 @@ import {Location} from '@angular/common';
       <div class="title-post">
         <h1>{{out(content,'title','value')}}</h1>
       </div>
-      <div class="share-post-box">
+      <div>
         <div id="my-share" class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,whatsapp,telegram"></div>
       </div>
 
-      <div class="post-content">
+      <div class="post-content" style="margin-top: 20px;">
         <div class="row">
           <div class="col-md-4">
             <img src="http://portamur.alfasco.ru{{out(content,'img','value')}}">

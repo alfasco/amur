@@ -17,6 +17,17 @@
     <script src="scripts/scripts.min.js"></script>
     <script src="scripts/app.min.js"></script>
     <script src="https://yastatic.net/share2/share.js" async="async"></script>
+    <script type="text/javascript">
+        document.onkeydown = function(e) {
+            e = e || window.event;
+            if (e.ctrlKey && e.keyCode == 13) {
+                alert('Спасибо, сообщение об ошибке отправлено!');
+                $.get('https://docs.google.com/forms/d/e/1FAIpQLSeEkI0fqhaLSqEo2snIoVFL2Cr6nSJZQNe1FsaxJQbIFmiW0A/formResponse?entry.2082356637=' + window.getSelection().toString() + '&entry.1728928688=' + window.location,
+                    "json");
+            }
+            return true;
+        }
+    </script>
 </body>
 
 </html>

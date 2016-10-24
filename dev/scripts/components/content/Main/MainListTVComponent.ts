@@ -23,7 +23,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 
           <div class="tab-pane" id="{{i}}" style="padding-top:20px;" *ngFor="let day of content; let i = index;" [class.active]="i==0">
             <div class="row">
-              <div class="col-md-6" *ngFor="let channel of day.channels;">
+              <div class="col-md-6" *ngFor="let channel of day.channels;" style="margin-bottom: 15px;">
                 <p><b>{{channel.channel}}</b></p>
                 <p style="padding:0px; margin:0px;" *ngFor="let session of channel.sessions">{{session}}</p>
               </div>

@@ -16,7 +16,7 @@ import {Router} from '@angular/router';
 
             <div class="item" *ngFor="let cont of content">
                 <div class="news-post image-post2">
-                    <div class="post-gallery">
+                    <div class="post-gallery" (click)="routing(cont[0].id)">
                         <img src="{{out(cont[0],'img','value')}}" alt="" style="max-width:368px; max-height: 300px">
                         <div class="hover-box">
                             <div class="inner-hover">
@@ -33,7 +33,7 @@ import {Router} from '@angular/router';
 
                 <ul class="list-posts">
                     <li *ngFor="let cont1 of cont[1]">
-                        <img src="{{out(cont1,'img','value')}}" alt="" style="max-width:100px; max-height: 80px">
+                        <img (click)="routing(cont1.id)" src="{{out(cont1,'img','value')}}" alt="" style="max-width:100px; max-height: 80px">
                         <div class="post-content">
                           <a (click)="routing('/' + out(cont1,'subsection','id'))">{{out(cont1,'subsection','value')}}</a>
                           <h2><a (click)="routing(cont1.id)">{{out(cont1,'title','value')}}</a></h2>

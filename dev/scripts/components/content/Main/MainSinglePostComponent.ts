@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ComponentService} from '../../services/component';
 import {Location} from '@angular/common';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
     selector: 'MainSinglePostComponent',
@@ -54,7 +55,7 @@ export class MainSinglePostComponent implements OnInit {
     public video: any;
 
 
-    constructor(private component: ComponentService, private location: Location) { }
+    constructor(private component: ComponentService, private location: Location, private dom: DomSanitizer) { }
 
 
     ngOnInit() {
@@ -65,6 +66,7 @@ export class MainSinglePostComponent implements OnInit {
                 if (this.content.value.content[0].value) {
                     this.content.value.content[0].value = this.content.value.content[0].value.replace(/\/upload\//g, 'http://portamur.alfasco.ru/upload/')
                 }
+                this.content.value.content[0].value = this.dom.bypassSecurityTrustHtml(this.content.value.content[0].value);
 
                 if (this.gallery) {
                     for (let i in this.gallery) {

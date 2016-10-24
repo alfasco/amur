@@ -17,7 +17,7 @@ import {Router} from '@angular/router';
 
         <div class="item" *ngFor="let cont of content">
           <div class="news-post image-post2" *ngFor="let cont1 of cont">
-            <div class="post-gallery">
+            <div class="post-gallery" (click)="routing(cont1.id)">
               <img src="{{out(cont1,'img','value')}}" alt="">
               <div class="hover-box">
                 <div class="inner-hover">
