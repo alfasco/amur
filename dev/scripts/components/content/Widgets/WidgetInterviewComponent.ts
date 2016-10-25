@@ -47,6 +47,7 @@ export class WidgetInterviewComponent implements OnInit {
     ngOnInit() {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
+                console.log(component)
                 if (component.content) {
                     for (let i in component.content) {
                         component.content[i].value.img[0].value = 'http://portamur.alfasco.ru' + component.content[i].value.img[0].value.replace(/\/images\//i, '/images/368x300/')

@@ -15,9 +15,16 @@ import {TemplateService} from './template.service';
     template: `<div #dynamicContentPlaceHolder></div>
       <div id="contentPreloader" [class.hide]="content">
         <div class="bubblingG" style="position: absolute;top: 0;right: 0;left: 0;bottom: 0;">
-            <span id="bubblingG_1"> </span>
-            <span id="bubblingG_2"> </span>
-            <span id="bubblingG_3"> </span>
+        <div id="floatingCirclesG">
+          <div class="f_circleG" id="frotateG_01"></div>
+          <div class="f_circleG" id="frotateG_02"></div>
+          <div class="f_circleG" id="frotateG_03"></div>
+          <div class="f_circleG" id="frotateG_04"></div>
+          <div class="f_circleG" id="frotateG_05"></div>
+          <div class="f_circleG" id="frotateG_06"></div>
+          <div class="f_circleG" id="frotateG_07"></div>
+          <div class="f_circleG" id="frotateG_08"></div>
+        </div>
         </div>
       </div>`,
     providers: [
