@@ -32,4 +32,18 @@ export class MainAdvertisementComponent implements OnInit {
             },
             error => console.log(<any>error));
     }
+
+    out(object, field, value) {
+        if (object) {
+            if (object.value) {
+                if (object.value[field]) {
+                    if (object.value[field][0]) {
+                        if (object.value[field][0][value]) {
+                            return object.value[field][0][value]
+                        }
+                    }
+                }
+            }
+        }
+    }
 };
