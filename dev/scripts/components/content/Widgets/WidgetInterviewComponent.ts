@@ -15,7 +15,7 @@ import {Router} from '@angular/router';
         <ul class="bxsliderInterview">
           <li *ngFor="let cont of content">
             <div class="news-post image-post2">
-              <div class="post-gallery">
+              <div class="post-interview">
                 <img src="{{out(cont,'img','value')}}" width="368px" height="300px">
                 <div class="hover-box">
                   <div class="inner-hover">
@@ -56,20 +56,17 @@ export class WidgetInterviewComponent implements OnInit {
                 this.title = component.title;
                 this.content = component.content;
 
-                let interval = setInterval(() => {
-                    if ($('.bxsliderInterview')) {
-                        clearInterval(interval);
-                        try {
-                            $('.bxsliderInterview').bxSlider({
-                                mode: 'fade',
-                                auto: true
-                            });
-
-
-                        } catch (err) {
-                        };
-                    }
-                }, 150)
+                let interval = setTimeout(() => {
+                    console.log($('.bxsliderInterview .post-interview'))
+                    //   if ($('.bxsliderInterview .post-interview')) {
+                    //       clearInterval(interval);
+                    //       console.log()
+                    $('.bxsliderInterview').bxSlider({
+                        mode: 'fade',
+                        auto: true
+                    })
+                    //   }
+                }, 2000)
             },
             error => console.log(<any>error));
     }
