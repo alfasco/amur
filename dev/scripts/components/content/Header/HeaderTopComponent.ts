@@ -65,7 +65,6 @@ export class HeaderTopComponent implements OnInit {
             url: 'http://tools.alfasco.ru/api/widgets/wc/'
         }).done((data: any) => {
             this.content = data;
-            console.log(data)
         })
     }
 };

@@ -28,7 +28,7 @@ import {Router} from '@angular/router';
                                         <!-- <a class="category-post sport" href="sport.html">{{cont.value.subsection[0].value}}</a>-->
                                         <h2><a (click)="routing(cont.id)">{{out(cont, 'title', 'value')}}</a></h2>
                                         <ul class="post-tags">
-                                        <li><i class="fa fa-clock-o"></i>{{out(cont,'date','value')}}</li>
+                                        <li><i class="fa fa-clock-o"></i>{{out(cont,'time','value')}}&nbsp;&nbsp;&nbsp;{{out(cont,'date','value')}}</li>
                                         <li><i class="fa fa-eye"></i>{{out(cont,'counter','value')}}</li>
                                         </ul>
                                     </div>
@@ -45,7 +45,7 @@ import {Router} from '@angular/router';
                           <!--   <a class="category-post travel" href="travel.html">{{cont[0].value.subsection[0].value}}</a>-->
                             <h2><a (click)="routing(cont[0].id)">{{out(cont[0], 'title', 'value')}}</a></h2>
                             <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i><span>{{out(cont[0], 'date', 'value')}}</span></li>
+                                <li><i class="fa fa-clock-o"></i><span>{{out(cont[0], 'time', 'value')}}&nbsp;&nbsp;&nbsp;{{out(cont[0], 'date', 'value')}}</span></li>
                                 <li><i class="fa fa-eye"></i><span>{{out(cont[0], 'counter', 'value')}}</span></li>
                             </ul>
                             <p>{{out(cont[0], 'description', 'value')}}</p>

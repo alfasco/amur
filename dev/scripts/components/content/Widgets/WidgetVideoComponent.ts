@@ -17,7 +17,7 @@ import {Router} from '@angular/router';
             <div class="hover-box">
                 <h2><a (click)="routing(content.id)">{{out(content,'title','value')}}</a></h2>
                 <ul class="post-tags">
-                    <li><i class="fa fa-clock-o"></i>{{out(content,'date','value')}}</li>
+                    <li><i class="fa fa-clock-o"></i>{{out(content,'time','value')}}&nbsp;&nbsp;&nbsp;{{out(content,'date','value')}}</li>
                     <li><i class="fa fa-user"></i>{{out(content,'writer','value')}}</li>
                     <li><i class="fa fa-eye"></i>{{out(content,'counter','value')}}</li>
                 </ul>

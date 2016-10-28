@@ -24,7 +24,7 @@ import {Router} from '@angular/router';
             <div class="post-content">
               <h2><a (click)="routing(cont.id)">{{out(cont,'title','value')}}</a></h2>
               <ul class="post-tags">
-                <li><i class="fa fa-clock-o"></i>{{out(cont,'date','value')}}</li>
+                <li><i class="fa fa-clock-o"></i>{{out(cont,'time','value')}}&nbsp;&nbsp;&nbsp;{{out(cont,'date','value')}}</li>
                 <li><i class="fa fa-user"></i>{{out(cont,'writer','value')}}</li>
                 <li><i class="fa fa-eye"></i>{{out(cont,'counter','value')}}</li>
               </ul>

@@ -11,6 +11,7 @@ import {Router, ActivatedRoute} from '@angular/router';
   		<div class="title-section">
   			<h1 *ngIf="title"><span class="world">{{title}}</span></h1>
   			<h1 *ngIf="content[0] && !title"><span *ngIf="content[0].value.subsection" class="world">{{content[0].value.subsection[0].value}}</span></h1>
+         <p *ngIf="description" class="post-tags" style="margin-top: 20px">{{description}}</p>
   		</div>
 
   		<div class="row">
@@ -41,6 +42,7 @@ export class MainList1Component implements OnInit {
     @Input() public idComponent: string;
     public content = [];
     public title: any;
+    public description: any;
     constructor(private component: ComponentService, private router: Router) { }
 
 
@@ -48,8 +50,8 @@ export class MainList1Component implements OnInit {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
                 this.title = component.title;
+                this.description = component.description;
                 this.content = component.content;
-                console.log(component)
                 if (this.content) {
                     for (let i in this.content) {
                         this.content[i].value.img[0].value = 'http://portamur.alfasco.ru' + this.content[i].value.img[0].value.replace(/\/images\//i, '/images/330x260/')

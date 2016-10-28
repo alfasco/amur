@@ -7,13 +7,13 @@ import {ComponentService} from '../../services/component';
     template: `
     <div class="advertisement" *ngIf="content">
       <div class="desktop-advert">
-        <img src="http://portamur.alfasco.ru{{content.value.img_728x90[0].value}}" alt="">
+        <a href="{{link}}"><img src="http://portamur.alfasco.ru{{content.value.img_728x90[0].value}}" alt=""></a>
       </div>
       <div class="tablet-advert">
-        <img src="http://portamur.alfasco.ru{{content.value.img_468x60[0].value}}" alt="">
+        <a href="{{link}}"><img src="http://portamur.alfasco.ru{{content.value.img_468x60[0].value}}" alt=""></a>
       </div>
       <div class="mobile-advert">
-        <img src="http://portamur.alfasco.ru{{content.value.img_300x250[0].value}}" alt="">
+        <a href="{{link}}"><img src="http://portamur.alfasco.ru{{content.value.img_300x250[0].value}}" alt=""></a>
       </div>
     </div>`
 })
@@ -21,6 +21,7 @@ export class MainAdvertisementComponent implements OnInit {
     @Input() public idComponent: string;
     content: any;
     title: any;
+    public link: any;
 
     constructor(private component: ComponentService) {
     }
@@ -29,6 +30,7 @@ export class MainAdvertisementComponent implements OnInit {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
                 this.content = component.content[0];
+                this.link = component.link;
             },
             error => console.log(<any>error));
     }

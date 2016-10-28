@@ -15,7 +15,7 @@ import {Router} from '@angular/router';
         <li *ngFor="let cont of content">
           <img src="{{out(cont,'img','value')}}" alt="">
           <h2><a (click)="routing(cont.id)">{{out(cont,'title','value')}}</a></h2>
-          <span class="date"><i class="fa fa-clock-o"></i>{{out(cont,'date','value')}}</span>
+          <span class="date"><i class="fa fa-clock-o"></i>{{out(cont,'time','value')}}&nbsp;&nbsp;&nbsp;{{out(cont,'date','value')}}</span>
         </li>
       </ul>
     </div>`

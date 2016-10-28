@@ -20,11 +20,6 @@ import {Router} from '@angular/router';
                 <div class="hover-box">
                   <div class="inner-hover">
                     <h2><a (click)="routing(out(cont,'article','id'))">{{cont.value.tit}}</a></h2>
-                    <ul class="post-tags">
-                      <li><i class="fa fa-clock-o"></i>{{out(cont,'date','value')}}</li>
-                      <li><i class="fa fa-user"></i>{{out(cont,'owner','value')}}</li>
-                      <li><i class="fa fa-eye"></i>{{out(cont,'counter','value')}}</li>
-                    </ul>
                   </div>
                 </div>
               </div>
@@ -47,7 +42,6 @@ export class WidgetInterviewComponent implements OnInit {
     ngOnInit() {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
-                console.log(component)
                 if (component.content) {
                     for (let i in component.content) {
                         component.content[i].value.img[0].value = 'http://portamur.alfasco.ru' + component.content[i].value.img[0].value.replace(/\/images\//i, '/images/368x300/')

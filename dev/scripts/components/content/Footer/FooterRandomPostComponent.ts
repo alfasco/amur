@@ -16,7 +16,7 @@ import {Router} from '@angular/router';
                     <a (click)="routing('/')">{{out(cont, 'subsection', 'value')}}</a>
                     <h2><a (click)="routing(cont.id)">{{cont.value.tit}}</a></h2>
                     <ul class="post-tags">
-                        <li><i class="fa fa-clock-o"></i>{{cont.value.created.substr(0,10)}}</li>
+                        <li><i class="fa fa-clock-o"></i>{{out(cont,'time','value')}}&nbsp;&nbsp;&nbsp;{{out(cont,'date','value')}}</li>
                     </ul>
                 </div>
             </li>

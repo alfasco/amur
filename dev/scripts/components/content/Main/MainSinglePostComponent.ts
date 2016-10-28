@@ -70,7 +70,7 @@ export class MainSinglePostComponent implements OnInit {
 
                 if (this.gallery) {
                     for (let i in this.gallery) {
-                        this.gallery[i].bigImg = 'http://portamur.alfasco.ru' + this.gallery[i].value.file[0].value.replace(/\/images\//i, '/images/770x380/');
+                        this.gallery[i].bigImg = 'http://portamur.alfasco.ru' + this.gallery[i].value.file[0].value;
                         this.gallery[i].smallImg = 'http://portamur.alfasco.ru' + this.gallery[i].value.file[0].value.replace(/\/images\//i, '/images/100x80/');
                     }
                 }
