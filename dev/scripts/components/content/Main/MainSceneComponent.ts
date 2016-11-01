@@ -39,7 +39,7 @@ import {Location} from '@angular/common';
             <div class="title-section">
               <h1><span>Место и время проведения</span></h1>
             </div>
-            <h4>{{out(session,'theater','value')}} <small>- {{out(session,'datestart','value')}} {{out(session,'timestart','value')}}</small></h4>
+            <h4 *ngFor="let ses of session">{{out(ses,'theater','value')}} <small>- {{out(ses,'datestart','value')}} {{out(ses,'timestart','value')}}</small></h4>
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@ export class MainSceneComponent implements OnInit {
             component => {
                 console.log(component)
                 this.content = component.content[0];
-                this.session = component.session[0];
+                this.session = component.session;
 
 
                 setTimeout(() => {
