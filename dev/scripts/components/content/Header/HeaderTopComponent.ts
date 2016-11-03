@@ -41,12 +41,9 @@ import {ComponentService} from '../../services/component';
                 </div>
                 <div class="col-md-3">
                     <ul class="social-icons">
-                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
-                        <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a></li>
+                        <li><a class="facebook" href="https://vk.com/public131936676"><i class="fa fa-vk"></i></a></li>
+                        <li><a class="facebook" href="https://www.facebook.com/groups/555615097960958/"><i class="fa fa-facebook"></i></a></li>
+                        <li><a class="facebook" href="https://ok.ru/group/53024212189327"><i class="fa fa-odnoklassniki"></i></a></li>
                     </ul>
                 </div>
             </div>

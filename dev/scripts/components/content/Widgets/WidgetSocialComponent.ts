@@ -11,10 +11,10 @@ import {ComponentService} from '../../services/component';
         </div>
         <ul class="social-share">
           <li>
-            <a href="#" class="vk"><i class="fa fa-vk" style="line-height: 40px;"></i></a>
+            <a href="https://vk.com/public131936676" class="vk"><i class="fa fa-vk" style="line-height: 40px;"></i></a>
           </li>
           <li>
-            <a href="#" class="facebook"><i class="fa fa-facebook" style="line-height: 40px;"></i></a>
+            <a href="https://www.facebook.com/groups/555615097960958/" class="facebook"><i class="fa fa-facebook" style="line-height: 40px;"></i></a>
           </li>
           <li>
             <a href="#" class="twitter"><i class="fa fa-twitter" style="line-height: 40px;"></i></a>
@@ -23,7 +23,7 @@ import {ComponentService} from '../../services/component';
             <a href="#" class="google"><i class="fa fa-youtube" style="line-height: 40px;"></i></a>
           </li>
           <li>
-            <a href="#" class="rss"><i class="fa fa-odnoklassniki" style="line-height: 40px;"></i></a>
+            <a href="https://ok.ru/group/53024212189327" class="rss"><i class="fa fa-odnoklassniki" style="line-height: 40px;"></i></a>
           </li>
           <li>
             <a href="#" class="vk"><i class="fa fa-instagram" style="line-height: 40px;"></i></a>
