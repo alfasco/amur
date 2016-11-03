@@ -21,11 +21,11 @@ import {Location} from '@angular/common';
           </div>
           <div class="col-md-8">
             <h4 style="padding:0 20px;">
-              {{out(content,'genre','value')}}, {{out(content,'old','value')}}
+              <span *ngIf="out(content,'genre','value')">{{out(content,'genre','value')}}, </span>{{out(content,'old','value')}}
             </h4>
-            <p><b>{{out(content,'director','title')}}:</b> {{out(content,'director','value')}}</p>
-            <p><b>{{out(content,'actors','title')}}:</b> {{out(content,'actors','value')}}</p>
-            <p><b>{{out(content,'datestart','title')}}:</b> {{out(content,'datestart','value')}}</p>
+            <p><b *ngIf="out(content,'director','value')">{{out(content,'director','title')}}:</b> {{out(content,'director','value')}}</p>
+            <p><b *ngIf="out(content,'actors','value')">{{out(content,'actors','title')}}:</b> {{out(content,'actors','value')}}</p>
+            <p><b *ngIf="out(content,'datestart','value')">{{out(content,'datestart','title')}}:</b> {{out(content,'datestart','value')}}</p>
           </div>
         </div>
         <div class="row">
