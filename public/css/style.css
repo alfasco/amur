@@ -9,6 +9,10 @@ img {
   width: 100%;
 }
 
+.post-content img {
+   height:auto!important;  width:auto!important;
+}
+
 #floatingCirclesG{
 	position:relative;
 	width:125px;
