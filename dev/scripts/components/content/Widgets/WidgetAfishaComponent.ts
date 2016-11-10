@@ -30,7 +30,6 @@ import {Router} from '@angular/router';
                             </div>
                             <div class="post-tags" *ngIf="i==1">
                               <a (click)="routing('viewScene/' + tab.id)"><h2 style="display: inline-block;text-decoration: none;color: #333;font-size:14px;margin:0 0 10px">{{out(tab, 'title', 'value')}}</h2></a>
-                              <p>Дата: {{out(tab, 'datestart', 'value')}}</p>
                             </div>
                         </div>
                         <div class="col-sm-12" *ngIf="i==2">
