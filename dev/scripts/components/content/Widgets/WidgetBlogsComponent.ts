@@ -29,7 +29,7 @@ import {Router} from '@angular/router';
               </li>
             </ul>
           </div>
-          <div class="item">
+          <div class="item" *ngIf="content.length > 3">
             <ul class="comment-list">
               <li *ngFor="let author of content; let i = index" [class.hide]="i < 3 || i > 5">
                 <div *ngIf="i >= 3 && i < 6">
