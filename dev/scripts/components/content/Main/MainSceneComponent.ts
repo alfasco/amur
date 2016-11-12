@@ -15,7 +15,7 @@ import {Location} from '@angular/common';
       </div>
 
       <div class="post-content">
-        <div class="row">
+        <div class="row" style="margin-bottom: 20px;">
           <div class="col-md-4">
             <img src="http://portamur.alfasco.ru{{out(content,'img','value')}}">
           </div>

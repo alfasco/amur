@@ -11,6 +11,7 @@ import { MainGalleryComponent }   from './Main/MainGalleryComponent';
 import { MainVideoComponent }   from './Main/MainVideoComponent';
 import { MainList1Component }   from './Main/MainList1Component';
 import { MainListAfishaComponent }   from './Main/MainListAfishaComponent';
+import { MainListDifferentComponent }   from './Main/MainListDifferentComponent';
 import { MainListSceneComponent }   from './Main/MainListSceneComponent';
 import { MainListTVComponent }   from './Main/MainListTVComponent';
 import { MainBlogsComponent }   from './Main/MainBlogsComponent';
@@ -45,6 +46,7 @@ export const DYNAMIC_DIRECTIVES = [
     forwardRef(() => MainVideoComponent),
     forwardRef(() => MainList1Component),
     forwardRef(() => MainListAfishaComponent),
+    forwardRef(() => MainListDifferentComponent),
     forwardRef(() => MainListSceneComponent),
     forwardRef(() => MainListTVComponent),
     forwardRef(() => MainBlogsComponent),
