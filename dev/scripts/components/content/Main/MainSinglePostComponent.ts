@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ComponentService} from '../../services/component';
-import {Location} from '@angular/common';
 import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
@@ -55,7 +54,7 @@ export class MainSinglePostComponent implements OnInit {
     public video: any;
 
 
-    constructor(private component: ComponentService, private location: Location, private dom: DomSanitizer) { }
+    constructor(private component: ComponentService, private dom: DomSanitizer) { }
 
 
     ngOnInit() {
