@@ -39,7 +39,7 @@ import {Location} from '@angular/common';
          <ul class="comment-tree">
             <li *ngFor="let cont of content">
                <div class="comment-box">
-                  <img alt="" src="upload/users/avatar6.jpg">
+                  <img alt="" src="images/no_ava.png">
                   <div class="comment-content">
                      <h4>{{out(cont, 'autor', 'value')}}</h4>
                      <span><i class="fa fa-clock-o"></i>{{cont.value.created}}</span>
