@@ -77,9 +77,15 @@ export class MainCommentsComponent implements OnInit {
     send() {
         console.log(this.comment)
         $.ajax({
-            url: 'http://portamur.alfasco.ru/api/v1/post/comment/?uid=9d2351495dd9d80aff50d513581b319b&id=' + this.location.path() + '&content=' + this.comment.text
+            url: 'http://portamur.alfasco.ru/api/v1/post/comment/?uid=9d2351495dd9d80aff50d513581b319b&id=' + this.location.path() + '&content=' + this.comment.text + '&name=' + this.comment.name + '&email=' + this.comment.email
         }).done(() => {
             this.ready = true;
+            this.component.getComponent(this.idComponent).subscribe(
+                component => {
+                    this.content = component.content;
+                    console.log(component)
+                },
+                error => console.log(<any>error));
         })
     }
 
