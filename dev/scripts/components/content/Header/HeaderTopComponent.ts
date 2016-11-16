@@ -44,6 +44,8 @@ import {ComponentService} from '../../services/component';
                         <li><a class="facebook" href="https://vk.com/public131936676"><i class="fa fa-vk"></i></a></li>
                         <li><a class="facebook" href="https://www.facebook.com/groups/555615097960958/"><i class="fa fa-facebook"></i></a></li>
                         <li><a class="facebook" href="https://ok.ru/group/53024212189327"><i class="fa fa-odnoklassniki"></i></a></li>
+                        <li><a class="facebook" href="https://www.instagram.com/amurlenta/"><i class="fa fa-instagram"></i></a></li>
+                        <li><a class="facebook" href="https://www.youtube.com/channel/UCNWTOj7nb5m0pL1ORT58mMQ"><i class="fa fa-youtube"></i></a></li>
                     </ul>
                 </div>
             </div>

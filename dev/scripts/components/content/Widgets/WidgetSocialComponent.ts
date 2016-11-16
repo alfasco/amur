@@ -20,13 +20,13 @@ import {ComponentService} from '../../services/component';
             <a href="#" class="twitter"><i class="fa fa-twitter" style="line-height: 40px;"></i></a>
           </li>
           <li>
-            <a href="#" class="google"><i class="fa fa-youtube" style="line-height: 40px;"></i></a>
+            <a href="https://www.youtube.com/channel/UCNWTOj7nb5m0pL1ORT58mMQ" class="google"><i class="fa fa-youtube" style="line-height: 40px;"></i></a>
           </li>
           <li>
             <a href="https://ok.ru/group/53024212189327" class="rss"><i class="fa fa-odnoklassniki" style="line-height: 40px;"></i></a>
           </li>
           <li>
-            <a href="#" class="vk"><i class="fa fa-instagram" style="line-height: 40px;"></i></a>
+            <a href="https://www.instagram.com/amurlenta/" class="vk"><i class="fa fa-instagram" style="line-height: 40px;"></i></a>
           </li>
         </ul>
     </div>`

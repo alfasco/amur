@@ -13,8 +13,8 @@ import {ComponentService} from '../../services/component';
             <li><a href="https://ok.ru/group/53024212189327" class="odnoklassniki"><i class="fa fa-rss" style="line-height: 40px;"></i></a></li>
             <li><a href="#" class="google"><i class="fa fa-google-plus" style="line-height: 40px;"></i></a></li>
             <li><a href="#" class="twitter"><i class="fa fa-twitter" style="line-height: 40px;"></i></a></li>
-            <li><a href="#" class="youtube"><i class="fa fa-youtube" style="line-height: 40px;"></i></a></li>
-            <li><a href="#" class="instagram"><i class="fa fa-instagram" style="line-height: 40px;"></i></a></li>
+            <li><a href="https://www.youtube.com/channel/UCNWTOj7nb5m0pL1ORT58mMQ" class="youtube"><i class="fa fa-youtube" style="line-height: 40px;"></i></a></li>
+            <li><a href="https://www.instagram.com/amurlenta/" class="instagram"><i class="fa fa-instagram" style="line-height: 40px;"></i></a></li>
             <li><a href="#" class="linkedin"><i class="fa fa-linkedin" style="line-height: 40px;"></i></a></li>
             <li><a href="#" class="vimeo"><i class="fa fa-vimeo-square" style="line-height: 40px;"></i></a></li>
             <li><a href="#" class="dribble"><i class="fa fa-dribbble" style="line-height: 40px;"></i></a></li>
