@@ -3,5 +3,7 @@ public/scripts/*
 public/node_modules/*
 public/templates/index.html
 public/systemjs.config.js
+public/sitemap.xml
 typings/*
 server/config.json
+server/routes/shots/*

@@ -77,8 +77,13 @@ export class DynamicDetail implements AfterViewInit, OnChanges, OnDestroy, OnIni
         this.tpl.getGrid(url).subscribe(
             grid => {
                 if (url == this.lastUrl && code == this.lastCode) {
+                    console.log(grid);
+                    $('#title').html(grid.seo.title);
+                    $('#keywords').attr('content', grid.seo.keywords);
+                    $('#description').attr('content', grid.seo.description);
+
                     // here we get a TEMPLATE with dynamic content === TODO
-                    var template = this.templateBuilder.prepareTemplate(grid);
+                    var template = this.templateBuilder.prepareTemplate(grid.content);
                     // here we get Factory (just compiled or from cache)
                     this.typeBuilder
                         .createComponentFactory(template)

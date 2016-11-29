@@ -7,7 +7,7 @@ var cluster = require('cluster'),
 config.argv()
 	.env()
 	.file({
-		file: 'config.json'
+		file: 'server/config.json'
 	});
 
 require('./boot/express')(app);
@@ -15,6 +15,9 @@ require('./boot/express')(app);
 require('./routes/index')(app);
 
 if (cluster.isMaster) {
+
+	//cronTime
+	require('./cron');
 
 	// Fork workers.
 	for (var i = 0; i < numCPUs; i++) {

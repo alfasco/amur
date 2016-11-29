@@ -41,7 +41,7 @@ import {Location} from '@angular/common';
                <div class="comment-box">
                   <img alt="" src="images/no_ava.png">
                   <div class="comment-content">
-                     <h4>{{out(cont, 'autor', 'value')}}</h4>
+                     <h4>{{out(cont, 'name', 'value')}}</h4>
                      <span><i class="fa fa-clock-o"></i>{{cont.value.created}}</span>
                      <p>{{out(cont, 'content', 'value')}}</p>
                   </div>
