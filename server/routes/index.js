@@ -10,7 +10,7 @@ module.exports = function(app) {
 				// console.log(req.headers['user-agent'], req.url);
 				//Проверяем наличие страницы
 				var parser = new xml2js.Parser();
-				fs.readFile(__dirname + '/../../../public/sitemap.xml', function(err, data) {
+				fs.readFile(__dirname + '/../../public/sitemap.xml', function(err, data) {
 					parser.parseString(data, function(err, result) {
 						for (i in result.urlset.url) {
 							if (result.urlset.url[i].loc[0].substr(19) == decodeURI(req.url)) var check = true;
