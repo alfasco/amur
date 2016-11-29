@@ -7,6 +7,12 @@ var phantomjs = require('phantomjs')
 var childProcess = require('child_process')
 var binPath = phantomjs.path;
 
+var download = function(uri, filename, callback) {
+	request.head(uri, function(err, res, body) {
+		request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+	});
+};
+
 var updateShots = new CronJob({
 	cronTime: '00 05 21 * * *',
 	onTick: function() {
@@ -22,12 +28,6 @@ download('http://portamur.alfasco.ru/api/v1/sitemap/sitemap.xml', __dirname + '/
 	console.log('done');
 	allShots()
 });
-
-var download = function(uri, filename, callback) {
-	request.head(uri, function(err, res, body) {
-		request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
-	});
-};
 
 function allShots() {
 	var parser = new xml2js.Parser();
