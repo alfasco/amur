@@ -7,13 +7,6 @@ var phantomjs = require('phantomjs')
 var childProcess = require('child_process')
 var binPath = phantomjs.path;
 
-var getStatistic = new CronJob({
-	cronTime: '00 00 21 * * *',
-	onTick: function() {
-		require('request')('http://portamur.alfasco.ru/api/v1/sitemap', function(err, res, body) {});
-	},
-	start: true
-});
 var updateShots = new CronJob({
 	cronTime: '00 05 21 * * *',
 	onTick: function() {
@@ -23,6 +16,11 @@ var updateShots = new CronJob({
 		});
 	},
 	start: true
+});
+
+download('http://portamur.alfasco.ru/api/v1/sitemap/sitemap.xml', __dirname + '/../public/sitemap.xml', function() {
+	console.log('done');
+	allShots()
 });
 
 var download = function(uri, filename, callback) {
