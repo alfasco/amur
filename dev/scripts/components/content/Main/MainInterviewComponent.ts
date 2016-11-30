@@ -26,6 +26,21 @@ import {Router} from '@angular/router';
             <li *ngIf="out(cont, 'answer3', 'value')"><a (click)="sendInterview(cont.id,3)">{{out(cont, 'answer3', 'value')}}</a></li>
             <li *ngIf="out(cont, 'answer4', 'value')"><a (click)="sendInterview(cont.id,4)">{{out(cont, 'answer4', 'value')}}</a></li>
             <li *ngIf="out(cont, 'answer5', 'value')"><a (click)="sendInterview(cont.id,5)">{{out(cont, 'answer5', 'value')}}</a></li>
+            <li *ngIf="out(cont, 'answer6', 'value')"><a (click)="sendInterview(cont.id,6)">{{out(cont, 'answer6', 'value')}}</a></li>
+            <li *ngIf="out(cont, 'answer7', 'value')"><a (click)="sendInterview(cont.id,7)">{{out(cont, 'answer7', 'value')}}</a></li>
+            <li *ngIf="out(cont, 'answer8', 'value')"><a (click)="sendInterview(cont.id,8)">{{out(cont, 'answer8', 'value')}}</a></li>
+            <li *ngIf="out(cont, 'answer9', 'value')"><a (click)="sendInterview(cont.id,9)">{{out(cont, 'answer9', 'value')}}</a></li>
+            <li *ngIf="out(cont, 'answer10', 'value')"><a (click)="sendInterview(cont.id,10)">{{out(cont, 'answer10', 'value')}}</a></li>
+            <li *ngIf="out(cont, 'answer11', 'value')"><a (click)="sendInterview(cont.id,11)">{{out(cont, 'answer11', 'value')}}</a></li>
+            <li *ngIf="out(cont, 'answer12', 'value')"><a (click)="sendInterview(cont.id,12)">{{out(cont, 'answer12', 'value')}}</a></li>
+            <li *ngIf="out(cont, 'answer13', 'value')"><a (click)="sendInterview(cont.id,13)">{{out(cont, 'answer13', 'value')}}</a></li>
+            <li *ngIf="out(cont, 'answer14', 'value')"><a (click)="sendInterview(cont.id,14)">{{out(cont, 'answer14', 'value')}}</a></li>
+            <li *ngIf="out(cont, 'answer15', 'value')"><a (click)="sendInterview(cont.id,15)">{{out(cont, 'answer15', 'value')}}</a></li>
+            <li *ngIf="out(cont, 'answer16', 'value')"><a (click)="sendInterview(cont.id,16)">{{out(cont, 'answer16', 'value')}}</a></li>
+            <li *ngIf="out(cont, 'answer17', 'value')"><a (click)="sendInterview(cont.id,17)">{{out(cont, 'answer17', 'value')}}</a></li>
+            <li *ngIf="out(cont, 'answer18', 'value')"><a (click)="sendInterview(cont.id,18)">{{out(cont, 'answer18', 'value')}}</a></li>
+            <li *ngIf="out(cont, 'answer19', 'value')"><a (click)="sendInterview(cont.id,19)">{{out(cont, 'answer19', 'value')}}</a></li>
+            <li *ngIf="out(cont, 'answer20', 'value')"><a (click)="sendInterview(cont.id,20)">{{out(cont, 'answer20', 'value')}}</a></li>
           </ul>
         </div>
         <div *ngIf="cont.ready">
@@ -49,6 +64,66 @@ import {Router} from '@angular/router';
             <p *ngIf="out(cont, 'answer5', 'value')">{{out(cont, 'answer5', 'value')}} - {{out(cont, 'result5', 'value') || 0}}</p>
             <div *ngIf="out(cont, 'answer5', 'value')" class="meter nostrips design">
               <p [style.width]="getPercent(out(cont, 'result5', 'value'),summ(cont)) + '%'"></p>
+            </div>
+            <p *ngIf="out(cont, 'answer6', 'value')">{{out(cont, 'answer6', 'value')}} - {{out(cont, 'result6', 'value') || 0}}</p>
+            <div *ngIf="out(cont, 'answer6', 'value')" class="meter nostrips design">
+              <p [style.width]="getPercent(out(cont, 'result6', 'value'),summ(cont)) + '%'"></p>
+            </div>
+            <p *ngIf="out(cont, 'answer7', 'value')">{{out(cont, 'answer7', 'value')}} - {{out(cont, 'result7', 'value') || 0}}</p>
+            <div *ngIf="out(cont, 'answer7', 'value')" class="meter nostrips design">
+              <p [style.width]="getPercent(out(cont, 'result7', 'value'),summ(cont)) + '%'"></p>
+            </div>
+            <p *ngIf="out(cont, 'answer8', 'value')">{{out(cont, 'answer8', 'value')}} - {{out(cont, 'result8', 'value') || 0}}</p>
+            <div *ngIf="out(cont, 'answer8', 'value')" class="meter nostrips design">
+              <p [style.width]="getPercent(out(cont, 'result8', 'value'),summ(cont)) + '%'"></p>
+            </div>
+            <p *ngIf="out(cont, 'answer9', 'value')">{{out(cont, 'answer9', 'value')}} - {{out(cont, 'result9', 'value') || 0}}</p>
+            <div *ngIf="out(cont, 'answer9', 'value')" class="meter nostrips design">
+              <p [style.width]="getPercent(out(cont, 'result9', 'value'),summ(cont)) + '%'"></p>
+            </div>
+            <p *ngIf="out(cont, 'answer10', 'value')">{{out(cont, 'answer10', 'value')}} - {{out(cont, 'result10', 'value') || 0}}</p>
+            <div *ngIf="out(cont, 'answer10', 'value')" class="meter nostrips design">
+              <p [style.width]="getPercent(out(cont, 'result10', 'value'),summ(cont)) + '%'"></p>
+            </div>
+            <p *ngIf="out(cont, 'answer11', 'value')">{{out(cont, 'answer11', 'value')}} - {{out(cont, 'result11', 'value') || 0}}</p>
+            <div *ngIf="out(cont, 'answer11', 'value')" class="meter nostrips design">
+              <p [style.width]="getPercent(out(cont, 'result11', 'value'),summ(cont)) + '%'"></p>
+            </div>
+            <p *ngIf="out(cont, 'answer12', 'value')">{{out(cont, 'answer12', 'value')}} - {{out(cont, 'result12', 'value') || 0}}</p>
+            <div *ngIf="out(cont, 'answer12', 'value')" class="meter nostrips design">
+              <p [style.width]="getPercent(out(cont, 'result12', 'value'),summ(cont)) + '%'"></p>
+            </div>
+            <p *ngIf="out(cont, 'answer13', 'value')">{{out(cont, 'answer13', 'value')}} - {{out(cont, 'result13', 'value') || 0}}</p>
+            <div *ngIf="out(cont, 'answer13', 'value')" class="meter nostrips design">
+              <p [style.width]="getPercent(out(cont, 'result13', 'value'),summ(cont)) + '%'"></p>
+            </div>
+            <p *ngIf="out(cont, 'answer14', 'value')">{{out(cont, 'answer14', 'value')}} - {{out(cont, 'result14', 'value') || 0}}</p>
+            <div *ngIf="out(cont, 'answer14', 'value')" class="meter nostrips design">
+              <p [style.width]="getPercent(out(cont, 'result14', 'value'),summ(cont)) + '%'"></p>
+            </div>
+            <p *ngIf="out(cont, 'answer15', 'value')">{{out(cont, 'answer15', 'value')}} - {{out(cont, 'result15', 'value') || 0}}</p>
+            <div *ngIf="out(cont, 'answer15', 'value')" class="meter nostrips design">
+              <p [style.width]="getPercent(out(cont, 'result15', 'value'),summ(cont)) + '%'"></p>
+            </div>
+            <p *ngIf="out(cont, 'answer16', 'value')">{{out(cont, 'answer16', 'value')}} - {{out(cont, 'result16', 'value') || 0}}</p>
+            <div *ngIf="out(cont, 'answer16', 'value')" class="meter nostrips design">
+              <p [style.width]="getPercent(out(cont, 'result16', 'value'),summ(cont)) + '%'"></p>
+            </div>
+            <p *ngIf="out(cont, 'answer17', 'value')">{{out(cont, 'answer17', 'value')}} - {{out(cont, 'result17', 'value') || 0}}</p>
+            <div *ngIf="out(cont, 'answer17', 'value')" class="meter nostrips design">
+              <p [style.width]="getPercent(out(cont, 'result17', 'value'),summ(cont)) + '%'"></p>
+            </div>
+            <p *ngIf="out(cont, 'answer18', 'value')">{{out(cont, 'answer18', 'value')}} - {{out(cont, 'result18', 'value') || 0}}</p>
+            <div *ngIf="out(cont, 'answer18', 'value')" class="meter nostrips design">
+              <p [style.width]="getPercent(out(cont, 'result18', 'value'),summ(cont)) + '%'"></p>
+            </div>
+            <p *ngIf="out(cont, 'answer19', 'value')">{{out(cont, 'answer19', 'value')}} - {{out(cont, 'result19', 'value') || 0}}</p>
+            <div *ngIf="out(cont, 'answer19', 'value')" class="meter nostrips design">
+              <p [style.width]="getPercent(out(cont, 'result19', 'value'),summ(cont)) + '%'"></p>
+            </div>
+            <p *ngIf="out(cont, 'answer20', 'value')">{{out(cont, 'answer20', 'value')}} - {{out(cont, 'result20', 'value') || 0}}</p>
+            <div *ngIf="out(cont, 'answer20', 'value')" class="meter nostrips design">
+              <p [style.width]="getPercent(out(cont, 'result20', 'value'),summ(cont)) + '%'"></p>
             </div>
           </div>
         </div>
@@ -151,7 +226,22 @@ export class MainInterviewComponent implements OnInit {
         interview.value.result3[0].value = parseInt(interview.value.result3[0].value) || 0;
         interview.value.result4[0].value = parseInt(interview.value.result4[0].value) || 0;
         interview.value.result5[0].value = parseInt(interview.value.result5[0].value) || 0;
-        return interview.value.result1[0].value + interview.value.result2[0].value + interview.value.result3[0].value + interview.value.result4[0].value + interview.value.result5[0].value;
+        interview.value.result6[0].value = parseInt(interview.value.result6[0].value) || 0;
+        interview.value.result7[0].value = parseInt(interview.value.result7[0].value) || 0;
+        interview.value.result8[0].value = parseInt(interview.value.result8[0].value) || 0;
+        interview.value.result9[0].value = parseInt(interview.value.result9[0].value) || 0;
+        interview.value.result10[0].value = parseInt(interview.value.result10[0].value) || 0;
+        interview.value.result11[0].value = parseInt(interview.value.result11[0].value) || 0;
+        interview.value.result12[0].value = parseInt(interview.value.result12[0].value) || 0;
+        interview.value.result13[0].value = parseInt(interview.value.result13[0].value) || 0;
+        interview.value.result14[0].value = parseInt(interview.value.result14[0].value) || 0;
+        interview.value.result15[0].value = parseInt(interview.value.result15[0].value) || 0;
+        interview.value.result16[0].value = parseInt(interview.value.result16[0].value) || 0;
+        interview.value.result17[0].value = parseInt(interview.value.result17[0].value) || 0;
+        interview.value.result18[0].value = parseInt(interview.value.result18[0].value) || 0;
+        interview.value.result19[0].value = parseInt(interview.value.result19[0].value) || 0;
+        interview.value.result20[0].value = parseInt(interview.value.result20[0].value) || 0;
+        return interview.value.result1[0].value + interview.value.result2[0].value + interview.value.result3[0].value + interview.value.result4[0].value + interview.value.result5[0].value + interview.value.result6[0].value + interview.value.result7[0].value + interview.value.result8[0].value + interview.value.result9[0].value + interview.value.result10[0].value + interview.value.result11[0].value + interview.value.result12[0].value + interview.value.result13[0].value + interview.value.result14[0].value + interview.value.result15[0].value + interview.value.result16[0].value + interview.value.result17[0].value + interview.value.result18[0].value + interview.value.result19[0].value + interview.value.result20[0].value;
     }
 
     getPercent(value: number, summ: number) {

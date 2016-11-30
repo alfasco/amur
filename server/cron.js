@@ -24,11 +24,6 @@ var updateShots = new CronJob({
 	start: true
 });
 
-download('http://portamur.alfasco.ru/api/v1/sitemap/sitemap.xml', __dirname + '/../public/sitemap.xml', function() {
-	console.log('done');
-	allShots()
-});
-
 function allShots() {
 	var parser = new xml2js.Parser();
 	fs.readFile(__dirname + '/../public/sitemap.xml', function(err, data) {

@@ -51,15 +51,10 @@ export class WidgetInterviewComponent implements OnInit {
                 this.content = component.content;
 
                 let interval = setTimeout(() => {
-                    console.log($('.bxsliderInterview .post-interview'))
-                    //   if ($('.bxsliderInterview .post-interview')) {
-                    //       clearInterval(interval);
-                    //       console.log()
                     $('.bxsliderInterview').bxSlider({
                         mode: 'fade',
                         auto: true
                     })
-                    //   }
                 }, 2000)
             },
             error => console.log(<any>error));
