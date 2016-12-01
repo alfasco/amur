@@ -17,9 +17,9 @@ import {Router} from '@angular/router';
       <div class="title-section">
         <h1 *ngIf="title!='Опросы'"><span>{{title}}</span></h1>
       </div>
-      <div *ngFor="let cont of content" style="margin-bottom: 30px">
+      <div *ngFor="let cont of content" style="margin-bottom: 50px">
         <h4>{{cont.value.tit}}</h4>
-        <div *ngIf="!cont.ready">
+        <div *ngIf="!cont.ready && !cont.was">
           <ul class="interview">
             <li *ngIf="out(cont, 'answer1', 'value')"><a (click)="sendInterview(cont.id,1)">{{out(cont, 'answer1', 'value')}}</a></li>
             <li *ngIf="out(cont, 'answer2', 'value')"><a (click)="sendInterview(cont.id,2)">{{out(cont, 'answer2', 'value')}}</a></li>
@@ -43,7 +43,7 @@ import {Router} from '@angular/router';
             <li *ngIf="out(cont, 'answer20', 'value')"><a (click)="sendInterview(cont.id,20)">{{out(cont, 'answer20', 'value')}}</a></li>
           </ul>
         </div>
-        <div *ngIf="cont.ready">
+        <div *ngIf="cont.ready || cont.was">
           <div class="member-skills">
             <p *ngIf="out(cont, 'answer1', 'value')">{{out(cont, 'answer1', 'value')}} - {{out(cont, 'result1', 'value') || 0}}</p>
             <div *ngIf="out(cont, 'answer1', 'value')" class="meter nostrips design">
@@ -153,6 +153,7 @@ export class MainInterviewComponent implements OnInit {
     ngOnInit() {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
+                console.log(component)
                 this.content = component.content;
                 this.content.forEach((item) => {
                     item.summ = this.summ(item);
