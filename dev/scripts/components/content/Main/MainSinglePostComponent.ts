@@ -94,6 +94,7 @@ export class MainSinglePostComponent implements OnInit {
                     }
                 }
                 setTimeout(() => {
+                    instagram();
                     let myShare = document.getElementById('my-share');
                     let share = Ya.share2(myShare, {
                         content: {
