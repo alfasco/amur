@@ -64,7 +64,6 @@ export class WidgetBlogsComponent implements OnInit {
                 this.title = component.title;
                 this.content = component.content;
                 this.link = component.link;
-                console.log(component)
                 if (this.content) {
                     for (let i in this.content) {
                         this.content[i].value.avatar = 'http://portamur.alfasco.ru' + this.content[i].value.avatar.replace(/\/images\//i, '/images/70x70/')

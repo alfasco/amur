@@ -2,6 +2,14 @@ var fs = require('fs'),
 	xml2js = require('xml2js');
 
 module.exports = function(app) {
+
+	app.get('/*', function(req, res, next) {
+		if (req.headers.host.match(/^www/) !== null) {
+			res.redirect('http://' + req.headers.host.replace(/^www\./, '') + req.url);
+		} else {
+			next();
+		}
+	});
 	//Главная
 	app.get('*', function(req, res) {
 		//Определяем, что отдать
