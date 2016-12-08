@@ -76,5 +76,8 @@ export class WidgetInterviewComponent implements OnInit {
                 }
             }
         }
+        if (field == 'link') {
+            return object.id
+        }
     }
 };

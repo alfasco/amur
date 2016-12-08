@@ -17,11 +17,11 @@ import {Router} from '@angular/router';
 
         <div class="item" *ngFor="let cont of content">
           <div class="news-post image-post2" *ngFor="let cont1 of cont">
-            <div class="post-gallery" (click)="routing(cont1.id)">
+            <div class="post-gallery" (click)="routing(out(cont1,'link','value'))">
               <img src="{{out(cont1,'img','value')}}" alt="">
               <div class="hover-box">
                 <div class="inner-hover">
-                  <h2><a (click)="routing(cont1.id)">{{out(cont1,'title','value')}}</a></h2>
+                  <h2><a (click)="routing(out(cont1,'link','value'))">{{out(cont1,'title','value')}}</a></h2>
                   <ul class="post-tags">
                     <li><i class="fa fa-clock-o"></i>{{out(cont1,'time','value')}}&nbsp;&nbsp;&nbsp;{{out(cont1,'date','value')}}</li>
                     <li><i class="fa fa-user"></i>{{out(cont1,'writer','value')}}</li>
@@ -106,6 +106,9 @@ export class MainView4Component implements OnInit {
                     }
                 }
             }
+        }
+        if (field == 'link') {
+            return object.id
         }
     }
 

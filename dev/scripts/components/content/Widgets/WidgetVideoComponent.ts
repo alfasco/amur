@@ -15,7 +15,7 @@ import {Router} from '@angular/router';
             <img alt="" src="{{out(content,'img','value')}}" width="370px" height="230px">
             <a href="{{out(content,'video','value')}}" class="video-link"><i class="fa fa-play-circle-o"></i></a>
             <div class="hover-box">
-                <h2><a (click)="routing(content.id)">{{out(content,'title','value')}}</a></h2>
+                <h2><a (click)="routing(out(content,'link','value'))">{{out(content,'title','value')}}</a></h2>
                 <ul class="post-tags">
                     <li><i class="fa fa-clock-o"></i>{{out(content,'time','value')}}&nbsp;&nbsp;&nbsp;{{out(content,'date','value')}}</li>
                     <li><i class="fa fa-user"></i>{{out(content,'writer','value')}}</li>
@@ -71,6 +71,9 @@ export class WidgetVideoComponent implements OnInit {
                     }
                 }
             }
+        }
+        if (field == 'link') {
+            return object.id
         }
     }
 

@@ -77,5 +77,8 @@ export class WidgetAfishaComponent implements OnInit {
                 }
             }
         }
+        if (field == 'link') {
+            return object.id
+        }
     }
 };

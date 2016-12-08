@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
                 <img src="{{out(cont, 'img', 'value')}}" alt="">
                 <div class="post-content">
                     <a (click)="routing('/')">{{out(cont, 'subsection', 'value')}}</a>
-                    <h2><a (click)="routing(cont.id)">{{cont.value.tit}}</a></h2>
+                    <h2><a (click)="routing(out(cont,'link','value'))">{{cont.value.tit}}</a></h2>
                     <ul class="post-tags">
                         <li><i class="fa fa-clock-o"></i>{{out(cont,'time','value')}}&nbsp;&nbsp;&nbsp;{{out(cont,'date','value')}}</li>
                     </ul>
@@ -54,6 +54,9 @@ export class FooterRandomPostComponent implements OnInit {
                     }
                 }
             }
+        }
+        if (field == 'link') {
+            return object.id
         }
     }
 

@@ -141,5 +141,8 @@ export class MainAfishaComponent implements OnInit {
                 }
             }
         }
+        if (field == 'link') {
+            return object.id
+        }
     }
 };

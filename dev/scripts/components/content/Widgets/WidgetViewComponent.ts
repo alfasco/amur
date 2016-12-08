@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
       <ul class="review-posts-list">
         <li *ngFor="let cont of content">
           <img src="{{out(cont,'img','value')}}" alt="">
-          <h2><a (click)="routing(cont.id)">{{out(cont,'title','value')}}</a></h2>
+          <h2><a (click)="routing(out(cont,'link','value'))">{{out(cont,'title','value')}}</a></h2>
           <span class="date"><i class="fa fa-clock-o"></i>{{out(cont,'time','value')}}&nbsp;&nbsp;&nbsp;{{out(cont,'date','value')}}</span>
         </li>
       </ul>
@@ -54,6 +54,9 @@ export class WidgetViewComponent implements OnInit {
                     }
                 }
             }
+        }
+        if (field == 'link') {
+            return object.id
         }
     }
 

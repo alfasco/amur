@@ -22,14 +22,14 @@ import {Router} from '@angular/router';
           </div>
           <div class="col-sm-7">
             <div class="post-content">
-              <h2><a (click)="routing(cont.id)">{{out(cont,'title','value')}}</a></h2>
+              <h2><a (click)="routing(out(cont,'link','value'))">{{out(cont,'title','value')}}</a></h2>
               <ul class="post-tags">
                 <li><i class="fa fa-clock-o"></i>{{out(cont,'time','value')}}&nbsp;&nbsp;&nbsp;{{out(cont,'date','value')}}</li>
                 <li><i class="fa fa-user"></i>{{out(cont,'writer','value')}}</li>
                 <li><i class="fa fa-eye"></i>{{out(cont,'counter','value')}}</li>
               </ul>
               <p>{{out(cont,'description','value')}}</p>
-              <a (click)="routing(cont.id)" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Читать далее</a>
+              <a (click)="routing(out(cont,'link','value'))" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Читать далее</a>
             </div>
           </div>
         </div>
@@ -75,6 +75,9 @@ export class MainView3Component implements OnInit {
                     }
                 }
             }
+        }
+        if (field == 'link') {
+            return object.id
         }
     }
 

@@ -18,7 +18,7 @@ import {Router} from '@angular/router';
             <div class="item news-post image-post3" *ngFor="let item of content">
                 <img src="{{out(item,'img','value')}}" alt="" width="185px" height="180px">
                 <div class="hover-box">
-                    <h2><a (click)="routing(item.id)">{{out(item,'title','value')}}</a></h2>
+                    <h2><a (click)="routing(out(item,'link','value'))">{{out(item,'title','value')}}</a></h2>
                     <ul class="post-tags">
                         <li><i class="fa fa-clock-o"></i>{{out(item,'time','value')}}&nbsp;&nbsp;&nbsp;{{out(item,'date','value')}}</li>
                     </ul>
@@ -92,6 +92,9 @@ export class MainGalleryComponent implements OnInit {
                     }
                 }
             }
+        }
+        if (field == 'link') {
+            return object.id
         }
     }
 

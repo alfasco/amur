@@ -18,7 +18,7 @@ import {Router} from '@angular/router';
                     <img alt="" src="{{out(cont,'img','value')}}" width="270px" height="200px">
                     <a href="{{out(cont,'video','value')}}" class="video-link"><i class="fa fa-play-circle-o"></i></a>
                     <div class="hover-box">
-                        <h2><a (click)="routing(cont.id)">{{out(cont,'title','value')}}</a></h2>
+                        <h2><a (click)="routing(out(cont,'link','value'))">{{out(cont,'title','value')}}</a></h2>
                         <ul class="post-tags">
                             <li><i class="fa fa-clock-o"></i>{{out(cont,'time','value')}}&nbsp;&nbsp;&nbsp;{{out(cont,'date','value')}}</li>
                         </ul>
@@ -64,6 +64,9 @@ export class MainVideoComponent {
                     }
                 }
             }
+        }
+        if (field == 'link') {
+            return object.id
         }
     }
 

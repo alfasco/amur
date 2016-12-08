@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
         <h1>Лучшие фото</h1>
         <ul class="flickr-list" *ngIf="content">
             <li *ngFor="let cont of content">
-                <a (click)="routing(cont.id)"><img src="{{cont.value.img[0].value}}" alt="" width="85" height="70"></a>
+                <a (click)="routing(out(cont,'link','value'))"><img src="{{out(cont,'img','value')}}" alt="" width="85" height="70"></a>
             </li>
         </ul>
         <a (click)="routing('/foto')">Больше фотографий</a>
@@ -36,6 +36,23 @@ export class FooterFotosComponent implements OnInit {
 
             },
             error => console.log(<any>error));
+    }
+
+    out(object, field, value) {
+        if (object) {
+            if (object.value) {
+                if (object.value[field]) {
+                    if (object.value[field][0]) {
+                        if (object.value[field][0][value]) {
+                            return object.value[field][0][value]
+                        }
+                    }
+                }
+            }
+        }
+        if (field == 'link') {
+            return object.id
+        }
     }
 
     routing(url: any) {
