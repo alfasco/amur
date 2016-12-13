@@ -81,6 +81,7 @@ export class DynamicDetail implements AfterViewInit, OnChanges, OnDestroy, OnIni
                     $('#title').html(grid.seo.title);
                     $('#keywords').attr('content', grid.seo.keywords);
                     $('#description').attr('content', grid.seo.description);
+                    window.scrollTo(0, 0);
 
                     // here we get a TEMPLATE with dynamic content === TODO
                     var template = this.templateBuilder.prepareTemplate(grid.content);
