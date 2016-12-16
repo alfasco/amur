@@ -11,7 +11,7 @@ import {ComponentService} from '../../services/component';
                 <div class="col-md-9">
                     <ul class="top-line-list">
                         <li>
-                            <a routerLink="/63f4c588c76340a5a4cbd5759a9bd230"><span class="city-weather">Благовещенск</span></a>
+                            <span class="city-weather">Благовещенск</span>
                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="24px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
               <path fill="#777777" d="M208,64c8.833,0,16-7.167,16-16V16c0-8.833-7.167-16-16-16s-16,7.167-16,16v32
                 C192,56.833,199.167,64,208,64z M332.438,106.167l22.625-22.625c6.249-6.25,6.249-16.375,0-22.625

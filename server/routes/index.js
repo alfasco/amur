@@ -3,7 +3,11 @@ var fs = require('fs'),
 
 module.exports = function(app) {
 	app.get('/*', function(req, res, next) {
-		if (req.headers.host.match(/^www/) !== null) {
+		if (req.url == '/index.php' || req.url == 'index.htm' || req.url == 'index.html') {
+			res.redirect('http://' + req.headers.host.replace(/^www\./, ''));
+		} else if (req.url.substr(-1) == '/' && req.url.length > 2) {
+			res.redirect('http://' + req.headers.host.replace(/^www\./, '') + req.url.substr(0, req.url.length - 1));
+		} else if (req.headers.host.match(/^www/) !== null) {
 			res.redirect('http://' + req.headers.host.replace(/^www\./, '') + req.url);
 		} else {
 			next();

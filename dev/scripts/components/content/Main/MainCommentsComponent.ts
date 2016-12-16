@@ -25,7 +25,7 @@ import {Location} from '@angular/common';
              </div>
              <label for="comment">Комментарий</label>
              <textarea id="comment" name="comment" [(ngModel)]='comment.text'></textarea>
-             <button type="submit" id="submit-contact" (click)="send()">
+             <button type="submit" id="submit-contact" (click)="send()" [disabled]='!comment.name.length || !comment.email.length || !comment.text.length'>
                 <i class="fa fa-comment"></i> Опубликовать
              </button>
          </form>

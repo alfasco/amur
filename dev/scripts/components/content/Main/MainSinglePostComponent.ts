@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ComponentService} from '../../services/component';
 import {DomSanitizer} from '@angular/platform-browser';
 
+import {Location} from '@angular/common';
+
 @Component({
     selector: 'MainSinglePostComponent',
     providers: [ComponentService],
@@ -54,7 +56,8 @@ export class MainSinglePostComponent implements OnInit {
     public video: any;
 
 
-    constructor(private component: ComponentService, private dom: DomSanitizer) { }
+    constructor(private component: ComponentService, private dom: DomSanitizer,
+        private location: Location) { }
 
 
     ngOnInit() {
@@ -98,9 +101,9 @@ export class MainSinglePostComponent implements OnInit {
                     let myShare = document.getElementById('my-share');
                     let share = Ya.share2(myShare, {
                         content: {
-                            url: 'https://yandex.com',
-                            title: 'Yandex',
-                            description: 'It,s all about Yandex',
+                            url: 'http://amurlenta.ru' + this.location.path(),
+                            title: 'Амур Лента',
+                            description: $('#description').attr('content'),
                             image: 'https://yastatic.net/morda-logo/i/logo.svg'
                         }
                         // здесь вы можете указать и другие параметры

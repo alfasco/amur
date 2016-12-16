@@ -2971,8 +2971,8 @@ ul.autor-list > li .autor-last-line a.autor-site:hover
 .contact-form-box #contact-form button i
 {
     margin-right: 7px;
-}.contact-form-box #comment-form button:hover,
-.contact-form-box #contact-form button:hover
+}.contact-form-box #comment-form button:hover:enabled,
+.contact-form-box #contact-form button:hover:enabled
 {color: #fff;
     background: #f44336;
 }.contact-form-box .title-section span.email-not-published

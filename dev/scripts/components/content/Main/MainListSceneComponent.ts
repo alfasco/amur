@@ -16,14 +16,14 @@ import {Router, ActivatedRoute} from '@angular/router';
   			<div class="col-md-6" *ngFor="let post of content">
   				<div class="news-post standard-post2">
   					<div class="post-gallery">
-  						<img src="{{out(post,'img','value')}}" alt="" width="330" height="260">
+  						<a (click)="routing('viewScene/' + out(post,'link','value'))"><img src="{{out(post,'img','value')}}" alt="" width="330" height="260"></a>
   					</div>
   					<div class="post-title">
-  						<h2><a (click)="routing('viewScene/' + post.id)">{{post.value.tit}}</a></h2>
+  						<h2><a (click)="routing('viewScene/' + out(post,'link','value'))">{{post.value.tit}}</a></h2>
   					</div>
   					<div class="post-content">
   						<p>{{out(post,'description','value')}}</p>
-  						<a (click)="routing('viewScene/' + post.id)" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Подробнее</a>
+  						<a (click)="routing('viewScene/' + out(post,'link','value'))" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Подробнее</a>
   					</div>
   				</div>
   			</div>
@@ -67,6 +67,9 @@ export class MainListSceneComponent implements OnInit {
                     }
                 }
             }
+        }
+        if (field == 'link') {
+            return object.id
         }
     }
 };

@@ -17,11 +17,11 @@ import {Router, ActivatedRoute} from '@angular/router';
   			<div class="col-md-6" *ngFor="let post of content">
   				<div class="news-post standard-post2">
   					<div class="post-gallery">
-  						<img src="{{post.value.img[0].value}}" alt="" width="330" height="260">
+  						<a (click)="routing('viewDiffrent/' + out(post,'link','value'))"><img src="{{post.value.img[0].value}}" alt="" width="330" height="260"></a>
   						<a *ngIf="post.value.subsection" [class]="'category-post ' + post.color" (click)="routing(post.value.subsection[0].id)">{{post.value.subsection[0].value}}</a>
   					</div>
   					<div class="post-title">
-  						<h2><a (click)="routing('viewDiffrent/' + post.id)">{{post.value.tit}}</a></h2>
+  						<h2><a (click)="routing('viewDiffrent/' + out(post,'link','value'))">{{post.value.tit}}</a></h2>
   						<ul class="post-tags">
   							<li><i class="fa fa-clock-o"></i>{{post.value.created.substr(0,10)}}</li>
                 <li *ngIf="post.value.autor"><i class="fa fa-user"></i>{{post.value.writer[0].value}}</li>
@@ -30,7 +30,7 @@ import {Router, ActivatedRoute} from '@angular/router';
   					</div>
   					<div class="post-content">
   						<p>{{post.value.description[0].value}}</p>
-  						<a (click)="routing('viewFilm/' + post.id)" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Подробнее</a>
+  						<a (click)="routing('viewDiffrent/' + out(post,'link','value'))" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Подробнее</a>
   					</div>
   				</div>
   			</div>
@@ -57,6 +57,23 @@ export class MainListDifferentComponent implements OnInit {
                 }
             },
             error => console.log(<any>error));
+    }
+
+    out(object, field, value) {
+        if (object) {
+            if (object.value) {
+                if (object.value[field]) {
+                    if (object.value[field][0]) {
+                        if (object.value[field][0][value]) {
+                            return object.value[field][0][value]
+                        }
+                    }
+                }
+            }
+        }
+        if (field == 'link') {
+            return object.id
+        }
     }
 
     routing(url: any) {
