@@ -97,7 +97,11 @@ export class DynamicDetail implements AfterViewInit, OnChanges, OnDestroy, OnIni
                     this.content = true;
                 }
             },
-            error => console.log(<any>error));
+            error => {
+                console.log(<any>error)
+                this.router.navigate(['/404'])
+            }
+        );
     }
 
     /** IN CASE WE WANT TO RE/Gerante - we need cean up */
