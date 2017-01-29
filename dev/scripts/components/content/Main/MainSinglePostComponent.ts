@@ -64,6 +64,7 @@ export class MainSinglePostComponent implements OnInit {
         this.component.getComponent(this.idComponent).subscribe(
             component => {
                 this.content = component.content[0];
+                this.content.value.counter[0].value = '';
                 this.gallery = component.gallery;
                 if (this.content.value.content[0].value) {
                     this.content.value.content[0].value = this.content.value.content[0].value.replace(/\/upload\//g, 'http://portamur.alfasco.ru/upload/')
@@ -109,6 +110,12 @@ export class MainSinglePostComponent implements OnInit {
                         // здесь вы можете указать и другие параметры
                     });
                 }, 500)
+
+                $.ajax({
+                    url: 'http://portamur.alfasco.ru/api/v1/count/?id=' + this.idComponent
+                }).done((counter) => {
+                    this.content.value.counter[0].value = counter.content;
+                })
             },
             error => console.log(<any>error));
     }

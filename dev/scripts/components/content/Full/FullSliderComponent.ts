@@ -29,7 +29,6 @@ import {Router} from '@angular/router';
                                         <h2><a (click)="routing(out(cont, 'link', 'value'))">{{out(cont, 'title', 'value')}}</a></h2>
                                         <ul class="post-tags">
                                         <li><i class="fa fa-clock-o"></i>{{out(cont,'time','value')}}&nbsp;&nbsp;&nbsp;{{out(cont,'date','value')}}</li>
-                                        <li><i class="fa fa-eye"></i>{{out(cont,'counter','value')}}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -46,7 +45,6 @@ import {Router} from '@angular/router';
                             <h2><a (click)="routing(out(cont[0], 'link', 'value'))">{{out(cont[0], 'title', 'value')}}</a></h2>
                             <ul class="post-tags">
                                 <li><i class="fa fa-clock-o"></i><span>{{out(cont[0], 'time', 'value')}}&nbsp;&nbsp;&nbsp;{{out(cont[0], 'date', 'value')}}</span></li>
-                                <li><i class="fa fa-eye"></i><span>{{out(cont[0], 'counter', 'value')}}</span></li>
                             </ul>
                             <p>{{out(cont[0], 'description', 'value')}}</p>
                         </div>

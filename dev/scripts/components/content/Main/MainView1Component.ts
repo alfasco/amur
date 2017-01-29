@@ -22,7 +22,6 @@ import {Router} from '@angular/router';
                                 <ul class="post-tags">
                                   <li><i class="fa fa-clock-o"></i>{{out(cont[0],'time','value')}}&nbsp;&nbsp;&nbsp;{{out(cont[0],'date','value')}}</li>
                                   <li><i class="fa fa-user"></i>{{out(cont[0],'writer','value')}}</li>
-                                  <li><i class="fa fa-eye"></i>{{out(cont[0],'counter','value')}}</li>
                                 </ul>
                             </div>
                         </div>

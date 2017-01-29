@@ -26,7 +26,6 @@ import {Router} from '@angular/router';
               <ul class="post-tags">
                 <li><i class="fa fa-clock-o"></i>{{out(cont,'time','value')}}&nbsp;&nbsp;&nbsp;{{out(cont,'date','value')}}</li>
                 <li><i class="fa fa-user"></i>{{out(cont,'writer','value')}}</li>
-                <li><i class="fa fa-eye"></i>{{out(cont,'counter','value')}}</li>
               </ul>
               <p>{{out(cont,'description','value')}}</p>
               <a (click)="routing(out(cont,'link','value'))" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Читать далее</a>

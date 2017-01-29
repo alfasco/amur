@@ -1,29 +1,37 @@
 <html>
 
 <head>
-    <title>Angular 2 QuickStart</title>
+    <title id="title">Амур</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="/">
-
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/magnific-popup.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/owl.theme.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/ticker-style.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+    <meta id="description" name="description" lang="ru" content="Амур Лента">
+    <meta id="keywords" name="keywords" lang="ru" content="новости">
 
     <script src="scripts/app.min.js"></script>
+    <script>
+        System.import('app').catch(function(err) {
+            console.error(err);
+        });
+    </script>
+    <script src="https://yastatic.net/share2/share.js" async="async"></script>
 </head>
 
 <body class="boxed">
-    <my-app>Loading...</my-app>
-    <script type="text/javascript" src="scripts/scripts.min.js"></script>
+    <div id="mainPreloader" class="bubblingG" style="position: absolute;top: 0;right: 0;left: 0;bottom: 0;">
+        <div id="floatingCirclesG">
+            <div class="f_circleG" id="frotateG_01"></div>
+            <div class="f_circleG" id="frotateG_02"></div>
+            <div class="f_circleG" id="frotateG_03"></div>
+            <div class="f_circleG" id="frotateG_04"></div>
+            <div class="f_circleG" id="frotateG_05"></div>
+            <div class="f_circleG" id="frotateG_06"></div>
+            <div class="f_circleG" id="frotateG_07"></div>
+            <div class="f_circleG" id="frotateG_08"></div>
+        </div>
+    </div>
+    <my-app class="hide"></my-app>
+    <script src="scripts/scripts.min.js"></script>
 </body>
 
 </html>
